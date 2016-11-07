@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using Prism.Commands;
+﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using System;
+using System.Collections.Generic;
 using TotoMorti.Classes;
 
 namespace TotoMorti.ViewModels
@@ -14,6 +15,17 @@ namespace TotoMorti.ViewModels
         {
             _navigationService = navigationService;
             EditCelebrityCommand = new DelegateCommand(NavigateEditCelebrity, CanNavigateEditCelebrity);
+            AddCelebrityCommand = new DelegateCommand(NavigateAddCelebrity, CanNavigateAddCelebrity);
+        }
+
+        private void NavigateAddCelebrity()
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool CanNavigateAddCelebrity()
+        {
+            return true;
         }
 
         private bool CanNavigateEditCelebrity()
@@ -40,5 +52,6 @@ namespace TotoMorti.ViewModels
         }
 
         public DelegateCommand EditCelebrityCommand { get; private set; }
+        public DelegateCommand AddCelebrityCommand { get; private set; }
     }
 }

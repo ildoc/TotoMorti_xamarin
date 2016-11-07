@@ -5,8 +5,8 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.CelebrityListView">
 
-  <ListView x:Name="List" ItemsSource="{Binding CelebrityList}" HasUnevenRows="True"
-            ItemSelected="">
+  <Button Text="Add" Command="AddCelebrityCommand" />
+  <ListView x:Name="List" ItemsSource="{Binding CelebrityList}" HasUnevenRows="True">
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
