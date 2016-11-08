@@ -4,22 +4,27 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.CelebrityListView">
-
-  <Button Text="Add" Command="AddCelebrityCommand" />
-  <ListView x:Name="List" ItemsSource="{Binding CelebrityList}" HasUnevenRows="True">
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout Orientation="Horizontal" Padding="5">
-            <Image Source="{Binding ImageUrl}" />
-            <StackLayout HorizontalOptions="StartAndExpand">
-              <Label Text="{Binding FullName}" />
-              <Label Text="Stato" TextColor="Gray" />
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto" />
+      <RowDefinition Height="auto" />
+    </Grid.RowDefinitions>
+    <Button Grid.Row="0" Text="Add" Command="{Binding AddCelebrityCommand}" />
+    <ListView x:Name="List" Grid.Row="1" ItemsSource="{Binding CelebrityList}" HasUnevenRows="True">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Orientation="Horizontal" Padding="5">
+              <Image Source="{Binding ImageUrl}" />
+              <StackLayout HorizontalOptions="StartAndExpand">
+                <Label Text="{Binding FullName}" />
+                <Label Text="Stato" TextColor="Gray" />
+              </StackLayout>
+              <!--<Button Text="Edit Celebrity" Command="{Binding BindingContext.EditCelebrityCommand, Source={x:Reference ContentPage}}" CommandParameter="{Binding}" />-->
             </StackLayout>
-            <!--<Button Text="Edit Celebrity" Command="{Binding BindingContext.EditCelebrityCommand, Source={x:Reference ContentPage}}" CommandParameter="{Binding}" />-->
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-  </ListView>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </Grid>
 </ContentPage>
