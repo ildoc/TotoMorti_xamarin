@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using TotoMorti.Classes;
 
 namespace TotoMorti.ViewModels
 {
@@ -23,7 +24,7 @@ namespace TotoMorti.ViewModels
 
         private void NavigateCelebrityList()
         {
-            _navigationService.NavigateAsync("CelebrityListView");
+            _navigationService.NavigateAsync(PageNames.CelebrityListView);
         }
 
         private bool CanNavigate()

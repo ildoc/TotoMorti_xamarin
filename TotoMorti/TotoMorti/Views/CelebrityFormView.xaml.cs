@@ -2,9 +2,9 @@
 
 namespace TotoMorti.Views
 {
-    public partial class EditCelebrityView : ContentPage
+    public partial class CelebrityFormView : ContentPage
     {
-        public EditCelebrityView()
+        public CelebrityFormView()
         {
             InitializeComponent();
         }

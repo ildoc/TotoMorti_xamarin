@@ -22,7 +22,7 @@ namespace TotoMorti.ViewModels
             var p = new NavigationParameters();
             p.Add("action", "add");
 
-            _navigationService.NavigateAsync("EditCelebrityView", p);
+            _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
         }
 
         private bool CanNavigateAddCelebrity()
@@ -53,7 +53,7 @@ namespace TotoMorti.ViewModels
             var p = new NavigationParameters();
             p.Add("action", "edit");
 
-            _navigationService.NavigateAsync("EditCelebrityView", p);
+            _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
         }
 
         public DelegateCommand EditCelebrityCommand { get; private set; }

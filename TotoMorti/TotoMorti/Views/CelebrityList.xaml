@@ -20,7 +20,6 @@
                 <Label Text="{Binding FullName}" />
                 <Label Text="Stato" TextColor="Gray" />
               </StackLayout>
-              <!--<Button Text="Edit Celebrity" Command="{Binding BindingContext.EditCelebrityCommand, Source={x:Reference ContentPage}}" CommandParameter="{Binding}" />-->
             </StackLayout>
           </ViewCell>
         </DataTemplate>

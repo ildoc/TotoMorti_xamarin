@@ -15,13 +15,13 @@ namespace TotoMorti
 
         protected override void OnInitialized()
         {
-            NavigationService.NavigateAsync("MainView");
+            NavigationService.NavigateAsync(PageNames.MainView);
         }
 
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<MainView>();
-            Container.RegisterTypeForNavigation<EditCelebrityView>();
+            Container.RegisterTypeForNavigation<CelebrityFormView>();
             Container.RegisterTypeForNavigation<CelebrityListView>();
         }
 

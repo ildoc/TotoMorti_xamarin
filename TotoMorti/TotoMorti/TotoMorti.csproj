@@ -37,11 +37,12 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Classes\Celebrity.cs" />
+    <Compile Include="Classes\PageNames.cs" />
     <Compile Include="Classes\TotoList.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CelebrityListViewModel.cs" />
-    <Compile Include="ViewModels\EditCelebrityViewModel.cs" />
+    <Compile Include="ViewModels\CelebrityFormViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,8 +53,8 @@
     <Compile Include="Views\CelebrityList.xaml.cs">
       <DependentUpon>CelebrityList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditCelebrityView.xaml.cs">
-      <DependentUpon>EditCelebrityView.xaml</DependentUpon>
+    <Compile Include="Views\CelebrityFormView.xaml.cs">
+      <DependentUpon>CelebrityFormView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -97,7 +98,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\EditCelebrityView.xaml">
+    <EmbeddedResource Include="Views\CelebrityFormView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

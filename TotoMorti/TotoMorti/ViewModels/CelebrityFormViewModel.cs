@@ -3,11 +3,35 @@ using Prism.Navigation;
 
 namespace TotoMorti.ViewModels
 {
-    public class EditCelebrityViewModel : BindableBase, INavigationAware
+    public class CelebrityFormViewModel : BindableBase, INavigationAware
     {
         private INavigationService _navigationService;
 
-        public EditCelebrityViewModel(INavigationService navigationService)
+        private FormStatus _currentFormStatus;
+
+        private FormStatus CurrentFormStatus
+        {
+            get { return _currentFormStatus; }
+            set
+            {
+                _currentFormStatus = value;
+                ChangeFormStatus(value);
+            }
+        }
+
+        private void ChangeFormStatus(FormStatus fs)
+        {
+            switch (fs)
+            {
+                case FormStatus.Add:
+                    break;
+
+                case FormStatus.Edit:
+                    break;
+            }
+        }
+
+        public CelebrityFormViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }
@@ -40,5 +64,11 @@ namespace TotoMorti.ViewModels
                 }
             }
         }
+    }
+
+    internal enum FormStatus
+    {
+        Add,
+        Edit
     }
 }
