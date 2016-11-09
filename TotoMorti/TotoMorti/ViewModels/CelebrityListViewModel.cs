@@ -10,10 +10,27 @@ namespace TotoMorti.ViewModels
     {
         private INavigationService _navigationService;
 
+        private Celebrity _selectedCelebrity;
+
+        public Celebrity SelectedCelebrity
+        {
+            get
+            {
+                return _selectedCelebrity;
+            }
+            set
+            {
+                if (_selectedCelebrity != value)
+                {
+                    SetProperty(ref _selectedCelebrity, value);
+                    NavigateEditCelebrity();
+                }
+            }
+        }
+
         public CelebrityListViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            EditCelebrityCommand = new DelegateCommand(NavigateEditCelebrity, CanNavigateEditCelebrity);
             AddCelebrityCommand = new DelegateCommand(NavigateAddCelebrity, CanNavigateAddCelebrity);
         }
 
@@ -26,11 +43,6 @@ namespace TotoMorti.ViewModels
         }
 
         private bool CanNavigateAddCelebrity()
-        {
-            return true;
-        }
-
-        private bool CanNavigateEditCelebrity()
         {
             return true;
         }
@@ -52,11 +64,11 @@ namespace TotoMorti.ViewModels
         {
             var p = new NavigationParameters();
             p.Add("action", "edit");
+            p.Add("celebrity", SelectedCelebrity);
 
             _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
         }
 
-        public DelegateCommand EditCelebrityCommand { get; private set; }
         public DelegateCommand AddCelebrityCommand { get; private set; }
     }
 }

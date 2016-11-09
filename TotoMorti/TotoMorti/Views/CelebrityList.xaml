@@ -10,7 +10,7 @@
       <RowDefinition Height="auto" />
     </Grid.RowDefinitions>
     <Button Grid.Row="0" Text="Add" Command="{Binding AddCelebrityCommand}" />
-    <ListView x:Name="List" Grid.Row="1" ItemsSource="{Binding CelebrityList}" HasUnevenRows="True">
+    <ListView x:Name="List" Grid.Row="1" ItemsSource="{Binding CelebrityList}" HasUnevenRows="True" SelectedItem="{Binding SelectedCelebrity}">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>

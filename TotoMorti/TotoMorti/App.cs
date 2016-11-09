@@ -20,9 +20,9 @@ namespace TotoMorti
 
         protected override void RegisterTypes()
         {
-            Container.RegisterTypeForNavigation<MainView>();
-            Container.RegisterTypeForNavigation<CelebrityFormView>();
-            Container.RegisterTypeForNavigation<CelebrityListView>();
+            Container.RegisterTypeForNavigation<MainView>(PageNames.MainView);
+            Container.RegisterTypeForNavigation<CelebrityFormView>(PageNames.CelebrityFormView);
+            Container.RegisterTypeForNavigation<CelebrityListView>(PageNames.CelebrityListView);
         }
 
         protected override void OnStart()
