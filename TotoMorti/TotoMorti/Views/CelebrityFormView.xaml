@@ -17,13 +17,13 @@
     </Grid.ColumnDefinitions>
 
     <Label Grid.Row="0" Grid.Column="0" Text="Name" />
-    <TextCell Grid.Row="0" Grid.Column="1" Text="{Binding CurrentCelebrity.Name}" />
+    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding CurrentCelebrity.Name}" />
 
     <Label Grid.Row="1" Grid.Column="0" Text="Surname" />
-    <TextCell Grid.Row="1" Grid.Column="1" Text="{Binding CurrentCelebrity.Surname}" />
+    <Entry Grid.Row="1" Grid.Column="1" Text="{Binding CurrentCelebrity.Surname}" />
 
     <Label Grid.Row="2" Grid.Column="0" Text="ImagePath" />
-    <TextCell Grid.Row="2" Grid.Column="1" Text="{Binding CurrentCelebrity.ImagePath}" />
+    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding CurrentCelebrity.ImagePath}" />
 
     <Button Grid.Row="3" Grid.Column="1" Text="{Binding ButtonText}" Command="{Binding SaveFormCommand}" />
   </Grid>
