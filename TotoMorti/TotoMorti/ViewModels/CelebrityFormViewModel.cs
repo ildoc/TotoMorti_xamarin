@@ -17,7 +17,14 @@ namespace TotoMorti.ViewModels
             set { SetProperty(ref _currentCelebrity, value); }
         }
 
-        public string ButtonText { get; set; }
+        // public string ButtonText { get; set; }
+        private string _buttonText;
+
+        public string ButtonText
+        {
+            get { return _buttonText; }
+            set { SetProperty(ref _buttonText, value); }
+        }
 
         private FormStatus _currentFormStatus;
 
@@ -60,6 +67,14 @@ namespace TotoMorti.ViewModels
 
         private void SaveForm()
         {
+            switch (CurrentFormStatus)
+            {
+                case FormStatus.Add:
+                    break;
+
+                case FormStatus.Edit:
+                    break;
+            }
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -74,7 +89,7 @@ namespace TotoMorti.ViewModels
                 {
                     case "add":
                         CurrentCelebrity = new Celebrity();
-
+                        CurrentFormStatus = FormStatus.Add;
                         break;
 
                     case "edit":
@@ -82,7 +97,7 @@ namespace TotoMorti.ViewModels
                         {
                             CurrentCelebrity = (Celebrity)parameters["celebrity"];
                         }
-
+                        CurrentFormStatus = FormStatus.Edit;
                         break;
                 }
             }

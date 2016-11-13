@@ -23,7 +23,7 @@
     <Entry Grid.Row="1" Grid.Column="1" Text="{Binding CurrentCelebrity.Surname}" />
 
     <Label Grid.Row="2" Grid.Column="0" Text="ImagePath" />
-    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding CurrentCelebrity.ImagePath}" />
+    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding CurrentCelebrity.ImageUrl}" />
 
     <Button Grid.Row="3" Grid.Column="1" Text="{Binding ButtonText}" Command="{Binding SaveFormCommand}" />
   </Grid>
