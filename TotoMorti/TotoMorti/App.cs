@@ -1,5 +1,7 @@
-﻿using Prism.Unity;
+﻿using Microsoft.Practices.Unity;
+using Prism.Unity;
 using TotoMorti.Classes;
+using TotoMorti.Managers;
 using TotoMorti.Views;
 
 namespace TotoMorti
@@ -23,6 +25,8 @@ namespace TotoMorti
             Container.RegisterTypeForNavigation<MainView>(PageNames.MainView);
             Container.RegisterTypeForNavigation<CelebrityFormView>(PageNames.CelebrityFormView);
             Container.RegisterTypeForNavigation<CelebrityListView>(PageNames.CelebrityListView);
+
+            Container.RegisterType(typeof(CelebrityManager), typeof(CelebrityManager), null, new ContainerControlledLifetimeManager());
         }
 
         protected override void OnStart()

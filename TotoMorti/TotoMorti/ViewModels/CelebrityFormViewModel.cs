@@ -2,12 +2,14 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using TotoMorti.Classes;
+using TotoMorti.Managers;
 
 namespace TotoMorti.ViewModels
 {
     public class CelebrityFormViewModel : BindableBase, INavigationAware
     {
         private INavigationService _navigationService;
+        private CelebrityManager _celebrityManager;
 
         private Celebrity _currentCelebrity;
 
@@ -54,9 +56,10 @@ namespace TotoMorti.ViewModels
             }
         }
 
-        public CelebrityFormViewModel(INavigationService navigationService)
+        public CelebrityFormViewModel(INavigationService navigationService, CelebrityManager celebrityManager)
         {
             _navigationService = navigationService;
+            _celebrityManager = celebrityManager;
             SaveFormCommand = new DelegateCommand(SaveForm, CanSaveForm);
         }
 
@@ -70,6 +73,8 @@ namespace TotoMorti.ViewModels
             switch (CurrentFormStatus)
             {
                 case FormStatus.Add:
+                    _celebrityManager.AddCelebrity(CurrentCelebrity);
+                    _navigationService.GoBackAsync();
                     break;
 
                 case FormStatus.Edit:

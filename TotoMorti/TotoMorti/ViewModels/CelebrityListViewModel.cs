@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
-using Prism.Commands;
+﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using System.Collections.Generic;
 using TotoMorti.Classes;
+using TotoMorti.Managers;
 
 namespace TotoMorti.ViewModels
 {
-    public class CelebrityListViewModel : BindableBase
+    public class CelebrityListViewModel : BindableBase, INavigationAware
     {
         private INavigationService _navigationService;
+        private CelebrityManager _celebrityManager;
 
         private Celebrity _selectedCelebrity;
 
@@ -28,9 +30,10 @@ namespace TotoMorti.ViewModels
             }
         }
 
-        public CelebrityListViewModel(INavigationService navigationService)
+        public CelebrityListViewModel(INavigationService navigationService, CelebrityManager celebrityManager)
         {
             _navigationService = navigationService;
+            _celebrityManager = celebrityManager;
             AddCelebrityCommand = new DelegateCommand(NavigateAddCelebrity, CanNavigateAddCelebrity);
         }
 
@@ -47,12 +50,7 @@ namespace TotoMorti.ViewModels
             return true;
         }
 
-        private List<Celebrity> _celebrityList = new List<Celebrity>
-        {
-           new Celebrity {Name="Kirk", Surname="Douglas", ImageUrl="http://cdn.inquisitr.com/wp-content/uploads/2014/12/kirk-douglas-100x100.jpg" },
-           new Celebrity {Name="Beppe", Surname="Bigazzi", ImageUrl="http://www.newnotizie.it/wp-content/uploads/2010/02/bigazzi-100x100.jpg" },
-           new Celebrity {Name="Valentino", Surname="Rossi", ImageUrl="http://www.litalianews.it/wp-content/uploads/2015/08/MotoGp-Valentino-Rossi-100x100.jpg" }
-        };
+        private List<Celebrity> _celebrityList;
 
         public List<Celebrity> CelebrityList
         {
@@ -67,6 +65,15 @@ namespace TotoMorti.ViewModels
             p.Add("celebrity", SelectedCelebrity);
 
             _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
+        }
+
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            CelebrityList = _celebrityManager.GetAllCelebrities();
         }
 
         public DelegateCommand AddCelebrityCommand { get; private set; }
