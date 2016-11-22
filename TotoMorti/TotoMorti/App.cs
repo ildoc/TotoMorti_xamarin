@@ -21,6 +21,7 @@ namespace TotoMorti
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<LoginView>(PageNames.LoginView);
+            Container.RegisterTypeForNavigation<RegisterView>(PageNames.RegisterView);
             Container.RegisterTypeForNavigation<MainView>(PageNames.MainView);
             Container.RegisterTypeForNavigation<CelebrityFormView>(PageNames.CelebrityFormView);
             Container.RegisterTypeForNavigation<CelebrityListView>(PageNames.CelebrityListView);
