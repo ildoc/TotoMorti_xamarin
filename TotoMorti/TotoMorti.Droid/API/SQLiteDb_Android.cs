@@ -11,13 +11,22 @@ namespace TotoMorti.Droid.API
 {
     public class SQLiteDb_Android : ISQLiteDb
     {
-        public SQLiteAsyncConnection GetConnection()
-        {
-            const string fileName = "totomorti.db3";
-            var documentPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            var path = Path.Combine(documentPath, fileName);
+        private const string FileName = "totomorti.db3";
 
-            return new SQLiteAsyncConnection(path);
+        public SQLiteConnection GetConnection()
+        {
+            return new SQLiteConnection(GetPath());
+        }
+
+        public SQLiteAsyncConnection GetConnectionAsync()
+        {
+            return new SQLiteAsyncConnection(GetPath());
+        }
+
+        private string GetPath()
+        {
+            var documentPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            return Path.Combine(documentPath, FileName);
         }
     }
 }

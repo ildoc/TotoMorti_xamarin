@@ -6,9 +6,8 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.MainView"
              Title="MainPage">
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="{Binding Title}" />
-        <Switch IsToggled="{Binding IsActive}" />
+    <StackLayout VerticalOptions="Center">
+        <!--<Switch IsToggled="{Binding IsActive}" />-->
         <Button Text="Celebrity List" Command="{Binding CelebrityListCommand}" />
     </StackLayout>
 </ContentPage>

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 using SQLite;
 using TotoMorti.Classes;
 using TotoMorti.Interfaces;
@@ -8,13 +8,13 @@ namespace TotoMorti.Managers
 {
     public class CelebrityManager
     {
-        private readonly SQLiteAsyncConnection _connection;
+        private readonly SQLiteConnection _connection;
         private readonly List<Celebrity> _fakeDb;
 
         public CelebrityManager(ISQLiteDb sqLiteDb)
         {
             _connection = sqLiteDb.GetConnection();
-            _connection.CreateTableAsync<Celebrity>();
+            _connection.CreateTable<Celebrity>();
 
 
             //_fakeDb = new List<Celebrity>
@@ -40,24 +40,24 @@ namespace TotoMorti.Managers
             //};
         }
 
-        public async Task<List<Celebrity>> GetAllCelebrities()
+        public List<Celebrity> GetAllCelebrities()
         {
-            return await _connection.Table<Celebrity>().ToListAsync();
+            return _connection.Table<Celebrity>().ToList();
         }
 
-        public async void AddCelebrity(Celebrity c)
+        public void AddCelebrity(Celebrity c)
         {
-            await _connection.InsertAsync(c);
+            _connection.Insert(c);
         }
 
-        public async void DeleteCelebrity(Celebrity c)
+        public void DeleteCelebrity(Celebrity c)
         {
-            await _connection.DeleteAsync(c);
+            _connection.Delete(c);
         }
 
-        public async void UpdateCelebrity(Celebrity c)
+        public void UpdateCelebrity(Celebrity c)
         {
-            await _connection.UpdateAsync(c);
+            _connection.Update(c);
         }
     }
 }

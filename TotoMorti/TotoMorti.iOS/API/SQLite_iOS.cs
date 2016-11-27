@@ -11,14 +11,23 @@ namespace TotoMorti.iOS.API
 {
     public class SQLite_iOS : ISQLiteDb
     {
-        public SQLiteAsyncConnection GetConnection()
+        private const string FileName = "totomorti.db3";
+
+        public SQLiteConnection GetConnection()
         {
-            const string fileName = "totomorti.db3";
+            return new SQLiteConnection(GetPath());
+        }
+
+        public SQLiteAsyncConnection GetConnectionAsync()
+        {
+            return new SQLiteAsyncConnection(GetPath());
+        }
+
+        private string GetPath()
+        {
             var documentPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var libraryPath = Path.Combine(documentPath, "..", "Library");
-            var path = Path.Combine(libraryPath, fileName);
-
-            return new SQLiteAsyncConnection(path);
+            return Path.Combine(libraryPath, FileName);
         }
     }
 }

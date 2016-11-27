@@ -8,14 +8,14 @@ namespace TotoMorti.ViewModels
 {
     public class CelebrityFormViewModel : BindableBase, INavigationAware
     {
+        private readonly CelebrityManager _celebrityManager;
+        private readonly INavigationService _navigationService;
         // public string ButtonText { get; set; }
         private string _buttonText;
-        private readonly CelebrityManager _celebrityManager;
 
         private Celebrity _currentCelebrity;
 
         private FormStatus _currentFormStatus;
-        private readonly INavigationService _navigationService;
 
         public CelebrityFormViewModel(INavigationService navigationService, CelebrityManager celebrityManager)
         {

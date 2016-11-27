@@ -49,7 +49,7 @@ namespace TotoMorti.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            CelebrityList = _celebrityManager.GetAllCelebrities().Result;
+            CelebrityList = _celebrityManager.GetAllCelebrities();
         }
 
         private void NavigateAddCelebrity()
