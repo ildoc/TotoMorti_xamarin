@@ -8,18 +8,28 @@ namespace TotoMorti.ViewModels
 {
     public class LoginViewModel : BindableBase, INavigationAware
     {
-        private INavigationService _navigationService;
-        private IAuthentication _authentication;
+        private readonly IAuthentication _authentication;
+        private readonly INavigationService _navigationService;
+
+        public LoginViewModel(INavigationService navigationService, IAuthentication authentication)
+        {
+            _navigationService = navigationService;
+            _authentication = authentication;
+            LoginCommand = new DelegateCommand(Login, CanLogin);
+            NavigateRegisterCommand = new DelegateCommand(NavigateRegister, CanNavigateRegister);
+        }
 
         public DelegateCommand LoginCommand { get; private set; }
         public DelegateCommand NavigateRegisterCommand { get; private set; }
 
-        public LoginViewModel(INavigationService navigationService)//, IAuthentication authentication)
+        public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            _navigationService = navigationService;
-            //_authentication = authentication;
-            LoginCommand = new DelegateCommand(Login, CanLogin);
-            NavigateRegisterCommand = new DelegateCommand(NavigateRegister, CanNavigateRegister);
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (_authentication.DoCredentialsExist())
+                _navigationService.NavigateAsync(PageNames.MainView);
         }
 
         private void NavigateRegister()
@@ -40,16 +50,6 @@ namespace TotoMorti.ViewModels
         private void Login()
         {
             _navigationService.NavigateAsync(PageNames.MainView);
-        }
-
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-        }
-
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            //if (_authentication.DoCredentialsExist())
-            //    _navigationService.NavigateAsync(PageNames.MainView);
         }
     }
 }

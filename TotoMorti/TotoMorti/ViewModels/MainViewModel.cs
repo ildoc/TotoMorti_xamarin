@@ -7,8 +7,15 @@ namespace TotoMorti.ViewModels
 {
     public class MainViewModel : BindableBase
     {
-        private INavigationService _navigationService;
+        private bool _isActive;
+        private readonly INavigationService _navigationService;
         private string _title = "MainPage";
+
+        public MainViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+            CelebrityListCommand = new DelegateCommand(NavigateCelebrityList).ObservesCanExecute(p => IsActive);
+        }
 
         public string Title
         {
@@ -16,11 +23,13 @@ namespace TotoMorti.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public MainViewModel(INavigationService navigationService)
+        public bool IsActive
         {
-            _navigationService = navigationService;
-            CelebrityListCommand = new DelegateCommand(NavigateCelebrityList).ObservesCanExecute((p) => IsActive);
+            get { return _isActive; }
+            set { SetProperty(ref _isActive, value); }
         }
+
+        public DelegateCommand CelebrityListCommand { get; private set; }
 
         private void NavigateCelebrityList()
         {
@@ -32,24 +41,15 @@ namespace TotoMorti.ViewModels
             return IsActive;
         }
 
-        private bool _isActive = false;
-
-        public bool IsActive
-        {
-            get { return _isActive; }
-            set { SetProperty(ref _isActive, value); }
-        }
-
-        public DelegateCommand CelebrityListCommand { get; private set; }
-
-        //public void OnNavigatedFrom(NavigationParameters parameters)
-        //{
         //}
+        //        Title = (string)parameters["title"] + " and Prism";
+        //    if (parameters.ContainsKey("title"))
+        //{
 
         //public void OnNavigatedTo(NavigationParameters parameters)
-        //{
-        //    if (parameters.ContainsKey("title"))
-        //        Title = (string)parameters["title"] + " and Prism";
         //}
+        //{
+
+        //public void OnNavigatedFrom(NavigationParameters parameters)
     }
 }

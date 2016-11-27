@@ -8,10 +8,21 @@ namespace TotoMorti.ViewModels
 {
     public class CelebrityFormViewModel : BindableBase, INavigationAware
     {
-        private INavigationService _navigationService;
-        private CelebrityManager _celebrityManager;
+        // public string ButtonText { get; set; }
+        private string _buttonText;
+        private readonly CelebrityManager _celebrityManager;
 
         private Celebrity _currentCelebrity;
+
+        private FormStatus _currentFormStatus;
+        private readonly INavigationService _navigationService;
+
+        public CelebrityFormViewModel(INavigationService navigationService, CelebrityManager celebrityManager)
+        {
+            _navigationService = navigationService;
+            _celebrityManager = celebrityManager;
+            SaveFormCommand = new DelegateCommand(SaveForm, CanSaveForm);
+        }
 
         public Celebrity CurrentCelebrity
         {
@@ -19,16 +30,11 @@ namespace TotoMorti.ViewModels
             set { SetProperty(ref _currentCelebrity, value); }
         }
 
-        // public string ButtonText { get; set; }
-        private string _buttonText;
-
         public string ButtonText
         {
             get { return _buttonText; }
             set { SetProperty(ref _buttonText, value); }
         }
-
-        private FormStatus _currentFormStatus;
 
         private FormStatus CurrentFormStatus
         {
@@ -42,6 +48,28 @@ namespace TotoMorti.ViewModels
 
         public DelegateCommand SaveFormCommand { get; private set; }
 
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters.ContainsKey("action"))
+                switch ((string) parameters["action"])
+                {
+                    case "add":
+                        CurrentCelebrity = new Celebrity();
+                        CurrentFormStatus = FormStatus.Add;
+                        break;
+
+                    case "edit":
+                        if (parameters.ContainsKey("celebrity"))
+                            CurrentCelebrity = (Celebrity) parameters["celebrity"];
+                        CurrentFormStatus = FormStatus.Edit;
+                        break;
+                }
+        }
+
         private void ChangeFormStatus(FormStatus fs)
         {
             switch (fs)
@@ -54,13 +82,6 @@ namespace TotoMorti.ViewModels
                     ButtonText = "edit";
                     break;
             }
-        }
-
-        public CelebrityFormViewModel(INavigationService navigationService, CelebrityManager celebrityManager)
-        {
-            _navigationService = navigationService;
-            _celebrityManager = celebrityManager;
-            SaveFormCommand = new DelegateCommand(SaveForm, CanSaveForm);
         }
 
         private bool CanSaveForm()
@@ -79,32 +100,6 @@ namespace TotoMorti.ViewModels
 
                 case FormStatus.Edit:
                     break;
-            }
-        }
-
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-        }
-
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            if (parameters.ContainsKey("action"))
-            {
-                switch ((string)parameters["action"])
-                {
-                    case "add":
-                        CurrentCelebrity = new Celebrity();
-                        CurrentFormStatus = FormStatus.Add;
-                        break;
-
-                    case "edit":
-                        if (parameters.ContainsKey("celebrity"))
-                        {
-                            CurrentCelebrity = (Celebrity)parameters["celebrity"];
-                        }
-                        CurrentFormStatus = FormStatus.Edit;
-                        break;
-                }
             }
         }
     }

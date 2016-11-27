@@ -8,8 +8,8 @@ namespace TotoMorti.Tests
         [TestMethod]
         public void MustPass()
         {
-            int expected = 1;
-            int actual = 1;
+            var expected = 1;
+            var actual = 1;
             Assert.AreEqual(expected, actual);
         }
 

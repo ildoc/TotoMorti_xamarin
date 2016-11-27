@@ -11,7 +11,10 @@ namespace TotoMorti
         // https://evolve.xamarin.com/session/56e2211afd00c0253cae33a9
         // https://github.com/brianlagunas/Evolve2016SamplesAndSlides
 
-        public static string AppName { get { return "TotoMorti"; } }
+        public static string AppName
+        {
+            get { return "TotoMorti"; }
+        }
 
         protected override void OnInitialized()
         {
@@ -30,7 +33,8 @@ namespace TotoMorti
 
         private void RegisterManagers()
         {
-            Container.RegisterType(typeof(CelebrityManager), typeof(CelebrityManager), null, new ContainerControlledLifetimeManager());
+            Container.RegisterType(typeof(CelebrityManager), typeof(CelebrityManager), null,
+                new ContainerControlledLifetimeManager());
         }
 
         protected override void OnStart()
