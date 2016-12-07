@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TotoMorti.Classes;
 using TotoMorti.Extensions;
+using TotoMorti.Interfaces;
+using TotoMorti.Managers;
 
 namespace TotoMorti.Tests
 {
@@ -17,9 +19,12 @@ namespace TotoMorti.Tests
         {
             string groupName = "Gruppo di test";
             User u = new User();
-           // GroupManager groupManager = new GroupManager();
+            var testDb = new TestSqliteDb();
+
+            GroupManager groupManager = new GroupManager(testDb);
 
             var newGroup = u.CreateNewGroup(groupName);
+            groupManager.AddGroup(newGroup);
             var storedGroup = groupManager.FindGroupByName(groupName);
             Assert.IsNotNull(storedGroup);
         }
