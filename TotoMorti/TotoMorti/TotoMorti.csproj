@@ -42,6 +42,7 @@
     <Compile Include="Classes\PageNames.cs" />
     <Compile Include="Classes\TotoList.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Extensions\UserExtensions.cs" />
     <Compile Include="Interfaces\IAuthentication.cs" />
     <Compile Include="Managers\CelebrityManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

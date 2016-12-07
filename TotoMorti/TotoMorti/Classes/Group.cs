@@ -7,5 +7,6 @@ namespace TotoMorti.Classes
         public string Title { get; set; }
         public List<User> Users { get; set; }
         public List<Category> Categories { get; set; }
+        public User GroupOwner { get; set; }
     }
 }
