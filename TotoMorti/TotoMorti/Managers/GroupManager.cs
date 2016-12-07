@@ -38,7 +38,7 @@ namespace TotoMorti.Managers
 
         public Group FindGroupByName(string groupName)
         {
-            return _connection.Table<Group>().FirstOrDefault(g=>g.Title==groupName);
+            return _connection.Table<Group>().FirstOrDefault(g => g.Title == groupName);
         }
     }
 }

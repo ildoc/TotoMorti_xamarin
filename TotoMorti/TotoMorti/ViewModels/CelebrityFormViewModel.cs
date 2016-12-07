@@ -55,19 +55,20 @@ namespace TotoMorti.ViewModels
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey("action"))
-                switch ((string) parameters["action"])
+                CurrentFormStatus = (FormStatus) parameters["action"];
+            {
+                switch (CurrentFormStatus)
                 {
-                    case "add":
+                    case FormStatus.Add:
                         CurrentCelebrity = new Celebrity();
-                        CurrentFormStatus = FormStatus.Add;
                         break;
 
-                    case "edit":
+                    case FormStatus.Edit:
                         if (parameters.ContainsKey("celebrity"))
                             CurrentCelebrity = (Celebrity) parameters["celebrity"];
-                        CurrentFormStatus = FormStatus.Edit;
                         break;
                 }
+            }
         }
 
         private void ChangeFormStatus(FormStatus fs)
@@ -102,11 +103,5 @@ namespace TotoMorti.ViewModels
                     break;
             }
         }
-    }
-
-    internal enum FormStatus
-    {
-        Add,
-        Edit
     }
 }

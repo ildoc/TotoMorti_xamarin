@@ -23,7 +23,8 @@ namespace TotoMorti.Tests
 
             GroupManager groupManager = new GroupManager(testDb);
 
-            var newGroup = u.CreateNewGroup(groupName);
+            var newGroup = u.CreateNewGroup();
+            newGroup.Title = groupName;
             groupManager.AddGroup(newGroup);
             var storedGroup = groupManager.FindGroupByName(groupName);
             Assert.IsNotNull(storedGroup);

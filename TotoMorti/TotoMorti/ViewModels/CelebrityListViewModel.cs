@@ -54,7 +54,7 @@ namespace TotoMorti.ViewModels
 
         private void NavigateAddCelebrity()
         {
-            var p = new NavigationParameters {{"action", "add"}};
+            var p = new NavigationParameters {{"action",FormStatus.Add}};
 
             _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
         }
@@ -66,7 +66,7 @@ namespace TotoMorti.ViewModels
 
         private void NavigateEditCelebrity()
         {
-            var p = new NavigationParameters {{"action", "edit"}, {"celebrity", SelectedCelebrity}};
+            var p = new NavigationParameters {{"action", FormStatus.Edit}, {"celebrity", SelectedCelebrity}};
 
             _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
         }

@@ -9,9 +9,9 @@ namespace TotoMorti.Extensions
 {
     public static class UserExtensions
     {
-        public static Group CreateNewGroup(this User u, string groupName)
+        public static Group CreateNewGroup(this User u)
         {
-            return new Group() {GroupOwner = u, Title = groupName, Users = new List<User>() {u} };
+            return new Group() {GroupOwner = u, Users = new List<User>() {u} };
         }
     }
 }

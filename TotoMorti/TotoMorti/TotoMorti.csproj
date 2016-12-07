@@ -48,10 +48,12 @@
     <Compile Include="Interfaces\ISQLiteDb.cs" />
     <Compile Include="Managers\CelebrityManager.cs" />
     <Compile Include="Managers\GroupManager.cs" />
+    <Compile Include="Managers\SessionManager.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CelebrityListViewModel.cs" />
     <Compile Include="ViewModels\CelebrityFormViewModel.cs" />
+    <Compile Include="Classes\FormStatus.cs" />
     <Compile Include="ViewModels\GroupDetailViewModel.cs" />
     <Compile Include="ViewModels\GroupFormViewModel.cs" />
     <Compile Include="ViewModels\GroupListViewModel.cs" />

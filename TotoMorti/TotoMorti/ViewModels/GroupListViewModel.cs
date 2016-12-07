@@ -67,7 +67,7 @@ namespace TotoMorti.ViewModels
 
         private void NavigateAddGroup()
         {
-            var p = new NavigationParameters {{"action", "add"}};
+            var p = new NavigationParameters {{"action", FormStatus.Add}};
 
             _navigationService.NavigateAsync(PageNames.GroupFormView, p);
         }
