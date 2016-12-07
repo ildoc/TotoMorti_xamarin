@@ -11,7 +11,7 @@ namespace TotoMorti
         // https://evolve.xamarin.com/session/56e2211afd00c0253cae33a9
         // https://github.com/brianlagunas/Evolve2016SamplesAndSlides
 
-        public static string AppName { get { return "TotoMorti"; } }
+        public static string AppName => "TotoMorti";
 
         protected override void OnInitialized()
         {
@@ -25,12 +25,14 @@ namespace TotoMorti
             Container.RegisterTypeForNavigation<MainView>(PageNames.MainView);
             Container.RegisterTypeForNavigation<CelebrityFormView>(PageNames.CelebrityFormView);
             Container.RegisterTypeForNavigation<CelebrityListView>(PageNames.CelebrityListView);
-            Container.RegisterTypeForNavigation<GroupListView>();
-        }
+            Container.RegisterTypeForNavigation<GroupListView>(PageNames.GroupListView);
+            Container.RegisterTypeForNavigation<GroupDetailView>(PageNames.GroupDetailView);
+            Container.RegisterTypeForNavigation<GroupFormView>(PageNames.GroupFormView);
 
-        private void RegisterManagers()
-        {
-            Container.RegisterType(typeof(CelebrityManager), typeof(CelebrityManager), null, new ContainerControlledLifetimeManager());
+            Container.RegisterType(typeof(CelebrityManager), typeof(CelebrityManager), null,
+                new ContainerControlledLifetimeManager());
+            Container.RegisterType(typeof(GroupManager), typeof(GroupManager), null,
+                new ContainerControlledLifetimeManager());
         }
 
         protected override void OnStart()

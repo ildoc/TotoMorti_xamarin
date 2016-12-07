@@ -1,7 +1,7 @@
-﻿using Prism.Commands;
+﻿using System.Collections.Generic;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using System.Collections.Generic;
 using TotoMorti.Classes;
 using TotoMorti.Managers;
 
@@ -9,17 +9,22 @@ namespace TotoMorti.ViewModels
 {
     public class CelebrityListViewModel : BindableBase, INavigationAware
     {
-        private INavigationService _navigationService;
-        private CelebrityManager _celebrityManager;
+        private readonly CelebrityManager _celebrityManager;
+        private readonly INavigationService _navigationService;
+        private List<Celebrity> _celebrityList;
 
         private Celebrity _selectedCelebrity;
 
+        public CelebrityListViewModel(INavigationService navigationService, CelebrityManager celebrityManager)
+        {
+            _navigationService = navigationService;
+            _celebrityManager = celebrityManager;
+            AddCelebrityCommand = new DelegateCommand(NavigateAddCelebrity, CanNavigateAddCelebrity);
+        }
+
         public Celebrity SelectedCelebrity
         {
-            get
-            {
-                return _selectedCelebrity;
-            }
+            get { return _selectedCelebrity; }
             set
             {
                 if (_selectedCelebrity != value)
@@ -30,42 +35,13 @@ namespace TotoMorti.ViewModels
             }
         }
 
-        public CelebrityListViewModel(INavigationService navigationService, CelebrityManager celebrityManager)
-        {
-            _navigationService = navigationService;
-            _celebrityManager = celebrityManager;
-            AddCelebrityCommand = new DelegateCommand(NavigateAddCelebrity, CanNavigateAddCelebrity);
-        }
-
-        private void NavigateAddCelebrity()
-        {
-            var p = new NavigationParameters();
-            p.Add("action", "add");
-
-            _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
-        }
-
-        private bool CanNavigateAddCelebrity()
-        {
-            return true;
-        }
-
-        private List<Celebrity> _celebrityList;
-
         public List<Celebrity> CelebrityList
         {
             get { return _celebrityList; }
             set { SetProperty(ref _celebrityList, value); }
         }
 
-        private void NavigateEditCelebrity()
-        {
-            var p = new NavigationParameters();
-            p.Add("action", "edit");
-            p.Add("celebrity", SelectedCelebrity);
-
-            _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
-        }
+        public DelegateCommand AddCelebrityCommand { get; private set; }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -76,6 +52,23 @@ namespace TotoMorti.ViewModels
             CelebrityList = _celebrityManager.GetAllCelebrities();
         }
 
-        public DelegateCommand AddCelebrityCommand { get; private set; }
+        private void NavigateAddCelebrity()
+        {
+            var p = new NavigationParameters {{"action", "add"}};
+
+            _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
+        }
+
+        private bool CanNavigateAddCelebrity()
+        {
+            return true;
+        }
+
+        private void NavigateEditCelebrity()
+        {
+            var p = new NavigationParameters {{"action", "edit"}, {"celebrity", SelectedCelebrity}};
+
+            _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
+        }
     }
 }

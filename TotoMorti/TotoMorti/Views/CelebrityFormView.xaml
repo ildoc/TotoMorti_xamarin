@@ -1,30 +1,31 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.CelebrityFormView">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="*" />
-      <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-    <Label Grid.Row="0" Grid.Column="0" Text="Name" />
-    <Entry Grid.Row="0" Grid.Column="1" Text="{Binding CurrentCelebrity.Name}" />
+        <Label Grid.Row="0" Grid.Column="0" Text="Name" />
+        <Entry Grid.Row="0" Grid.Column="1" Text="{Binding CurrentCelebrity.Name}" />
 
-    <Label Grid.Row="1" Grid.Column="0" Text="Surname" />
-    <Entry Grid.Row="1" Grid.Column="1" Text="{Binding CurrentCelebrity.Surname}" />
+        <Label Grid.Row="1" Grid.Column="0" Text="Surname" />
+        <Entry Grid.Row="1" Grid.Column="1" Text="{Binding CurrentCelebrity.Surname}" />
 
-    <Label Grid.Row="2" Grid.Column="0" Text="ImagePath" />
-    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding CurrentCelebrity.ImageUrl}" />
+        <Label Grid.Row="2" Grid.Column="0" Text="ImagePath" />
+        <Entry Grid.Row="2" Grid.Column="1" Text="{Binding CurrentCelebrity.ImageUrl}" />
 
-    <Button Grid.Row="3" Grid.Column="1" Text="{Binding ButtonText}" Command="{Binding SaveFormCommand}" />
-  </Grid>
+        <Button Grid.Row="3" Grid.Column="1" Text="{Binding ButtonText}" Command="{Binding SaveFormCommand}" />
+    </Grid>
 </ContentPage>

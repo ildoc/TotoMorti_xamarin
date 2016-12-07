@@ -1,19 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+﻿using Microsoft.Practices.Unity;
 using Prism.Unity;
-using Microsoft.Practices.Unity;
 
 namespace TotoMorti.UWP
 {
@@ -21,7 +7,7 @@ namespace TotoMorti.UWP
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             LoadApplication(new TotoMorti.App(new UwpInitializer()));
         }
@@ -31,8 +17,6 @@ namespace TotoMorti.UWP
     {
         public void RegisterTypes(IUnityContainer container)
         {
-
         }
     }
-
 }

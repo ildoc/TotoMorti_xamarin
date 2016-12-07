@@ -1,13 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.MainView"
              Title="MainPage">
-  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
-    <Switch IsToggled="{Binding IsActive}" />
-    <Button Text="Celebrity List" Command="{Binding CelebrityListCommand}" />
-  </StackLayout>
+    <StackLayout VerticalOptions="Center">
+        <!--<Switch IsToggled="{Binding IsActive}" />-->
+        <Button Text="Groups" Command="{Binding GroupsCommand}" />
+        <Button Text="Celebrity List" Command="{Binding CelebrityListCommand}" />
+    </StackLayout>
 </ContentPage>
