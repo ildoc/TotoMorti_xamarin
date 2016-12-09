@@ -12,7 +12,8 @@ namespace TotoMorti.Classes
         public string Title { get; set; }
         public string ImageUrl { get; set; }
         public List<User> Users { get; set; }
-        public List<Category> Categories { get; set; }
+
+        public ICollection<Session> Sessions { get; set; } = new List<Session>();
         public User GroupOwner { get; set; }
     }
 }

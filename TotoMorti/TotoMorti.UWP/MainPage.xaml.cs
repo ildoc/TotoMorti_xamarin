@@ -1,7 +1,4 @@
-﻿using Microsoft.Practices.Unity;
-using Prism.Unity;
-
-namespace TotoMorti.UWP
+﻿namespace TotoMorti.UWP
 {
     public sealed partial class MainPage
     {
@@ -9,14 +6,7 @@ namespace TotoMorti.UWP
         {
             InitializeComponent();
 
-            LoadApplication(new TotoMorti.App(new UwpInitializer()));
-        }
-    }
-
-    public class UwpInitializer : IPlatformInitializer
-    {
-        public void RegisterTypes(IUnityContainer container)
-        {
+            LoadApplication(new TotoMorti.App());
         }
     }
 }

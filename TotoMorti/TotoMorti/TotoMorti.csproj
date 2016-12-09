@@ -41,8 +41,10 @@
     <Compile Include="Classes\Celebrity.cs" />
     <Compile Include="Classes\Group.cs" />
     <Compile Include="Classes\PageNames.cs" />
+    <Compile Include="Classes\Session.cs" />
     <Compile Include="Classes\TotoList.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Extensions\GroupExtensions.cs" />
     <Compile Include="Extensions\UserExtensions.cs" />
     <Compile Include="Interfaces\IAuthentication.cs" />
     <Compile Include="Interfaces\ISQLiteDb.cs" />
