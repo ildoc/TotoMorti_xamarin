@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotoMorti.UWP", "TotoMorti\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotoMorti.Tests", "TotoMorti.Tests\TotoMorti.Tests.csproj", "{958039E9-670B-44DF-8412-F9E1EB46A025}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{967133DB-5507-427F-935E-D32F220CE77B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -304,5 +306,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CAE0ED31-FE0E-49BE-A5DA-00E0577C71E7} = {967133DB-5507-427F-935E-D32F220CE77B}
+		{64609FF0-C23B-457B-AF6E-A6A825B8A0B2} = {967133DB-5507-427F-935E-D32F220CE77B}
+		{DC009D7E-3112-4015-8884-202B5FDE3108} = {967133DB-5507-427F-935E-D32F220CE77B}
 	EndGlobalSection
 EndGlobal
