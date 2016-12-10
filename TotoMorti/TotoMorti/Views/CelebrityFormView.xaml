@@ -3,6 +3,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.CelebrityFormView">
     <Grid>
@@ -17,13 +18,13 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Text="Name" />
+        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static resx:AppResources.CelebrityName}" />
         <Entry Grid.Row="0" Grid.Column="1" Text="{Binding CurrentCelebrity.Name}" />
 
-        <Label Grid.Row="1" Grid.Column="0" Text="Surname" />
+        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static resx:AppResources.CelebritySurname}" />
         <Entry Grid.Row="1" Grid.Column="1" Text="{Binding CurrentCelebrity.Surname}" />
 
-        <Label Grid.Row="2" Grid.Column="0" Text="ImagePath" />
+        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static resx:AppResources.CelebrityImageUrl}" />
         <Entry Grid.Row="2" Grid.Column="1" Text="{Binding CurrentCelebrity.ImageUrl}" />
 
         <Button Grid.Row="3" Grid.Column="1" Text="{Binding ButtonText}" Command="{Binding SaveFormCommand}" />

@@ -3,6 +3,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.CelebrityListView">
     <Grid>
@@ -10,7 +11,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Text="Add" Command="{Binding AddCelebrityCommand}" />
+        <Button Grid.Row="0" Text="{x:Static resx:AppResources.ButtonAdd}" Command="{Binding AddCelebrityCommand}" />
         <ListView x:Name="List" Grid.Row="1" ItemsSource="{Binding CelebrityList}" HasUnevenRows="True"
                   SelectedItem="{Binding SelectedCelebrity}">
             <ListView.ItemTemplate>

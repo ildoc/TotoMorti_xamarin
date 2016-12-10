@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using TotoMorti.Classes;
 using TotoMorti.Managers;
+using TotoMorti.Resx;
 
 namespace TotoMorti.ViewModels
 {
@@ -76,11 +77,11 @@ namespace TotoMorti.ViewModels
             switch (fs)
             {
                 case FormStatus.Add:
-                    ButtonText = "add";
+                    ButtonText = AppResources.ButtonAdd;
                     break;
 
                 case FormStatus.Edit:
-                    ButtonText = "edit";
+                    ButtonText = AppResources.ButtonEdit;
                     break;
             }
         }

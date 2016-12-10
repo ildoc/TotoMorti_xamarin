@@ -3,12 +3,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.RegisterView">
     <StackLayout VerticalOptions="Center">
-        <Entry Placeholder="Username" Text="{Binding Username}" />
-        <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" />
-        <Entry Placeholder="Confirm password" IsPassword="True" />
-        <Button Text="Register" Command="{Binding RegisterCommand}" />
+        <Entry Placeholder="{x:Static resx:AppResources.Username}" Text="{Binding Username}" />
+        <Entry Placeholder="{x:Static resx:AppResources.Password}" Text="{Binding Password}" IsPassword="True" />
+        <Entry Placeholder="{x:Static resx:AppResources.ConfirmPassword}" IsPassword="True" />
+        <Button Text="{x:Static resx:AppResources.Register}" Command="{Binding RegisterCommand}" />
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{x:Static resx:AppResources.GoToLogin}" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

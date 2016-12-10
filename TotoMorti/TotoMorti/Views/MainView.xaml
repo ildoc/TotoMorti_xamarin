@@ -3,12 +3,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.MainView"
              Title="MainPage">
     <StackLayout VerticalOptions="Center">
         <!--<Switch IsToggled="{Binding IsActive}" />-->
-        <Button Text="Groups" Command="{Binding GroupsCommand}" />
-        <Button Text="Celebrity List" Command="{Binding CelebrityListCommand}" />
+        <Button Text="{x:Static resx:AppResources.Groups}" Command="{Binding GroupsCommand}" />
+        <Button Text="{x:Static resx:AppResources.CelebrityList}" Command="{Binding CelebrityListCommand}" />
     </StackLayout>
 </ContentPage>
