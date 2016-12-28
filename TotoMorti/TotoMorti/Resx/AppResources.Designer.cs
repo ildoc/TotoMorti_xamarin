@@ -179,6 +179,24 @@ namespace TotoMorti.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sessions.
+        /// </summary>
+        public static string Sessions {
+            get {
+                return ResourceManager.GetString("Sessions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lists.
+        /// </summary>
+        public static string TotoLists {
+            get {
+                return ResourceManager.GetString("TotoLists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
         public static string Username {

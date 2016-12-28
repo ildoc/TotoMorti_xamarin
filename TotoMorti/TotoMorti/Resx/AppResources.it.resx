@@ -156,6 +156,12 @@
   <data name="Register" xml:space="preserve">
     <value>Registrati</value>
   </data>
+  <data name="Sessions" xml:space="preserve">
+    <value>Sessions</value>
+  </data>
+  <data name="TotoLists" xml:space="preserve">
+    <value>Liste</value>
+  </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
   </data>

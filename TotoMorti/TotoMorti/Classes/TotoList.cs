@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TotoMorti.Classes
 {
@@ -8,6 +9,9 @@ namespace TotoMorti.Classes
         {
             Categories.Add("Default Category");
         }
+
+        public DateTime CreationDate { get; set; }
+        public DateTime EditTimeLimit { get; set; }
 
         public List<string> Categories { get; set; } = new List<string>();
     }

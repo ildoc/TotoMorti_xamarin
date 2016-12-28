@@ -15,7 +15,8 @@ namespace TotoMorti
 
         protected override void OnInitialized()
         {
-            NavigationService.NavigateAsync(PageNames.LoginView);
+            //NavigationService.NavigateAsync(PageNames.LoginView);
+            NavigationService.NavigateAsync(PageNames.MainView);
         }
 
         protected override void RegisterTypes()
@@ -25,7 +26,7 @@ namespace TotoMorti
             Container.RegisterTypeForNavigation<MainView>(PageNames.MainView);
             Container.RegisterTypeForNavigation<CelebrityFormView>(PageNames.CelebrityFormView);
             Container.RegisterTypeForNavigation<CelebrityListView>(PageNames.CelebrityListView);
-            Container.RegisterTypeForNavigation<GroupListView>(PageNames.GroupListView);
+            Container.RegisterTypeForNavigation<TotoListListView>(PageNames.GroupListView);
             Container.RegisterTypeForNavigation<GroupDetailView>(PageNames.GroupDetailView);
             Container.RegisterTypeForNavigation<GroupFormView>(PageNames.GroupFormView);
 

@@ -165,6 +165,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="API\Authentication_Android.cs" />
     <Compile Include="API\SQLiteDb_Android.cs" />
     <Compile Include="MainActivity.cs" />

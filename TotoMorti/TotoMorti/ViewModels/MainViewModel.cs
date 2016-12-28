@@ -14,6 +14,7 @@ namespace TotoMorti.ViewModels
             _navigationService = navigationService;
             // CelebrityListCommand = new DelegateCommand(NavigateCelebrityList).ObservesCanExecute(p => IsActive);
             CelebrityListCommand = new DelegateCommand(NavigateCelebrityList, CanNavigateCelebrityList);
+            SessionsListCommand = new DelegateCommand(NavigateSessionsList, CanNavigateSessionsList);
         }
 
 
@@ -27,6 +28,18 @@ namespace TotoMorti.ViewModels
         private void NavigateCelebrityList()
         {
             _navigationService.NavigateAsync(PageNames.CelebrityListView);
+        }
+
+        public DelegateCommand SessionsListCommand { get; private set; }
+
+        private bool CanNavigateSessionsList()
+        {
+            return true;
+        }
+
+        private void NavigateSessionsList()
+        {
+            _navigationService.NavigateAsync(PageNames.SessionListView);
         }
     }
 }
