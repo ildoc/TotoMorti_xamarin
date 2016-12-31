@@ -5,7 +5,8 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="TotoMorti.Views.TotoListFormView">
+             x:Class="TotoMorti.Views.TotoListFormView"
+             x:Name="CategoryFormPage">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -19,7 +20,7 @@
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <MenuItem
-                                Command="{Binding OnDeleteCommand}"
+                                Command="{Binding BindingContext.OnDeleteCommand, Source={x:Reference CategoryFormPage}}"
                                 CommandParameter="{Binding .}"
                                 Text="{x:Static resx:AppResources.ButtonDelete}"
                                 IsDestructive="True" />
@@ -29,8 +30,9 @@
                                Text="Delete" IsDestructive="True" />-->
                         </ViewCell.ContextActions>
 
-                        <StackLayout HorizontalOptions="StartAndExpand">
-                            <Entry Text="{Binding Title}" Placeholder="{x:Static resx:AppResources.CategoryTitle}" />
+                        <StackLayout HorizontalOptions="Fill">
+                            <Entry Text="{Binding Title}" Placeholder="{x:Static resx:AppResources.CategoryTitle}"
+                                   FontAttributes="Bold" />
                             <Entry Text="{Binding VipList}"
                                    Placeholder="{x:Static resx:AppResources.VipListPlaceholder}" />
                         </StackLayout>

@@ -38,6 +38,7 @@ namespace TotoMorti.Managers
 
         public void SaveCategoryList(List<Category> categoryList)
         {
+            _connection.DeleteAll<Category>();
             _connection.InsertAll(categoryList);
         }
     }

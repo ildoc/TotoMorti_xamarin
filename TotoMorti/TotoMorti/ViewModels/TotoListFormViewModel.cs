@@ -35,7 +35,6 @@ namespace TotoMorti.ViewModels
             get { return _categoryList; }
             set
             {
-                _categoryList = value;
                 SetProperty(ref _categoryList, value);
             }
         }
