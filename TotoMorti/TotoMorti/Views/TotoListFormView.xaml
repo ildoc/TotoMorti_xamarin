@@ -3,6 +3,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.TotoListFormView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Text="{x:Static resx:AppResources.ButtonAdd}" Command="{Binding AddCategoryCommand}" />
+        <ListView x:Name="List" Grid.Row="1" ItemsSource="{Binding CategoryList}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                Command="{Binding OnDeleteCommand}"
+                                CommandParameter="{Binding .}"
+                                Text="{x:Static resx:AppResources.ButtonDelete}"
+                                IsDestructive="True" />
+                            <!--<MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
+                               Text="More" />
+                            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+                               Text="Delete" IsDestructive="True" />-->
+                        </ViewCell.ContextActions>
+
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Entry Text="{Binding Title}" Placeholder="{x:Static resx:AppResources.CategoryTitle}" />
+                            <Entry Text="{Binding VipList}"
+                                   Placeholder="{x:Static resx:AppResources.VipListPlaceholder}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Row="2" Text="{x:Static resx:AppResources.ButtonSave}" Command="{Binding SaveCommand}" />
+    </Grid>
 </ContentPage>

@@ -71,6 +71,15 @@ namespace TotoMorti.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string ButtonDelete {
+            get {
+                return ResourceManager.GetString("ButtonDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string ButtonEdit {
@@ -85,6 +94,15 @@ namespace TotoMorti.Resx {
         public static string ButtonSave {
             get {
                 return ResourceManager.GetString("ButtonSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category Title.
+        /// </summary>
+        public static string CategoryTitle {
+            get {
+                return ResourceManager.GetString("CategoryTitle", resourceCulture);
             }
         }
         
@@ -202,6 +220,15 @@ namespace TotoMorti.Resx {
         public static string Username {
             get {
                 return ResourceManager.GetString("Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Celebrity1, Celebrity2, ....
+        /// </summary>
+        public static string VipListPlaceholder {
+            get {
+                return ResourceManager.GetString("VipListPlaceholder", resourceCulture);
             }
         }
     }

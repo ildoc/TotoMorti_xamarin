@@ -51,6 +51,7 @@
     <Compile Include="Extensions\UserExtensions.cs" />
     <Compile Include="Interfaces\IAuthentication.cs" />
     <Compile Include="Interfaces\ISQLiteDb.cs" />
+    <Compile Include="Managers\CategoryManager.cs" />
     <Compile Include="Managers\CelebrityManager.cs" />
     <Compile Include="Managers\GroupManager.cs" />
     <Compile Include="Managers\TotoListManager.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\SessionsListViewModel.cs" />
+    <Compile Include="ViewModels\TotoListFormViewModel.cs" />
     <Compile Include="Views\GroupDetailView.xaml.cs">
       <DependentUpon>GroupDetailView.xaml</DependentUpon>
     </Compile>

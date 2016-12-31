@@ -16,6 +16,7 @@
 
         public const string SessionListView = "SessionListView";
 
-        public const string ListListView = "TotoListListView";
+        public const string TotoListListView = "TotoListListView";
+        public const string TotoListFormView = "TotoListFormView";
     }
 }

@@ -9,10 +9,9 @@
              Title="MainPage">
     <StackLayout VerticalOptions="Center">
         <!--<Switch IsToggled="{Binding IsActive}" />-->
-        <Button Text="{x:Static resx:AppResources.TotoLists}" Command="{Binding ListCommand}" IsEnabled="True" />
-        <Button Text="{x:Static resx:AppResources.Groups}" Command="{Binding GroupsCommand}" IsEnabled="False" />
+        <Button Text="{x:Static resx:AppResources.TotoLists}" Command="{Binding TotoListFormCommand}"  />
+        <Button Text="{x:Static resx:AppResources.Groups}" Command="{Binding GroupsCommand}" />
         <!--<Button Text="{x:Static resx:AppResources.Sessions}" Command="{Binding SessionCommand}" />-->
-        <Button Text="{x:Static resx:AppResources.CelebrityList}" Command="{Binding CelebrityListCommand}"
-                IsEnabled="False" />
+        <Button Text="{x:Static resx:AppResources.CelebrityList}" Command="{Binding CelebrityListCommand}" />
     </StackLayout>
 </ContentPage>

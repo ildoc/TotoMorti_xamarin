@@ -9,16 +9,17 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Text="New" Command="{Binding CreateGroupCommand}" />
-        <ListView x:Name="List" Grid.Row="1" ItemsSource="{Binding GroupList}" HasUnevenRows="True"
-                  SelectedItem="{Binding SelectedGroup}">
+        <Button Grid.Row="0" Text="New" Command="{Binding CreateTotoListCommand}" />
+        <ListView x:Name="List" Grid.Row="1" ItemsSource="{Binding TotoListList}" HasUnevenRows="True"
+                  SelectedItem="{Binding SelectedTotoList}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
-                            <MenuItem Command="{Binding OnLeaveCommand}" CommandParameter="{Binding .}"
-                                      Text="Leave" />
+                            <MenuItem Command="{Binding OnDeleteCommand}" CommandParameter="{Binding .}"
+                                      Text="Delete" />
                             <!--<MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
                                Text="More" />
                             <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
@@ -36,5 +37,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
     </Grid>
 </ContentPage>

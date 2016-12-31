@@ -120,11 +120,17 @@
   <data name="ButtonAdd" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="ButtonEdit" xml:space="preserve">
     <value>Edit</value>
   </data>
   <data name="ButtonSave" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="CategoryTitle" xml:space="preserve">
+    <value>Category Title</value>
   </data>
   <data name="CelebrityImageUrl" xml:space="preserve">
     <value>Image Url</value>
@@ -164,5 +170,8 @@
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="VipListPlaceholder" xml:space="preserve">
+    <value>Celebrity1, Celebrity2, ...</value>
   </data>
 </root>
