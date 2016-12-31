@@ -2,19 +2,16 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using TotoMorti.Classes;
-using TotoMorti.Interfaces;
 
 namespace TotoMorti.ViewModels
 {
     public class LoginViewModel : BindableBase, INavigationAware
     {
-        private readonly IAuthentication _authentication;
         private readonly INavigationService _navigationService;
 
-        public LoginViewModel(INavigationService navigationService, IAuthentication authentication)
+        public LoginViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            _authentication = authentication;
             LoginCommand = new DelegateCommand(Login, CanLogin);
             NavigateRegisterCommand = new DelegateCommand(NavigateRegister, CanNavigateRegister);
         }
@@ -28,8 +25,8 @@ namespace TotoMorti.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (_authentication.DoCredentialsExist())
-                _navigationService.NavigateAsync(PageNames.MainView);
+            // if (_authentication.DoCredentialsExist())
+            //    _navigationService.NavigateAsync(PageNames.MainView);
         }
 
         private void NavigateRegister()

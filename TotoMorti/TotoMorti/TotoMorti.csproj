@@ -49,7 +49,6 @@
     <Compile Include="Classes\User.cs" />
     <Compile Include="Extensions\GroupExtensions.cs" />
     <Compile Include="Extensions\UserExtensions.cs" />
-    <Compile Include="Interfaces\IAuthentication.cs" />
     <Compile Include="Interfaces\ISQLiteDb.cs" />
     <Compile Include="Managers\CategoryManager.cs" />
     <Compile Include="Managers\CelebrityManager.cs" />

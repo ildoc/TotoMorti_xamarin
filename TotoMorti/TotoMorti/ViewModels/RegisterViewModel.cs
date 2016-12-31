@@ -2,23 +2,20 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using TotoMorti.Classes;
-using TotoMorti.Interfaces;
 
 namespace TotoMorti.ViewModels
 {
     public class RegisterViewModel : BindableBase
     {
-        private readonly IAuthentication _authentication;
         private readonly INavigationService _navigationService;
 
         private string _password;
 
         private string _username;
 
-        public RegisterViewModel(INavigationService navigationService, IAuthentication authentication)
+        public RegisterViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            _authentication = authentication;
             RegisterCommand = new DelegateCommand(Register, CanRegister);
         }
 
@@ -46,7 +43,7 @@ namespace TotoMorti.ViewModels
 
         private void Register()
         {
-            _authentication.SaveCredentials(Username, Password);
+            // _authentication.SaveCredentials(Username, Password);
             _navigationService.NavigateAsync(PageNames.MainView);
         }
 
