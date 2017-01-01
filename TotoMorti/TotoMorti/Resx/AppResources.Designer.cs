@@ -62,6 +62,15 @@ namespace TotoMorti.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TOTOMORTI.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string ButtonAdd {

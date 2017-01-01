@@ -7,7 +7,7 @@ using Xamarin.Forms.Platform.Android;
 namespace TotoMorti.Droid
 {
     [Activity(Label = "TotoMorti", Icon = "@drawable/icon", MainLauncher = true,
-         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

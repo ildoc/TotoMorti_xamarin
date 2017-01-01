@@ -8,8 +8,9 @@
              x:Class="TotoMorti.Views.MainView"
              Title="MainPage">
     <StackLayout VerticalOptions="Center">
+        <Label Text="{Binding AppTitle}" FontSize="20" HorizontalTextAlignment="Center" />
         <!--<Switch IsToggled="{Binding IsActive}" />-->
-        <Button Text="{x:Static resx:AppResources.TotoLists}" Command="{Binding TotoListFormCommand}"  />
+        <Button Text="{x:Static resx:AppResources.TotoLists}" Command="{Binding TotoListFormCommand}" />
         <Button Text="{x:Static resx:AppResources.Groups}" Command="{Binding GroupsCommand}" />
         <!--<Button Text="{x:Static resx:AppResources.Sessions}" Command="{Binding SessionCommand}" />-->
         <Button Text="{x:Static resx:AppResources.CelebrityList}" Command="{Binding CelebrityListCommand}" />

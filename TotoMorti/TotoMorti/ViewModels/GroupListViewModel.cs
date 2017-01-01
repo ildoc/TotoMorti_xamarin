@@ -38,12 +38,6 @@ namespace TotoMorti.ViewModels
             }
         }
 
-        private void NavigateViewGroup()
-        {
-            var p = new NavigationParameters { {"group", SelectedGroup } };
-            _navigationService.NavigateAsync(PageNames.GroupDetailView, p);
-        }
-
         public List<Group> GroupList
         {
             get { return _groupList; }
@@ -59,6 +53,12 @@ namespace TotoMorti.ViewModels
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             GroupList = _groupManager.GetAllGroups();
+        }
+
+        private void NavigateViewGroup()
+        {
+            var p = new NavigationParameters {{"group", SelectedGroup}};
+            _navigationService.NavigateAsync(PageNames.GroupDetailView, p);
         }
 
         private void LeaveGroup(Group g)

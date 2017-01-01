@@ -33,10 +33,7 @@ namespace TotoMorti.ViewModels
         public ObservableCollection<Category> CategoryList
         {
             get { return _categoryList; }
-            set
-            {
-                SetProperty(ref _categoryList, value);
-            }
+            set { SetProperty(ref _categoryList, value); }
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

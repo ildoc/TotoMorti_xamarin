@@ -15,11 +15,12 @@ namespace TotoMorti.ViewModels
         // public string ButtonText { get; set; }
         private string _buttonText;
 
-        private Group _currentGroup;
-
         private FormStatus _currentFormStatus;
 
-        public GroupFormViewModel(INavigationService navigationService, GroupManager groupManager, SessionManager sessionManager)
+        private Group _currentGroup;
+
+        public GroupFormViewModel(INavigationService navigationService, GroupManager groupManager,
+            SessionManager sessionManager)
         {
             _navigationService = navigationService;
             _groupManager = groupManager;
@@ -58,7 +59,7 @@ namespace TotoMorti.ViewModels
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey("action"))
-                CurrentFormStatus = (FormStatus)parameters["action"];
+                CurrentFormStatus = (FormStatus) parameters["action"];
             {
                 switch (CurrentFormStatus)
                 {
@@ -68,7 +69,7 @@ namespace TotoMorti.ViewModels
 
                     case FormStatus.Edit:
                         if (parameters.ContainsKey("group"))
-                            CurrentGroup = (Group)parameters["group"];
+                            CurrentGroup = (Group) parameters["group"];
                         break;
                 }
             }

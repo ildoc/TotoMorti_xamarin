@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using TotoMorti.Classes;
+using TotoMorti.Resx;
 
 namespace TotoMorti.ViewModels
 {
@@ -18,8 +19,13 @@ namespace TotoMorti.ViewModels
             TotoListFormCommand = new DelegateCommand(NavigateTotoListForm, CanNavigateTotoListForm);
         }
 
+        public string AppTitle => $"{AppResources.AppName}";
 
         public DelegateCommand CelebrityListCommand { get; private set; }
+
+        public DelegateCommand GroupsCommand { get; private set; }
+
+        public DelegateCommand TotoListFormCommand { get; private set; }
 
         private bool CanNavigateCelebrityList()
         {
@@ -31,8 +37,6 @@ namespace TotoMorti.ViewModels
             _navigationService.NavigateAsync(PageNames.CelebrityListView);
         }
 
-        public DelegateCommand GroupsCommand { get; private set; }
-
         private bool CanNavigateGroups()
         {
             return false;
@@ -42,8 +46,6 @@ namespace TotoMorti.ViewModels
         {
             _navigationService.NavigateAsync(PageNames.SessionListView);
         }
-
-        public DelegateCommand TotoListFormCommand { get; private set; }
 
         private bool CanNavigateTotoListForm()
         {
