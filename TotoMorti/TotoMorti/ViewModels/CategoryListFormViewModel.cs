@@ -8,13 +8,13 @@ using TotoMorti.Managers;
 
 namespace TotoMorti.ViewModels
 {
-    public class TotoListFormViewModel : BindableBase, INavigationAware
+    public class CategoryListFormViewModel : BindableBase, INavigationAware
     {
         private readonly CategoryManager _categoryManager;
         private ObservableCollection<Category> _categoryList;
         private INavigationService _navigationService;
 
-        public TotoListFormViewModel(INavigationService navigationService, CategoryManager categoryManager)
+        public CategoryListFormViewModel(INavigationService navigationService, CategoryManager categoryManager)
         {
             _navigationService = navigationService;
             _categoryManager = categoryManager;

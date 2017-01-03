@@ -54,7 +54,7 @@ namespace TotoMorti.ViewModels
 
         private void NavigateTotoListForm()
         {
-            _navigationService.NavigateAsync(PageNames.TotoListFormView);
+            _navigationService.NavigateAsync(PageNames.CategoryListFormView);
         }
     }
 }

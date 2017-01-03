@@ -18,5 +18,7 @@
 
         public const string TotoListListView = "TotoListListView";
         public const string TotoListFormView = "TotoListFormView";
+
+        public const string CategoryListFormView = "CategoryListFormView";
     }
 }

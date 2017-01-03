@@ -78,15 +78,19 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\SessionsListViewModel.cs" />
-    <Compile Include="ViewModels\TotoListFormViewModel.cs" />
+    <Compile Include="ViewModels\CategoryListFormViewModel.cs" />
+    <Compile Include="ViewModels\TotoListListViewModel.cs" />
     <Compile Include="Views\GroupDetailView.xaml.cs">
       <DependentUpon>GroupDetailView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TotoListFormView.xaml.cs">
-      <DependentUpon>TotoListFormView.xaml</DependentUpon>
+    <Compile Include="Views\CategoryListFormView.xaml.cs">
+      <DependentUpon>CategoryListFormView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GroupFormView.xaml.cs">
       <DependentUpon>GroupFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TotoListFormView.xaml.cs">
+      <DependentUpon>TotoListFormView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TotoListListView.xaml.cs">
       <DependentUpon>TotoListListView.xaml</DependentUpon>
@@ -229,13 +233,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\TotoListFormView.xaml">
+    <EmbeddedResource Include="Views\CategoryListFormView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\TotoListListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TotoListFormView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

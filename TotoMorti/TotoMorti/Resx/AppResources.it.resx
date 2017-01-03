@@ -135,6 +135,9 @@
   <data name="ButtonSave" xml:space="preserve">
     <value>Salva</value>
   </data>
+  <data name="ButtonView" xml:space="preserve">
+    <value>Vedi</value>
+  </data>
   <data name="CategoryTitle" xml:space="preserve">
     <value>Titolo Categoria</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Conferma Password</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>Creata il:</value>
   </data>
   <data name="GoToLogin" xml:space="preserve">
     <value>Hai già un account? Login</value>
@@ -173,6 +179,9 @@
   </data>
   <data name="TotoLists" xml:space="preserve">
     <value>Liste</value>
+  </data>
+  <data name="TotoListTitle" xml:space="preserve">
+    <value>Titolo Lista</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>

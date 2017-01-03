@@ -3,6 +3,7 @@
     internal enum FormStatus
     {
         Add,
-        Edit
+        Edit,
+        View
     }
 }

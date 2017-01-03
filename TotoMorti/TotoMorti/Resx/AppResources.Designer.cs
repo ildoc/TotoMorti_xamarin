@@ -116,6 +116,15 @@ namespace TotoMorti.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to View.
+        /// </summary>
+        public static string ButtonView {
+            get {
+                return ResourceManager.GetString("ButtonView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category Title.
         /// </summary>
         public static string CategoryTitle {
@@ -166,6 +175,15 @@ namespace TotoMorti.Resx {
         public static string ConfirmPassword {
             get {
                 return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created On:.
+        /// </summary>
+        public static string CreatedOn {
+            get {
+                return ResourceManager.GetString("CreatedOn", resourceCulture);
             }
         }
         
@@ -229,6 +247,15 @@ namespace TotoMorti.Resx {
         public static string TotoLists {
             get {
                 return ResourceManager.GetString("TotoLists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List Title.
+        /// </summary>
+        public static string TotoListTitle {
+            get {
+                return ResourceManager.GetString("TotoListTitle", resourceCulture);
             }
         }
         
