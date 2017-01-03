@@ -12,13 +12,18 @@ namespace TotoMorti.Views
 
         private async void ShowAbout(object sender, EventArgs e)
         {
-            const string changelog = "03/01/2017\n" +
+            const string changelog = "00/00/0000\n" +
+                                     "- Aggiunta possibilità di avere più liste\n" +
+                                     "- Migliorata grafica (poco)\n" +
+                                     "\n" +
+                                     "03/01/2017\n" +
                                      "- Aggiunto tasto About\n" +
                                      "\n" +
                                      "31/12/2016\n" +
-                                     "- Prima release funzionante";
+                                     "- Prima release funzionante\n" +
+                                     "- Aggiunte traduzioni";
 
-            await DisplayAlert("About",changelog, "OK");
+            await DisplayAlert("About", changelog, "OK");
         }
     }
 }

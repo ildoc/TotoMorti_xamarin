@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using SQLite;
 
 namespace TotoMorti.Classes
 {
     public class Session
     {
-        [PrimaryKey]
-        [AutoIncrement]
         public int Id { get; set; }
 
         public int GroupId { get; set; }

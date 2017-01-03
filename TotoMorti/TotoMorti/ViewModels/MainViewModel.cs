@@ -16,7 +16,7 @@ namespace TotoMorti.ViewModels
             // CelebrityListCommand = new DelegateCommand(NavigateCelebrityList).ObservesCanExecute(p => IsActive);
             CelebrityListCommand = new DelegateCommand(NavigateCelebrityList, CanNavigateCelebrityList);
             GroupsCommand = new DelegateCommand(NavigateGroups, CanNavigateGroups);
-            TotoListFormCommand = new DelegateCommand(NavigateTotoListForm, CanNavigateTotoListForm);
+            TotoListListCommand = new DelegateCommand(NavigateTotoListForm, CanNavigateTotoListForm);
         }
 
         public string AppTitle => $"{AppResources.AppName}";
@@ -25,7 +25,7 @@ namespace TotoMorti.ViewModels
 
         public DelegateCommand GroupsCommand { get; private set; }
 
-        public DelegateCommand TotoListFormCommand { get; private set; }
+        public DelegateCommand TotoListListCommand { get; private set; }
 
         private bool CanNavigateCelebrityList()
         {
@@ -54,7 +54,7 @@ namespace TotoMorti.ViewModels
 
         private void NavigateTotoListForm()
         {
-            _navigationService.NavigateAsync(PageNames.CategoryListFormView);
+            _navigationService.NavigateAsync(PageNames.TotoListListView);
         }
     }
 }

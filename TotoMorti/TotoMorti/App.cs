@@ -31,12 +31,13 @@ namespace TotoMorti
             Container.RegisterTypeForNavigation<GroupFormView>(PageNames.GroupFormView);
             Container.RegisterTypeForNavigation<CategoryListFormView>(PageNames.CategoryListFormView);
             Container.RegisterTypeForNavigation<TotoListListView>(PageNames.TotoListListView);
+            Container.RegisterTypeForNavigation<TotoListFormView>(PageNames.TotoListFormView);
 
-            Container.RegisterType(typeof(CelebrityManager), typeof(CelebrityManager), null,
-                new ContainerControlledLifetimeManager());
-            Container.RegisterType(typeof(GroupManager), typeof(GroupManager), null,
-                new ContainerControlledLifetimeManager());
-            Container.RegisterType(typeof(CategoryManager), typeof(CategoryManager), null,
+            //Container.RegisterType(typeof(CelebrityManager), typeof(CelebrityManager), null,
+            //    new ContainerControlledLifetimeManager());
+            //Container.RegisterType(typeof(GroupManager), typeof(GroupManager), null,
+            //    new ContainerControlledLifetimeManager());
+            Container.RegisterType(typeof(JsonDbManager), typeof(JsonDbManager), null,
                 new ContainerControlledLifetimeManager());
         }
 

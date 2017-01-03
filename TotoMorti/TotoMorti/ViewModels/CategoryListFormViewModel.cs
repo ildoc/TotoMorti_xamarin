@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -10,14 +12,15 @@ namespace TotoMorti.ViewModels
 {
     public class CategoryListFormViewModel : BindableBase, INavigationAware
     {
-        private readonly CategoryManager _categoryManager;
+        private readonly JsonDbManager _jsonDbManager;
         private ObservableCollection<Category> _categoryList;
+        private Guid _listGuid;
         private INavigationService _navigationService;
 
-        public CategoryListFormViewModel(INavigationService navigationService, CategoryManager categoryManager)
+        public CategoryListFormViewModel(INavigationService navigationService, JsonDbManager jsonDbManager)
         {
             _navigationService = navigationService;
-            _categoryManager = categoryManager;
+            _jsonDbManager = jsonDbManager;
             AddCategoryCommand = new DelegateCommand(AddCategory);
             OnDeleteCommand = new DelegateCommand<Category>(DeleteCategory);
             SaveCommand = new DelegateCommand(Save);
@@ -42,12 +45,16 @@ namespace TotoMorti.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            CategoryList = new ObservableCollection<Category>(_categoryManager.GetAllCategories());
+            if (parameters.ContainsKey("categoryList") && parameters.ContainsKey("listGuid"))
+            {
+                _listGuid = (Guid) parameters["listGuid"];
+                CategoryList = new ObservableCollection<Category>((List<Category>) parameters["categoryList"]);
+            }
         }
 
         private void Save()
         {
-            _categoryManager.SaveCategoryList(CategoryList.ToList());
+            _jsonDbManager.SaveCategoryList(CategoryList.ToList(), _listGuid);
         }
 
         private void DeleteCategory(Category cat)

@@ -7,39 +7,40 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.CategoryListFormView"
              x:Name="CategoryListFormPage">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-        <Button Grid.Row="0" Text="{x:Static resx:AppResources.ButtonAdd}" Command="{Binding AddCategoryCommand}" />
-        <ListView x:Name="List" Grid.Row="1" ItemsSource="{Binding CategoryList}" HasUnevenRows="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.ContextActions>
-                            <MenuItem
-                                Command="{Binding BindingContext.OnDeleteCommand, Source={x:Reference CategoryListFormPage}}"
-                                CommandParameter="{Binding .}"
-                                Text="{x:Static resx:AppResources.ButtonDelete}"
-                                IsDestructive="True" />
-                            <!--<MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
+    <StackLayout>
+        <StackLayout VerticalOptions="Start">
+            <Button Text="{x:Static resx:AppResources.ButtonAdd}" Command="{Binding AddCategoryCommand}" />
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <ListView x:Name="List" ItemsSource="{Binding CategoryList}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem
+                                    Command="{Binding BindingContext.OnDeleteCommand, Source={x:Reference CategoryListFormPage}}"
+                                    CommandParameter="{Binding .}"
+                                    Text="{x:Static resx:AppResources.ButtonDelete}"
+                                    IsDestructive="True" />
+                                <!--<MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
                                Text="More" />
                             <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
                                Text="Delete" IsDestructive="True" />-->
-                        </ViewCell.ContextActions>
+                            </ViewCell.ContextActions>
 
-                        <StackLayout HorizontalOptions="Fill">
-                            <Entry Text="{Binding Title}" Placeholder="{x:Static resx:AppResources.CategoryTitle}"
-                                   FontAttributes="Bold" />
-                            <Entry Text="{Binding VipList}"
-                                   Placeholder="{x:Static resx:AppResources.VipListPlaceholder}" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button Grid.Row="2" Text="{x:Static resx:AppResources.ButtonSave}" Command="{Binding SaveCommand}" />
-    </Grid>
+                            <StackLayout HorizontalOptions="Fill">
+                                <Entry Text="{Binding Title}" Placeholder="{x:Static resx:AppResources.CategoryTitle}"
+                                       FontAttributes="Bold" />
+                                <Entry Text="{Binding VipList}"
+                                       Placeholder="{x:Static resx:AppResources.VipListPlaceholder}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <StackLayout VerticalOptions="End">
+            <Button Text="{x:Static resx:AppResources.ButtonSave}" Command="{Binding SaveCommand}" />
+        </StackLayout>
+    </StackLayout>
 </ContentPage>
