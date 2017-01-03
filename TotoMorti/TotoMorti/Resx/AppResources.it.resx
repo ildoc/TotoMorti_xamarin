@@ -120,6 +120,9 @@
   <data name="AppName" xml:space="preserve">
     <value>TOTOMORTI</value>
   </data>
+  <data name="ButtonAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="ButtonAdd" xml:space="preserve">
     <value>Aggiungi</value>
   </data>

@@ -1,6 +1,4 @@
-﻿using SQLite;
-
-namespace TotoMorti.Interfaces
+﻿namespace TotoMorti.Interfaces
 {
     public interface IJsonDb
     {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using SQLite;
 using TotoMorti.iOS.API;
 using TotoMorti.Interfaces;
 using Xamarin.Forms;
@@ -13,13 +12,6 @@ namespace TotoMorti.iOS.API
     {
         private const string FileName = "totomorti.json";
 
-        private string GetPath()
-        {
-            var documentPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            var libraryPath = Path.Combine(documentPath, "..", "Library");
-            return Path.Combine(libraryPath, FileName);
-        }
-
         public void WriteJson(string s)
         {
             File.WriteAllText(GetPath(), s);
@@ -28,6 +20,13 @@ namespace TotoMorti.iOS.API
         public string ReadJson()
         {
             return File.ReadAllText(GetPath());
+        }
+
+        private string GetPath()
+        {
+            var documentPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var libraryPath = Path.Combine(documentPath, "..", "Library");
+            return Path.Combine(libraryPath, FileName);
         }
     }
 }

@@ -14,5 +14,6 @@
         <Button Text="{x:Static resx:AppResources.Groups}" Command="{Binding GroupsCommand}" />
         <!--<Button Text="{x:Static resx:AppResources.Sessions}" Command="{Binding SessionCommand}" />-->
         <Button Text="{x:Static resx:AppResources.CelebrityList}" Command="{Binding CelebrityListCommand}" />
+        <Button Text="{x:Static resx:AppResources.ButtonAbout}" Clicked="ShowAbout" />
     </StackLayout>
 </ContentPage>

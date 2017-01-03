@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using SQLite;
+using Newtonsoft.Json;
 using TotoMorti.Classes;
 using TotoMorti.Interfaces;
 
@@ -8,14 +7,6 @@ namespace TotoMorti.Managers
 {
     public class CategoryManager
     {
-<<<<<<< HEAD
-        private readonly SQLiteConnection _connection;
-
-        public CategoryManager(ISQLiteDb sqLiteDb)
-        {
-            _connection = sqLiteDb.GetConnection();
-            _connection.CreateTable<Category>();
-=======
         //private readonly SQLiteConnection _connection;
         private readonly IJsonDb _jsonDb;
 
@@ -25,7 +16,6 @@ namespace TotoMorti.Managers
             //_connection.CreateTable<Category>();
 
             _jsonDb = jsonDb;
->>>>>>> aa837f7... salvataggio su json
         }
 
         public List<Category> GetAllCategories()
@@ -51,15 +41,10 @@ namespace TotoMorti.Managers
 
         public void SaveCategoryList(List<Category> categoryList)
         {
-<<<<<<< HEAD
-            _connection.DeleteAll<Category>();
-            _connection.InsertAll(categoryList);
-=======
             _jsonDb.WriteJson(JsonConvert.SerializeObject(categoryList));
-            
+
             //_connection.DeleteAll<Category>();
             //_connection.InsertAll(categoryList);
->>>>>>> aa837f7... salvataggio su json
         }
     }
 }
