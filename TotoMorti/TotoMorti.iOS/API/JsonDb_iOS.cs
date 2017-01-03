@@ -4,13 +4,19 @@ using TotoMorti.iOS.API;
 using TotoMorti.Interfaces;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(SQLite_iOS))]
+[assembly: Dependency(typeof(JsonDb_iOS))]
 
 namespace TotoMorti.iOS.API
 {
     public class JsonDb_iOS : IJsonDb
     {
         private const string FileName = "totomorti.json";
+
+        public JsonDb_iOS()
+        {
+            if (!File.Exists(GetPath()))
+                File.Create(GetPath()).Dispose();
+        }
 
         public void WriteJson(string s)
         {

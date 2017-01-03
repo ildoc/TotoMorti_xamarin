@@ -206,6 +206,15 @@ namespace TotoMorti.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fine.
+        /// </summary>
+        public static string ListEndDate {
+            get {
+                return ResourceManager.GetString("ListEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {

@@ -7,13 +7,19 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.MainView"
              Title="MainPage">
-    <StackLayout VerticalOptions="Center">
-        <Label Text="{Binding AppTitle}" FontSize="20" HorizontalTextAlignment="Center" />
-        <!--<Switch IsToggled="{Binding IsActive}" />-->
-        <Button Text="{x:Static resx:AppResources.TotoLists}" Command="{Binding TotoListFormCommand}" />
-        <Button Text="{x:Static resx:AppResources.Groups}" Command="{Binding GroupsCommand}" />
-        <!--<Button Text="{x:Static resx:AppResources.Sessions}" Command="{Binding SessionCommand}" />-->
-        <Button Text="{x:Static resx:AppResources.CelebrityList}" Command="{Binding CelebrityListCommand}" />
-        <Button Text="{x:Static resx:AppResources.ButtonAbout}" Clicked="ShowAbout" />
+    <StackLayout>
+        <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
+            <Label Text="{Binding AppTitle}" FontSize="20" />
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
+            <!--<Switch IsToggled="{Binding IsActive}" />-->
+            <Button Text="{x:Static resx:AppResources.TotoLists}" Command="{Binding TotoListListCommand}" />
+            <Button Text="{x:Static resx:AppResources.Groups}" Command="{Binding GroupsCommand}" />
+            <!--<Button Text="{x:Static resx:AppResources.Sessions}" Command="{Binding SessionCommand}" />-->
+            <Button Text="{x:Static resx:AppResources.CelebrityList}" Command="{Binding CelebrityListCommand}" />
+        </StackLayout>
+        <StackLayout VerticalOptions="End">
+            <Button Text="{x:Static resx:AppResources.ButtonAbout}" Clicked="ShowAbout" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

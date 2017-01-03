@@ -189,4 +189,7 @@
   <data name="VipListPlaceholder" xml:space="preserve">
     <value>Nome1, Nome2, ...</value>
   </data>
+  <data name="ListEndDate" xml:space="preserve">
+    <value>Fine</value>
+  </data>
 </root>

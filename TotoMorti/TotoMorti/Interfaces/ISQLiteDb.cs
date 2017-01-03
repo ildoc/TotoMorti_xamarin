@@ -1,10 +1,8 @@
-﻿using SQLite;
-
-namespace TotoMorti.Interfaces
+﻿namespace TotoMorti.Interfaces
 {
     public interface ISQLiteDb
     {
-        SQLiteConnection GetConnection();
-        SQLiteAsyncConnection GetConnectionAsync();
+        //SQLiteConnection GetConnection();
+        //SQLiteAsyncConnection GetConnectionAsync();
     }
 }

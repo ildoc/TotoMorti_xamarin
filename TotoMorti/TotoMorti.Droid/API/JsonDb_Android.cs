@@ -12,6 +12,12 @@ namespace TotoMorti.Droid.API
     {
         private const string FileName = "totomorti.json";
 
+        public JsonDb_Android()
+        {
+            if (!File.Exists(GetPath()))
+                File.Create(GetPath()).Dispose();
+        }
+
         public void WriteJson(string s)
         {
             File.WriteAllText(GetPath(), s);

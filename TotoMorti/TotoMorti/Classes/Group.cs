@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
-using SQLite;
 
 namespace TotoMorti.Classes
 {
     public class Group
     {
-        [PrimaryKey]
-        [AutoIncrement]
         public int Id { get; set; }
 
         public string Title { get; set; }
