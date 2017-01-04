@@ -16,6 +16,7 @@ namespace TotoMorti.Views
                                      "- Pubblicazione su Play Store\n" +
                                      "- Aggiunta possibilità di avere più liste\n" +
                                      "- Migliorata grafica (poco)\n" +
+                                     "- Aggiunta icona\n" +
                                      "\n" +
                                      "03/01/2017\n" +
                                      "- Aggiunto tasto About\n" +
