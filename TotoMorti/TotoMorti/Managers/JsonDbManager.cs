@@ -60,6 +60,7 @@ namespace TotoMorti.Managers
                 t.Categories.Clear();
                 t.Categories = categories;
             }
+            Save();
         }
     }
 }
