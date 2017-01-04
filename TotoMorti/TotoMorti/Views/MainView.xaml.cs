@@ -12,7 +12,8 @@ namespace TotoMorti.Views
 
         private async void ShowAbout(object sender, EventArgs e)
         {
-            const string changelog = "00/00/0000\n" +
+            const string changelog = "04/01/2017\n" +            
+                                     "- Pubblicazione su Play Store\n" +
                                      "- Aggiunta possibilità di avere più liste\n" +
                                      "- Migliorata grafica (poco)\n" +
                                      "\n" +
