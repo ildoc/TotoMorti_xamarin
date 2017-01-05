@@ -2,7 +2,7 @@
 {
     public interface IJsonDb
     {
-        string ReadJson();
-        void WriteJson(string s);
+        string ReadJson(string dbName);
+        void WriteJson(string s, string dbName);
     }
 }

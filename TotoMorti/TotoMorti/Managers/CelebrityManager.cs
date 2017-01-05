@@ -7,27 +7,25 @@ namespace TotoMorti.Managers
 {
     public class CelebrityManager
     {
-        //private readonly SQLiteConnection _connection;
-
-        public CelebrityManager(ISQLiteDb sqLiteDb)
+        private readonly JsonDbManager _jsonDbManager;
+        public CelebrityManager(JsonDbManager jsonDbManager)
         {
-            //_connection = sqLiteDb.GetConnection();
-            //_connection.CreateTable<Celebrity>();
+            _jsonDbManager = jsonDbManager;
         }
 
-        public List<Celebrity> GetAllCelebrities()
+        public IEnumerable<Celebrity> GetAllCelebrities()
         {
-            throw new NotImplementedException();
+            return _jsonDbManager.GetAllCelebrities();
         }
 
-        public void AddCelebrity(Celebrity c)
+        public void SaveCelebrity(Celebrity c)
         {
-            //_connection.Insert(c);
+            _jsonDbManager.SaveCelebrity(c);
         }
 
         public void DeleteCelebrity(Celebrity c)
         {
-            //_connection.Delete(c);
+            _jsonDbManager.DeleteCelebrity(c);
         }
 
         public void UpdateCelebrity(Celebrity c)

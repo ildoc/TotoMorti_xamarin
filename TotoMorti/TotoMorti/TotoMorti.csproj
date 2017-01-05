@@ -51,10 +51,12 @@
     <Compile Include="Extensions\UserExtensions.cs" />
     <Compile Include="Interfaces\IJsondb.cs" />
     <Compile Include="Interfaces\ISQLiteDb.cs" />
+    <Compile Include="Managers\CategoryManager.cs" />
     <Compile Include="Managers\CelebrityManager.cs" />
     <Compile Include="Managers\GroupManager.cs" />
     <Compile Include="Managers\JsonDbManager.cs" />
     <Compile Include="Managers\SessionManager.cs" />
+    <Compile Include="Managers\TotoListManager.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resx\AppResources.it.Designer.cs">

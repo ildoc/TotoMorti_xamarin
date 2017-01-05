@@ -9,14 +9,14 @@ namespace TotoMorti.ViewModels
 {
     public class TotoListListViewModel : BindableBase, INavigationAware
     {
-        private readonly JsonDbManager _jsonDbManager;
+        private readonly TotoListManager _totoListManager;
         private readonly INavigationService _navigationService;
         private ObservableCollection<TotoList> _totoListList;
 
-        public TotoListListViewModel(INavigationService navigationService, JsonDbManager jsonDbManager)
+        public TotoListListViewModel(INavigationService navigationService, TotoListManager totoListManager)
         {
             _navigationService = navigationService;
-            _jsonDbManager = jsonDbManager;
+            _totoListManager = totoListManager;
             AddTotoListCommand = new DelegateCommand(AddTotoList);
             OnDeleteCommand = new DelegateCommand<TotoList>(DeleteTotoList);
             OnViewCommand = new DelegateCommand<TotoList>(ViewTotoList);
@@ -48,7 +48,7 @@ namespace TotoMorti.ViewModels
 
         private void LoadLists()
         {
-            TotoListList = new ObservableCollection<TotoList>(_jsonDbManager.GetAllTotoLists());
+            TotoListList = new ObservableCollection<TotoList>(_totoListManager.GetAllTotoLists());
         }
 
         private void ViewTotoList(TotoList obj)
@@ -67,7 +67,7 @@ namespace TotoMorti.ViewModels
 
         private void DeleteTotoList(TotoList obj)
         {
-            _jsonDbManager.DeleteTotoList(obj);
+            _totoListManager.DeleteTotoList(obj);
             LoadLists();
         }
 

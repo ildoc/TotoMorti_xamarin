@@ -10,28 +10,22 @@ namespace TotoMorti.Droid.API
 {
     public class JsonDb_Android : IJsonDb
     {
-        private const string FileName = "totomorti.json";
-
-        public JsonDb_Android()
+        public void WriteJson(string s, string dbName)
         {
-            if (!File.Exists(GetPath()))
-                File.Create(GetPath()).Dispose();
+            File.WriteAllText(GetPath(dbName), s);
         }
 
-        public void WriteJson(string s)
+        public string ReadJson(string dbName)
         {
-            File.WriteAllText(GetPath(), s);
+            if (!File.Exists(GetPath(dbName)))
+                return "";
+            return File.ReadAllText(GetPath(dbName));
         }
 
-        public string ReadJson()
-        {
-            return File.ReadAllText(GetPath());
-        }
-
-        private string GetPath()
+        private string GetPath(string dbName)
         {
             var documentPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            return Path.Combine(documentPath, FileName);
+            return Path.Combine(documentPath, dbName+".json");
         }
     }
 }

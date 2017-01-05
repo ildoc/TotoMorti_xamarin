@@ -37,13 +37,12 @@ namespace TotoMorti
             //    new ContainerControlledLifetimeManager());
             //Container.RegisterType(typeof(GroupManager), typeof(GroupManager), null,
             //    new ContainerControlledLifetimeManager());
+            Container.RegisterType(typeof(CategoryManager), typeof(CategoryManager), null,
+                new ContainerControlledLifetimeManager());
+            Container.RegisterType(typeof(TotoListManager), typeof(TotoListManager), null,
+                new ContainerControlledLifetimeManager());
             Container.RegisterType(typeof(JsonDbManager), typeof(JsonDbManager), null,
                 new ContainerControlledLifetimeManager());
-        }
-
-        protected override void OnStart()
-        {
-            Current.Properties["CurrentUser"] = new User();
         }
     }
 }

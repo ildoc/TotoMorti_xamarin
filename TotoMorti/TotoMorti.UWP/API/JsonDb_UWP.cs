@@ -11,28 +11,16 @@ using Xamarin.Forms;
 namespace TotoMorti.UWP.API
 {
     public class JsonDb_UWP : IJsonDb
-    {
-        private const string FileName = "totomorti.json";
-
-        public JsonDb_UWP()
+    { 
+        public string ReadJson(string dbName)
         {
-            if (!FileExists(FileName))
+            if (!FileExists(dbName+".json"))
             {
-                try
-                {
-                    ApplicationData.Current.LocalFolder.CreateFileAsync(FileName,
-                        CreationCollisionOption.ReplaceExisting).AsTask().Wait();
-                }
-                catch (Exception e)
-                {
-                    
-                }
+                ApplicationData.Current.LocalFolder.CreateFileAsync(dbName + ".json",
+                    CreationCollisionOption.ReplaceExisting).AsTask().Wait();
+                return "";
             }
-        }
-
-        public string ReadJson()
-        {
-            var task = LoadTextAsync(FileName);
+            var task = LoadTextAsync(dbName+".json");
             task.Wait(); // HACK: to keep Interface return types simple (sorry!)
             return task.Result;
         }
@@ -45,10 +33,10 @@ namespace TotoMorti.UWP.API
             return text;
         }
 
-        public async void WriteJson(string text)
+        public async void WriteJson(string text, string dbName)
         {
             StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-            StorageFile sampleFile = await localFolder.CreateFileAsync(FileName, CreationCollisionOption.ReplaceExisting);
+            StorageFile sampleFile = await localFolder.CreateFileAsync(dbName + ".json", CreationCollisionOption.ReplaceExisting);
             await FileIO.WriteTextAsync(sampleFile, text);
         }
 

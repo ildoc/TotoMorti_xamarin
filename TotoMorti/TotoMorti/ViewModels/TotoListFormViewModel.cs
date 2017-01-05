@@ -9,7 +9,7 @@ namespace TotoMorti.ViewModels
 {
     internal class TotoListFormViewModel : BindableBase, INavigationAware
     {
-        private readonly JsonDbManager _jsonDbManager;
+        private readonly TotoListManager _totoListManager;
         private readonly INavigationService _navigationService;
 
 
@@ -19,10 +19,10 @@ namespace TotoMorti.ViewModels
 
         private TotoList _currentTotoList;
 
-        public TotoListFormViewModel(INavigationService navigationService, JsonDbManager jsonDbManager)
+        public TotoListFormViewModel(INavigationService navigationService, TotoListManager totoListManager)
         {
             _navigationService = navigationService;
-            _jsonDbManager = jsonDbManager;
+            _totoListManager = totoListManager;
             SaveCommand = new DelegateCommand(SaveForm, CanSaveForm);
         }
 
@@ -94,7 +94,7 @@ namespace TotoMorti.ViewModels
 
         private void SaveForm()
         {
-            _jsonDbManager.SaveTotoList(CurrentTotoList);
+            _totoListManager.SaveTotoList(CurrentTotoList);
 
             var p = new NavigationParameters
             {

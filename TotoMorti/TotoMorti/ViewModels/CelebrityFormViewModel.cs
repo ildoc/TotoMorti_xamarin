@@ -93,16 +93,7 @@ namespace TotoMorti.ViewModels
 
         private void SaveForm()
         {
-            switch (CurrentFormStatus)
-            {
-                case FormStatus.Add:
-                    _celebrityManager.AddCelebrity(CurrentCelebrity);
-                    _navigationService.GoBackAsync();
-                    break;
-
-                case FormStatus.Edit:
-                    break;
-            }
+                    _celebrityManager.SaveCelebrity(CurrentCelebrity);
         }
     }
 }

@@ -11,11 +11,16 @@ namespace TotoMorti.Managers
     {
         private readonly IJsonDb _jsonDb;
         private readonly List<TotoList> _totoLists;
+        private readonly List<Celebrity> _celebrities;
+
+        private string totomortiDb = "totomorti";
+        private string celebrityDb = "celebrity";
 
         public JsonDbManager(IJsonDb jsonDb)
         {
             _jsonDb = jsonDb;
-            _totoLists = JsonConvert.DeserializeObject<List<TotoList>>(_jsonDb.ReadJson()) ?? new List<TotoList>();
+            _totoLists = JsonConvert.DeserializeObject<List<TotoList>>(_jsonDb.ReadJson(totomortiDb)) ?? new List<TotoList>();
+            _celebrities = JsonConvert.DeserializeObject<List<Celebrity>>(_jsonDb.ReadJson(celebrityDb)) ?? new List<Celebrity>();
         }
 
         public IEnumerable<TotoList> GetAllTotoLists()
@@ -38,18 +43,18 @@ namespace TotoMorti.Managers
                 _totoLists.Add(totoList);
             }
 
-            Save();
+            Save(totomortiDb);
         }
 
-        private void Save()
+        private void Save(string dbName)
         {
-            _jsonDb.WriteJson(JsonConvert.SerializeObject(_totoLists));
+            _jsonDb.WriteJson(JsonConvert.SerializeObject(_totoLists), dbName);
         }
 
         public void DeleteTotoList(TotoList totoList)
         {
             _totoLists.Remove(totoList);
-            Save();
+            Save(totomortiDb);
         }
 
         public void SaveCategoryList(List<Category> categories, Guid listGuid)
@@ -60,7 +65,35 @@ namespace TotoMorti.Managers
                 t.Categories.Clear();
                 t.Categories = categories;
             }
-            Save();
+            Save(totomortiDb);
+        }
+
+        public IEnumerable<Celebrity> GetAllCelebrities()
+        {
+            return _celebrities;
+        }
+
+        public void SaveCelebrity(Celebrity celebrity)
+        {
+            var c = _celebrities.FirstOrDefault(x => x.CelebrityGuid == celebrity.CelebrityGuid);
+            if (c != null)
+            {
+                c.Name = celebrity.Name;
+                c.Surname = celebrity.Surname;
+                c.ImageUrl = celebrity.ImageUrl;
+            }
+            else
+            {
+                _celebrities.Add(celebrity);
+            }
+
+            Save(celebrityDb);
+        }
+
+        public void DeleteCelebrity(Celebrity celebrity)
+        {
+            _celebrities.Remove(celebrity);
+            Save(celebrityDb);
         }
     }
 }

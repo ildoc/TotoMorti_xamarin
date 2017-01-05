@@ -12,15 +12,16 @@ namespace TotoMorti.ViewModels
 {
     public class CategoryListFormViewModel : BindableBase, INavigationAware
     {
-        private readonly JsonDbManager _jsonDbManager;
+        private readonly CategoryManager _categoryManager;
         private ObservableCollection<Category> _categoryList;
         private Guid _listGuid;
         private INavigationService _navigationService;
 
-        public CategoryListFormViewModel(INavigationService navigationService, JsonDbManager jsonDbManager)
+        public CategoryListFormViewModel(INavigationService navigationService, CategoryManager categoryManager)
         {
             _navigationService = navigationService;
-            _jsonDbManager = jsonDbManager;
+
+            _categoryManager = categoryManager;
             AddCategoryCommand = new DelegateCommand(AddCategory);
             OnDeleteCommand = new DelegateCommand<Category>(DeleteCategory);
             SaveCommand = new DelegateCommand(Save);
@@ -54,7 +55,7 @@ namespace TotoMorti.ViewModels
 
         private void Save()
         {
-            _jsonDbManager.SaveCategoryList(CategoryList.ToList(), _listGuid);
+            _categoryManager.SaveCategoryList(CategoryList.ToList(), _listGuid);
         }
 
         private void DeleteCategory(Category cat)
