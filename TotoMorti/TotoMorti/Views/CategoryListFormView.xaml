@@ -11,7 +11,7 @@
         <StackLayout VerticalOptions="Start">
             <Button Text="{x:Static resx:AppResources.ButtonAdd}" Command="{Binding AddCategoryCommand}" />
         </StackLayout>
-        <StackLayout VerticalOptions="CenterAndExpand">
+        <StackLayout VerticalOptions="StartAndExpand">
             <ListView x:Name="List" ItemsSource="{Binding CategoryList}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
