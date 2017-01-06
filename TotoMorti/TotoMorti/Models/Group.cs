@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using TotoMorti.Classes;
 
-namespace TotoMorti.Classes
+namespace TotoMorti.Models
 {
     public class Group
     {

@@ -1,4 +1,4 @@
-﻿namespace TotoMorti.Classes
+﻿namespace TotoMorti.Models
 {
     public class User
     {

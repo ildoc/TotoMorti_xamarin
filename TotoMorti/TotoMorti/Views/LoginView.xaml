@@ -5,7 +5,8 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="TotoMorti.Views.LoginView">
+             x:Class="TotoMorti.Views.LoginView"
+             Padding="10,20,10,10">
     <StackLayout VerticalOptions="Center">
         <Entry Placeholder="{x:Static resx:AppResources.Username}" />
         <Entry Placeholder="{x:Static resx:AppResources.Password}" IsPassword="True" />

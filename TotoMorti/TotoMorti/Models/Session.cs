@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TotoMorti.Classes
+namespace TotoMorti.Models
 {
     public class Session
     {

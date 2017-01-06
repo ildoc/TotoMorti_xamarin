@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using TotoMorti.Classes;
 using TotoMorti.Interfaces;
+using TotoMorti.Models;
 
 namespace TotoMorti.Managers
 {

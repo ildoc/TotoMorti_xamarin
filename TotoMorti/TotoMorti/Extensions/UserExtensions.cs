@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TotoMorti.Classes;
+using TotoMorti.Models;
 
 namespace TotoMorti.Extensions
 {

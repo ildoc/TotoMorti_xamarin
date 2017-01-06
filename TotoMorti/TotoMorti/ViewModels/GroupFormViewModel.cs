@@ -4,6 +4,7 @@ using Prism.Navigation;
 using TotoMorti.Classes;
 using TotoMorti.Extensions;
 using TotoMorti.Managers;
+using TotoMorti.Models;
 
 namespace TotoMorti.ViewModels
 {

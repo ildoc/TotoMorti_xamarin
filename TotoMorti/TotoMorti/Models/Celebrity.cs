@@ -1,9 +1,14 @@
 ﻿using System;
 
-namespace TotoMorti.Classes
+namespace TotoMorti.Models
 {
     public class Celebrity
     {
+        public Celebrity()
+        {
+            CelebrityGuid = Guid.NewGuid();
+        }
+
         public Guid CelebrityGuid { get; }
 
         public string Name { get; set; }
@@ -18,7 +23,7 @@ namespace TotoMorti.Classes
         {
             get
             {
-                int age = DateTime.Now.Year - BirthDate.Year;
+                var age = DateTime.Now.Year - BirthDate.Year;
                 if (BirthDate > DateTime.Now.AddYears(-age))
                     age--;
                 return age;
@@ -26,10 +31,5 @@ namespace TotoMorti.Classes
         }
 
         public string FullName => $"{Name} {Surname}";
-
-        public Celebrity()
-        {
-            CelebrityGuid=Guid.NewGuid();
-        }
     }
 }

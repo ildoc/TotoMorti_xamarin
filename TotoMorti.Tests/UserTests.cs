@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TotoMorti.Classes;
 using TotoMorti.Extensions;
+using TotoMorti.Models;
 
 namespace TotoMorti.Tests
 {

@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-using TotoMorti.Classes;
 using TotoMorti.Interfaces;
+using TotoMorti.Models;
 
 namespace TotoMorti.Managers
 {
     public class JsonDbManager
     {
+        private const string celebrityDb = "celebrity";
+        private const string totomortiDb = "totomorti";
+        private readonly List<Celebrity> _celebrities;
         private readonly IJsonDb _jsonDb;
         private readonly List<TotoList> _totoLists;
-        private readonly List<Celebrity> _celebrities;
-
-        private string totomortiDb = "totomorti";
-        private string celebrityDb = "celebrity";
 
         public JsonDbManager(IJsonDb jsonDb)
         {
             _jsonDb = jsonDb;
-            _totoLists = JsonConvert.DeserializeObject<List<TotoList>>(_jsonDb.ReadJson(totomortiDb)) ?? new List<TotoList>();
-            _celebrities = JsonConvert.DeserializeObject<List<Celebrity>>(_jsonDb.ReadJson(celebrityDb)) ?? new List<Celebrity>();
+            _totoLists = JsonConvert.DeserializeObject<List<TotoList>>(_jsonDb.ReadJson(totomortiDb)) ??
+                         new List<TotoList>();
+            _celebrities = JsonConvert.DeserializeObject<List<Celebrity>>(_jsonDb.ReadJson(celebrityDb)) ??
+                           new List<Celebrity>();
         }
 
         public IEnumerable<TotoList> GetAllTotoLists()
@@ -48,7 +49,15 @@ namespace TotoMorti.Managers
 
         private void Save(string dbName)
         {
-            _jsonDb.WriteJson(JsonConvert.SerializeObject(_totoLists), dbName);
+            switch (dbName)
+            {
+                case celebrityDb:
+                    _jsonDb.WriteJson(JsonConvert.SerializeObject(_celebrities), dbName);
+                    break;
+                case totomortiDb:
+                    _jsonDb.WriteJson(JsonConvert.SerializeObject(_totoLists), dbName);
+                    break;
+            }
         }
 
         public void DeleteTotoList(TotoList totoList)
@@ -94,6 +103,32 @@ namespace TotoMorti.Managers
         {
             _celebrities.Remove(celebrity);
             Save(celebrityDb);
+        }
+
+        public List<Celebrity> GetAvailableCelebrities(List<Celebrity> selectedCelebrities)
+        {
+            return _celebrities.Except(selectedCelebrities).ToList();
+        }
+
+        public void SaveCategory(Category category, Guid listGuid)
+        {
+            var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
+            var c = t?.Categories.FirstOrDefault(x => x.CategoryGuid == category.CategoryGuid);
+            if (c != null)
+            {
+                c.Title = category.Title;
+                c.CelebrityList = category.CelebrityList;
+            }
+            else
+            {
+                t?.Categories.Add(category);
+            }
+            Save(totomortiDb);
+        }
+
+        public List<Celebrity> GetCelebritiesByGuid(List<string> categoryCelebrityList)
+        {
+            return _celebrities.Where(x => categoryCelebrityList.Contains(x.CelebrityGuid.ToString())).ToList();
         }
     }
 }

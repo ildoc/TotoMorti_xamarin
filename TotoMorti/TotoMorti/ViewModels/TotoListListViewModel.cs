@@ -4,13 +4,14 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using TotoMorti.Classes;
 using TotoMorti.Managers;
+using TotoMorti.Models;
 
 namespace TotoMorti.ViewModels
 {
     public class TotoListListViewModel : BindableBase, INavigationAware
     {
-        private readonly TotoListManager _totoListManager;
         private readonly INavigationService _navigationService;
+        private readonly TotoListManager _totoListManager;
         private ObservableCollection<TotoList> _totoListList;
 
         public TotoListListViewModel(INavigationService navigationService, TotoListManager totoListManager)
@@ -53,9 +54,9 @@ namespace TotoMorti.ViewModels
 
         private void ViewTotoList(TotoList obj)
         {
-            var p = new NavigationParameters {{"categoryList", obj.Categories}, {"listGuid", obj.ListGuid}};
+            var p = new NavigationParameters {{"totoList", obj}};
 
-            _navigationService.NavigateAsync(PageNames.CategoryListFormView, p);
+            _navigationService.NavigateAsync(PageNames.CategoryListView, p);
         }
 
         private void EditTotoList(TotoList obj)

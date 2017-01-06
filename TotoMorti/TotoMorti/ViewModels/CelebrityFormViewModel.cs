@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using TotoMorti.Classes;
 using TotoMorti.Managers;
+using TotoMorti.Models;
 using TotoMorti.Resx;
 
 namespace TotoMorti.ViewModels
@@ -22,7 +23,7 @@ namespace TotoMorti.ViewModels
         {
             _navigationService = navigationService;
             _celebrityManager = celebrityManager;
-            SaveFormCommand = new DelegateCommand(SaveForm, CanSaveForm);
+            SaveCommand = new DelegateCommand(SaveForm, CanSaveForm);
         }
 
         public Celebrity CurrentCelebrity
@@ -47,7 +48,7 @@ namespace TotoMorti.ViewModels
             }
         }
 
-        public DelegateCommand SaveFormCommand { get; private set; }
+        public DelegateCommand SaveCommand { get; private set; }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -93,7 +94,8 @@ namespace TotoMorti.ViewModels
 
         private void SaveForm()
         {
-                    _celebrityManager.SaveCelebrity(CurrentCelebrity);
+            _celebrityManager.SaveCelebrity(CurrentCelebrity);
+            _navigationService.GoBackAsync();
         }
     }
 }

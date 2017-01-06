@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.ObjectBuilder2;
 using TotoMorti.Classes;
+using TotoMorti.Models;
 
 namespace TotoMorti.Extensions
 {

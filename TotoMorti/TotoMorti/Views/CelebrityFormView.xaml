@@ -5,28 +5,42 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="TotoMorti.Views.CelebrityFormView">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+             x:Class="TotoMorti.Views.CelebrityFormView"
+             Padding="10,20,10,10">
+    <StackLayout>
+        <StackLayout VerticalOptions="End">
+            <Label Text="gsfgdsfgsdgdf" />
+        </StackLayout>
+        <StackLayout VerticalOptions="StartAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static resx:AppResources.CelebrityName}" />
-        <Entry Grid.Row="0" Grid.Column="1" Text="{Binding CurrentCelebrity.Name}" />
+                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static resx:AppResources.CelebrityName}" />
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding CurrentCelebrity.Name}" />
 
-        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static resx:AppResources.CelebritySurname}" />
-        <Entry Grid.Row="1" Grid.Column="1" Text="{Binding CurrentCelebrity.Surname}" />
+                <Label Grid.Row="1" Grid.Column="0" Text="{x:Static resx:AppResources.CelebritySurname}" />
+                <Entry Grid.Row="1" Grid.Column="1" Text="{Binding CurrentCelebrity.Surname}" />
 
-        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static resx:AppResources.CelebrityImageUrl}" />
-        <Entry Grid.Row="2" Grid.Column="1" Text="{Binding CurrentCelebrity.ImageUrl}" />
+                <!--<Label Grid.Row="2" Grid.Column="0" Text="{x:Static resx:AppResources.CelebrityImageUrl}" />
+                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding CurrentCelebrity.ImageUrl}" />-->
 
-        <Button Grid.Row="3" Grid.Column="1" Text="{Binding ButtonText}" Command="{Binding SaveFormCommand}" />
-    </Grid>
+                <Label Grid.Row="2" Grid.Column="0" Text="{x:Static resx:AppResources.CelebrityBirthDate}" />
+                <DatePicker Grid.Row="2" Grid.Column="1" VerticalOptions="CenterAndExpand"
+                            Date="{Binding CurrentCelebrity.BirthDate}">
+                    <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+                </DatePicker>
+            </Grid>
+        </StackLayout>
+        <StackLayout VerticalOptions="End">
+            <Button Text="{x:Static resx:AppResources.ButtonSave}" Command="{Binding SaveCommand}" />
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

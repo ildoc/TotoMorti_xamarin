@@ -3,11 +3,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
-             x:Class="TotoMorti.Views.TotoListFormView">
+             x:Class="TotoMorti.Views.TotoListFormView"
+             Padding="10,20,10,10">
     <StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
@@ -29,6 +31,16 @@
                             Date="{Binding CurrentTotoList.EndDate}">
                     <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
                 </DatePicker>
+
+                <Label Grid.Row="3" Grid.Column="0" Text="{x:Static resx:AppResources.EditTimeLimit}" />
+                <DatePicker Grid.Row="3" Grid.Column="1" VerticalOptions="CenterAndExpand"
+                            Date="{Binding CurrentTotoList.EditTimeLimit}">
+                    <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+                </DatePicker>
+
+                <Label Grid.Row="4" Grid.Column="0" Text="{x:Static resx:AppResources.MaxItemPerCategory}" />
+                <Entry Grid.Row="4" Grid.Column="1" Text="{Binding CurrentTotoList.MaxItemPerCategory}"
+                       Keyboard="Numeric" />
             </Grid>
         </StackLayout>
         <StackLayout VerticalOptions="End">

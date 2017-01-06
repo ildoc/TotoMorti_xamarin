@@ -7,10 +7,11 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.TotoListListView"
              x:Name="TotoListListPage"
-             Title="{x:Static resx:AppResources.TotoListTitle}">
+             Title="{x:Static resx:AppResources.TotoListTitle}"
+             Padding="10,20,10,10">
     <StackLayout>
         <StackLayout VerticalOptions="Start">
-            <Button Text="{x:Static resx:AppResources.ButtonAdd}" Command="{Binding AddTotoListCommand}" />
+            <Button Text="{x:Static resx:AppResources.ButtonAddList}" Command="{Binding AddTotoListCommand}" />
         </StackLayout>
         <StackLayout VerticalOptions="StartAndExpand">
             <ListView x:Name="List" ItemsSource="{Binding TotoListList}" HasUnevenRows="True"

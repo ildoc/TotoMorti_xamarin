@@ -89,6 +89,33 @@ namespace TotoMorti.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Category.
+        /// </summary>
+        public static string ButtonAddCategory {
+            get {
+                return ResourceManager.GetString("ButtonAddCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add List.
+        /// </summary>
+        public static string ButtonAddList {
+            get {
+                return ResourceManager.GetString("ButtonAddList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Celebrity.
+        /// </summary>
+        public static string ButtonAddVip {
+            get {
+                return ResourceManager.GetString("ButtonAddVip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string ButtonDelete {
@@ -130,6 +157,15 @@ namespace TotoMorti.Resx {
         public static string CategoryTitle {
             get {
                 return ResourceManager.GetString("CategoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birth Date.
+        /// </summary>
+        public static string CelebrityBirthDate {
+            get {
+                return ResourceManager.GetString("CelebrityBirthDate", resourceCulture);
             }
         }
         
@@ -188,6 +224,15 @@ namespace TotoMorti.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Time limit.
+        /// </summary>
+        public static string EditTimeLimit {
+            get {
+                return ResourceManager.GetString("EditTimeLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Already have an account? Login.
         /// </summary>
         public static string GoToLogin {
@@ -220,6 +265,15 @@ namespace TotoMorti.Resx {
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Vip per Category.
+        /// </summary>
+        public static string MaxItemPerCategory {
+            get {
+                return ResourceManager.GetString("MaxItemPerCategory", resourceCulture);
             }
         }
         

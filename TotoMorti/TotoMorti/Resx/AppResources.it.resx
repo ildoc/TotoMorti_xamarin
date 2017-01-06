@@ -192,4 +192,22 @@
   <data name="ListEndDate" xml:space="preserve">
     <value>Fine</value>
   </data>
+  <data name="EditTimeLimit" xml:space="preserve">
+    <value>Tempo limite modifiche</value>
+  </data>
+  <data name="MaxItemPerCategory" xml:space="preserve">
+    <value>Vip per Categoria</value>
+  </data>
+  <data name="ButtonAddCategory" xml:space="preserve">
+    <value>Aggungi Categoria</value>
+  </data>
+  <data name="ButtonAddList" xml:space="preserve">
+    <value>Aggiungi Lista</value>
+  </data>
+  <data name="ButtonAddVip" xml:space="preserve">
+    <value>Aggiungi Vip</value>
+  </data>
+  <data name="CelebrityBirthDate" xml:space="preserve">
+    <value>Data di nascita</value>
+  </data>
 </root>

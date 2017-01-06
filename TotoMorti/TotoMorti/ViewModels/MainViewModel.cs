@@ -29,7 +29,7 @@ namespace TotoMorti.ViewModels
 
         private bool CanNavigateCelebrityList()
         {
-            return false;
+            return true;
         }
 
         private void NavigateCelebrityList()

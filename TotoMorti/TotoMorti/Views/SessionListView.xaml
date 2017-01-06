@@ -5,8 +5,8 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="TotoMorti.Views.SessionListView">
-
+             x:Class="TotoMorti.Views.SessionListView"
+             Padding="10,20,10,10">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

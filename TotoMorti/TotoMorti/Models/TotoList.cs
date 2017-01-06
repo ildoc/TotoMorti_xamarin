@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TotoMorti.Resx;
 
-namespace TotoMorti.Classes
+namespace TotoMorti.Models
 {
     public class TotoList
     {
@@ -18,6 +18,7 @@ namespace TotoMorti.Classes
         public DateTime CreationDate { get; set; }
         public DateTime EditTimeLimit { get; set; }
         public DateTime EndDate { get; set; }
+        public int MaxItemPerCategory { get; set; }
 
         public List<Category> Categories { get; set; } = new List<Category>();
 

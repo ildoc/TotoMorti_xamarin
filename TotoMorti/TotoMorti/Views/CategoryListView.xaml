@@ -2,18 +2,18 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="TotoMorti.Views.CategoryListFormView"
-             x:Name="CategoryListFormPage"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             x:Class="TotoMorti.Views.CategoryListView"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             x:Name="CategoryViewPage"
              Padding="10,20,10,10">
     <StackLayout>
-        <StackLayout VerticalOptions="Start">
-            <Button Text="{x:Static resx:AppResources.ButtonAdd}" Command="{Binding AddCategoryCommand}" />
+        <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
+            <Label Text="{Binding CurrentTotoList.Title}" FontAttributes="Bold" FontSize="20" />
         </StackLayout>
         <StackLayout VerticalOptions="StartAndExpand">
-            <ListView x:Name="List" ItemsSource="{Binding CategoryList}" HasUnevenRows="True">
+            <ListView ItemsSource="{Binding CurrentTotoList.CategoryList}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -32,8 +32,7 @@
                             <StackLayout HorizontalOptions="Fill">
                                 <Entry Text="{Binding Title}" Placeholder="{x:Static resx:AppResources.CategoryTitle}"
                                        FontAttributes="Bold" />
-                                <Entry Text="{Binding VipList}"
-                                       Placeholder="{x:Static resx:AppResources.VipListPlaceholder}" />
+                                <ListView ItemsSource="{Binding CelebrityList}" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -41,6 +40,7 @@
             </ListView>
         </StackLayout>
         <StackLayout VerticalOptions="End">
+            <Button Text="{x:Static resx:AppResources.ButtonAddCategory}" Command="{Binding AddCommand}" />
             <Button Text="{x:Static resx:AppResources.ButtonSave}" Command="{Binding SaveCommand}" />
         </StackLayout>
     </StackLayout>

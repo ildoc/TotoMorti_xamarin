@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using TotoMorti.Classes;
-using TotoMorti.Interfaces;
+﻿using System.Collections.Generic;
+using TotoMorti.Models;
 
 namespace TotoMorti.Managers
 {
     public class CelebrityManager
     {
         private readonly JsonDbManager _jsonDbManager;
+
         public CelebrityManager(JsonDbManager jsonDbManager)
         {
             _jsonDbManager = jsonDbManager;
