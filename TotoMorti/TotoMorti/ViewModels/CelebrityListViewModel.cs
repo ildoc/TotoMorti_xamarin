@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -23,11 +22,6 @@ namespace TotoMorti.ViewModels
             _celebrityManager = celebrityManager;
             AddCelebrityCommand = new DelegateCommand(NavigateAddCelebrity, CanNavigateAddCelebrity);
             OnDeleteCommand = new DelegateCommand<Celebrity>(DeleteCelebrity);
-        }
-
-        private void DeleteCelebrity(Celebrity obj)
-        {
-            _celebrityManager.DeleteCelebrity(obj);
         }
 
         public DelegateCommand<Celebrity> OnDeleteCommand { get; set; }
@@ -59,7 +53,13 @@ namespace TotoMorti.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            CelebrityList = new ObservableCollection<Celebrity>(_celebrityManager.GetAllCelebrities());
+            LoadCelebrities();
+        }
+
+        private void DeleteCelebrity(Celebrity obj)
+        {
+            _celebrityManager.DeleteCelebrity(obj);
+            LoadCelebrities();
         }
 
         private void NavigateAddCelebrity()
@@ -79,6 +79,11 @@ namespace TotoMorti.ViewModels
             var p = new NavigationParameters {{"action", FormStatus.Edit}, {"celebrity", SelectedCelebrity}};
 
             _navigationService.NavigateAsync(PageNames.CelebrityFormView, p);
+        }
+
+        private void LoadCelebrities()
+        {
+            CelebrityList = new ObservableCollection<Celebrity>(_celebrityManager.GetAllCelebrities());
         }
     }
 }

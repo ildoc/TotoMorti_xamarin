@@ -25,8 +25,11 @@ namespace TotoMorti.ViewModels
             _jsonDbManager = jsonDbManager;
             AddCommand = new DelegateCommand(AddCelebrity);
             SaveCommand = new DelegateCommand(SaveCategory);
+            OnDeleteCommand = new DelegateCommand<Celebrity>(RemoveCelebrity);
             SelectedCelebrityList = new List<Celebrity>();
         }
+
+        public DelegateCommand<Celebrity> OnDeleteCommand { get; set; }
 
         public DelegateCommand SaveCommand { get; set; }
 
@@ -76,11 +79,23 @@ namespace TotoMorti.ViewModels
                 }
             }
 
-            SelectedCelebrityList = _jsonDbManager.GetCelebritiesByGuid(CurrentCategory.CelebrityList);
+            LoadSelectedCelebrities();
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
+        }
+
+        private void RemoveCelebrity(Celebrity obj)
+        {
+            CurrentCategory.CelebrityList.Remove(obj.CelebrityGuid.ToString());
+            SaveCategory();
+            LoadSelectedCelebrities();
+        }
+
+        private void LoadSelectedCelebrities()
+        {
+            SelectedCelebrityList = _jsonDbManager.GetCelebritiesByGuid(CurrentCategory.CelebrityList);
         }
 
         private void SaveCategory()

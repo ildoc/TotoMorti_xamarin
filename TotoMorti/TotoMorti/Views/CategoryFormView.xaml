@@ -6,21 +6,21 @@
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              mvvm:ViewModelLocator.AutowireViewModel="True"
              x:Class="TotoMorti.Views.CategoryFormView"
-             x:Name="CelebrityFormPage"
+             x:Name="CategoryFormPage"
              Padding="10,20,10,10">
     <StackLayout>
         <StackLayout VerticalOptions="Start">
             <Entry Text="{Binding CurrentCategory.Title}" FontSize="20" FontAttributes="Bold"
                    Placeholder="{x:Static resx:AppResources.CategoryTitle}" />
         </StackLayout>
-        <StackLayout VerticalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="Fill">
             <ListView x:Name="List" ItemsSource="{Binding SelectedCelebrityList}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.ContextActions>
                                 <MenuItem
-                                    Command="{Binding BindingContext.OnDeleteCommand, Source={x:Reference CelebrityFormPage}}"
+                                    Command="{Binding BindingContext.OnDeleteCommand, Source={x:Reference CategoryFormPage}}"
                                     CommandParameter="{Binding .}"
                                     Text="{x:Static resx:AppResources.ButtonDelete}"
                                     IsDestructive="True" />

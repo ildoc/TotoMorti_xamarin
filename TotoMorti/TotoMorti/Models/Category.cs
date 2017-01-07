@@ -10,6 +10,7 @@ namespace TotoMorti.Models
         {
             CategoryGuid = Guid.NewGuid();
             CelebrityList = new List<string>();
+            ResolvedCelebrityList = new List<string>();
         }
 
         public Guid CategoryGuid { get; set; }
