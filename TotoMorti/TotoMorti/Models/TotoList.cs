@@ -13,7 +13,7 @@ namespace TotoMorti.Models
             EndDate = DateTime.Now.AddDays(1);
         }
 
-        public Guid ListGuid { get; }
+        public Guid ListGuid { get; set; }
         public string Title { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime EditTimeLimit { get; set; }

@@ -12,10 +12,10 @@ namespace TotoMorti.ViewModels
 {
     public class CategoryFormViewModel : BindableBase, INavigationAware
     {
+        private readonly JsonDbManager _jsonDbManager;
         private readonly INavigationService _navigationService;
         private Category _currentCategory;
         private FormStatus _currentFormStatus;
-        private readonly JsonDbManager _jsonDbManager;
         private Guid _listGuid;
         private List<Celebrity> _selectedCelebrityList;
 
@@ -24,8 +24,11 @@ namespace TotoMorti.ViewModels
             _navigationService = navigationService;
             _jsonDbManager = jsonDbManager;
             AddCommand = new DelegateCommand(AddCelebrity);
+            SaveCommand = new DelegateCommand(SaveCategory);
             SelectedCelebrityList = new List<Celebrity>();
         }
+
+        public DelegateCommand SaveCommand { get; set; }
 
         public DelegateCommand AddCommand { get; set; }
 
@@ -78,6 +81,11 @@ namespace TotoMorti.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
+        }
+
+        private void SaveCategory()
+        {
+            _jsonDbManager.SaveCategory(CurrentCategory, _listGuid);
         }
 
         private void AddCelebrity()

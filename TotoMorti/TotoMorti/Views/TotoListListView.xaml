@@ -13,7 +13,7 @@
         <StackLayout VerticalOptions="Start">
             <Button Text="{x:Static resx:AppResources.ButtonAddList}" Command="{Binding AddTotoListCommand}" />
         </StackLayout>
-        <StackLayout VerticalOptions="StartAndExpand">
+        <StackLayout VerticalOptions="Fill">
             <ListView x:Name="List" ItemsSource="{Binding TotoListList}" HasUnevenRows="True"
                       SelectedItem="{Binding SelectedTotoList}">
                 <ListView.ItemTemplate>

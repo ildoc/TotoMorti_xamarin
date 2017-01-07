@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace TotoMorti.Models
 {
@@ -11,9 +12,12 @@ namespace TotoMorti.Models
             CelebrityList = new List<string>();
         }
 
-        public Guid CategoryGuid { get; }
+        public Guid CategoryGuid { get; set; }
         public string Title { get; set; }
         // public string Description { get; set; }
         public List<string> CelebrityList { get; set; }
+
+        [JsonIgnore]
+        public List<string> ResolvedCelebrityList { get; set; }
     }
 }

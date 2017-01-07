@@ -6,20 +6,20 @@
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              x:Class="TotoMorti.Views.CategoryListView"
              mvvm:ViewModelLocator.AutowireViewModel="True"
-             x:Name="CategoryViewPage"
+             x:Name="CategoryListPage"
              Padding="10,20,10,10">
     <StackLayout>
         <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
             <Label Text="{Binding CurrentTotoList.Title}" FontAttributes="Bold" FontSize="20" />
         </StackLayout>
-        <StackLayout VerticalOptions="StartAndExpand">
-            <ListView ItemsSource="{Binding CurrentTotoList.CategoryList}" HasUnevenRows="True">
+        <StackLayout VerticalOptions="FillAndExpand">
+            <ListView ItemsSource="{Binding CurrentTotoList.Categories}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.ContextActions>
                                 <MenuItem
-                                    Command="{Binding BindingContext.OnDeleteCommand, Source={x:Reference CategoryListFormPage}}"
+                                    Command="{Binding BindingContext.OnDeleteCommand, Source={x:Reference CategoryListPage}}"
                                     CommandParameter="{Binding .}"
                                     Text="{x:Static resx:AppResources.ButtonDelete}"
                                     IsDestructive="True" />
@@ -28,11 +28,10 @@
                             <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
                                Text="Delete" IsDestructive="True" />-->
                             </ViewCell.ContextActions>
-
-                            <StackLayout HorizontalOptions="Fill">
-                                <Entry Text="{Binding Title}" Placeholder="{x:Static resx:AppResources.CategoryTitle}"
-                                       FontAttributes="Bold" />
-                                <ListView ItemsSource="{Binding CelebrityList}" />
+                            <StackLayout>
+                                <StackLayout HorizontalOptions="Fill">
+                                    <ListView ItemsSource="{Binding ResolvedCelebrityList}" Header="{Binding Title}" />
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

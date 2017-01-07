@@ -9,7 +9,7 @@ namespace TotoMorti.Models
             CelebrityGuid = Guid.NewGuid();
         }
 
-        public Guid CelebrityGuid { get; }
+        public Guid CelebrityGuid { get; set; }
 
         public string Name { get; set; }
 

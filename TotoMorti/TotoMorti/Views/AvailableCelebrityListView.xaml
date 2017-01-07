@@ -7,7 +7,7 @@
              mvvm:ViewModelLocator.AutowireViewModel="True"
              Padding="10,20,10,10">
 
-    <StackLayout VerticalOptions="StartAndExpand">
+    <StackLayout VerticalOptions="Fill">
         <ListView x:Name="List" ItemsSource="{Binding AvailableCelebrities}" HasUnevenRows="True"
                   SelectedItem="{Binding SelectedCelebrity}">
             <ListView.ItemTemplate>

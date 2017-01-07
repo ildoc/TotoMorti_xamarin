@@ -130,5 +130,17 @@ namespace TotoMorti.Managers
         {
             return _celebrities.Where(x => categoryCelebrityList.Contains(x.CelebrityGuid.ToString())).ToList();
         }
+
+        public List<string> ResolveCelebrityList(Category cat, Guid listGuid)
+        {
+            var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
+            var c = t?.Categories.FirstOrDefault(x => x.CategoryGuid == cat.CategoryGuid);
+            if (c != null)
+            {
+                var res = GetCelebritiesByGuid(cat.CelebrityList).Select(x => x.FullName).ToList();
+                return res;
+            }
+            return new List<string>();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TotoMorti.Models;
 
 namespace TotoMorti.Managers
@@ -30,6 +31,11 @@ namespace TotoMorti.Managers
         public void UpdateCelebrity(Celebrity c)
         {
             // _connection.Update(c);
+        }
+
+        public List<string> ResolveCelebrityList(Category cat, Guid listGuid)
+        {
+            return _jsonDbManager.ResolveCelebrityList(cat, listGuid);
         }
     }
 }
