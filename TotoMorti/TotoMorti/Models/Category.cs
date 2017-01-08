@@ -11,11 +11,15 @@ namespace TotoMorti.Models
             CategoryGuid = Guid.NewGuid();
             CelebrityList = new List<string>();
             ResolvedCelebrityList = new List<string>();
+            VipList = new List<string>();
         }
 
         public Guid CategoryGuid { get; set; }
         public string Title { get; set; }
         // public string Description { get; set; }
+        [Obsolete]
+        public List<string> VipList { get; set; }
+
         public List<string> CelebrityList { get; set; }
 
         [JsonIgnore]
