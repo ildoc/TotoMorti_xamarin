@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content.PM;
+using Android.Content.Res;
 using Android.OS;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -12,7 +13,6 @@ namespace TotoMorti.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-            TabLayoutResource = Resource.Layout.tabs;
             ToolbarResource = Resource.Layout.toolbar;
 
             base.OnCreate(bundle);

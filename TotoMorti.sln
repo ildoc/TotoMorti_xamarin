@@ -13,12 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotoMorti.UWP", "TotoMorti\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotoMorti.Tests", "TotoMorti.Tests\TotoMorti.Tests.csproj", "{958039E9-670B-44DF-8412-F9E1EB46A025}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{967133DB-5507-427F-935E-D32F220CE77B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2CAA926C-3BDF-484C-AFFF-A0A8CB7B87C7}"
 	ProjectSection(SolutionItems) = preProject
 		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{C84D50B5-78E2-445F-9A74-1673EBC9BCC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6461ECDF-3F84-4E56-98A5-19C4C8601EAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -314,8 +316,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CAE0ED31-FE0E-49BE-A5DA-00E0577C71E7} = {967133DB-5507-427F-935E-D32F220CE77B}
-		{64609FF0-C23B-457B-AF6E-A6A825B8A0B2} = {967133DB-5507-427F-935E-D32F220CE77B}
-		{DC009D7E-3112-4015-8884-202B5FDE3108} = {967133DB-5507-427F-935E-D32F220CE77B}
+		{958039E9-670B-44DF-8412-F9E1EB46A025} = {6461ECDF-3F84-4E56-98A5-19C4C8601EAB}
 	EndGlobalSection
 EndGlobal
