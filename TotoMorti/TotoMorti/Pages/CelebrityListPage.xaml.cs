@@ -10,10 +10,10 @@ namespace TotoMorti.Pages
 {
     public partial class CelebrityListPage : ContentPage
     {
-        protected CelebrityListViewModel ViewModel => BindingContext as CelebrityListViewModel;
-        public CelebrityListPage()
+        public CelebrityListPage(CelebrityListViewModel vm)
         {
             InitializeComponent();
+            BindingContext = vm;
         }
     }
 }

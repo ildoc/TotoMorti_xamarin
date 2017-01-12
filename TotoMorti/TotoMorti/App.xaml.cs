@@ -1,6 +1,9 @@
 ﻿using Autofac;
+using Autofac.Extras.CommonServiceLocator;
 using FormsToolkit;
+using Microsoft.Practices.ServiceLocation;
 using TotoMorti.Constants;
+using TotoMorti.Managers;
 using TotoMorti.Pages;
 using TotoMorti.Resx;
 using TotoMorti.ViewModels;
@@ -15,6 +18,8 @@ namespace TotoMorti
     {
         //https://github.com/xamarinhq/app-acquaint
 
+        public IContainer IoCContainer;
+
         public App()
         {
             InitializeComponent();
@@ -27,23 +32,19 @@ namespace TotoMorti
             if (Device.OS == TargetPlatform.Android)
             {
                 // if this is an Android device, set the MainPage to a new SplashPage
-                MainPage = new SplashPage();
+                MainPage = IoCContainer.Resolve < SplashPage>();
             }
             else
             {
                 // create a new NavigationPage, with a new AcquaintanceListPage set as the Root
                 var navPage =
-                    new NavigationPage(
-                        new MainPage
-                        {
-                            BindingContext = new MainPageViewModel(),
-                            Title = AppResources.AppName
-                        })
+                    new NavigationPage(IoCContainer.Resolve<MainPage>())
                     {
-                        BarBackgroundColor = Color.FromHex("547799")
+                        Title = AppResources.AppName,
+                        BarBackgroundColor = Color.FromHex("547799"),
+                        BarTextColor = Color.White
                     };
 
-                navPage.BarTextColor = Color.White;
 
                 // set the MainPage of the app to the navPage
                 MainPage = navPage;
@@ -80,6 +81,16 @@ namespace TotoMorti
         private void RegisterDependencies()
         {
             var builder = new ContainerBuilder();
+
+            builder.RegisterType<JsonDbManager>();
+            builder.RegisterType<CelebrityManager>();
+            builder.RegisterType<CategoryManager>();
+            builder.RegisterType<TotoListManager>();
+
+            IoCContainer = builder.Build();
+
+            var csl = new AutofacServiceLocator(IoCContainer);
+            ServiceLocator.SetLocatorProvider(() => csl);
         }
     }
 }
