@@ -10,7 +10,7 @@ namespace TotoMorti.iOS.API
 {
     public class JsonDb_iOS : IJsonDb
     {
-        public void WriteJson(string s, string dbName)
+        public void WriteJsonAsync(string s, string dbName)
         {
             File.WriteAllText(GetPath(dbName), s);
         }

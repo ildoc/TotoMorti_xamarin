@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TotoMorti.Models;
 
 namespace TotoMorti.Managers
@@ -18,9 +19,9 @@ namespace TotoMorti.Managers
             return _jsonDbManager.GetAllCelebrities();
         }
 
-        public void SaveCelebrity(Celebrity c)
+        public async Task SaveCelebrity(Celebrity c)
         {
-            _jsonDbManager.SaveCelebrity(c);
+            await _jsonDbManager.SaveCelebrity(c);
         }
 
         public void DeleteCelebrity(Celebrity c)

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
+             x:Class="TotoMorti.Pages.CelebrityFormPage"
+             Disappearing="CelebrityFormPage_OnDisappearing">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static resx:AppResources.ButtonSave}" Icon="save.png" Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout VerticalOptions="StartAndExpand">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TableView Grid.Row="0" Grid.ColumnSpan="2" Intent="Settings" BackgroundColor="White">
+                <TableRoot>
+                    <TableSection Title="Info">
+                        <EntryCell Label="{x:Static resx:AppResources.CelebrityName}"
+                                   Text="{Binding CurrentCelebrity.Name}" Keyboard="Text" />
+                        <EntryCell Label="{x:Static resx:AppResources.CelebritySurname}"
+                                   Text="{Binding CurrentCelebrity.Surname}" Keyboard="Text" />
+                    </TableSection>
+                    <TableSection Title="Others">
+                        <EntryCell Label="{x:Static resx:AppResources.CelebrityImageUrl}"
+                                   Text="{Binding CurrentCelebrity.ImageUrl}" Keyboard="Text" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+            <Label Grid.Row="1" Grid.Column="0" Text="{x:Static resx:AppResources.CelebrityBirthDate}" />
+            <DatePicker Grid.Row="1" Grid.Column="1" VerticalOptions="CenterAndExpand"
+                        Date="{Binding CurrentCelebrity.BirthDate}">
+                <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+            </DatePicker>
+        </Grid>
+    </StackLayout>
+</ContentPage>

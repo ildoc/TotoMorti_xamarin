@@ -6,16 +6,19 @@ namespace TotoMorti.Pages
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        private readonly MainPageViewModel _vm;
+
+        public MainPage(MainPageViewModel vm)
         {
             InitializeComponent();
+            _vm = vm;
+            BindingContext = _vm;
         }
 
-        protected MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
 
         private async void ShowAbout(object sender, EventArgs e)
         {
-            await DisplayAlert("About", ViewModel.Changelog, "OK");
+            await DisplayAlert("About", _vm.Changelog, "OK");
         }
     }
 }

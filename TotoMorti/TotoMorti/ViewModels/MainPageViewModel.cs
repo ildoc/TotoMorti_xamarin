@@ -8,29 +8,21 @@ namespace TotoMorti.ViewModels
 {
     public class MainPageViewModel : BaseNavigationViewModel
     {
-        public string Changelog = TotoMorti.Changelog.Changes;
         private Command _celebrityListCommand;
-        private IContainer _iContainer;
-        public MainPageViewModel(IContainer iContainer)
-        {
-            _iContainer = iContainer;
-        }
+        public string Changelog = TotoMorti.Changelog.Changes;
 
-        private Command CelebrityListCommand
+        public Command CelebrityListCommand
         {
             get
             {
                 return _celebrityListCommand ??
-                       (_celebrityListCommand = new Command(async () => await ExecutedCelebrityListCommand()));
+                       (_celebrityListCommand = new Command(async () => await NavigateCelebrityListCommand()));
             }
         }
 
-        private async Task ExecutedCelebrityListCommand()
+        private async Task NavigateCelebrityListCommand()
         {
-            await PushAsync(_iContainer.Resolve<CelebrityListPage>());
+            await PushAsync(Bootstrapper.IoCContainer.Resolve<CelebrityListPage>());
         }
     }
-
-
-  
 }

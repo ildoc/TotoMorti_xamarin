@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
-using TotoMorti.Resx;
-using TotoMorti.ViewModels;
+using Autofac;
 using Xamarin.Forms;
 
 namespace TotoMorti.Pages
@@ -39,12 +38,11 @@ namespace TotoMorti.Pages
             //else
             //{
             // create a new NavigationPage, with a new AcquaintanceListPage set as the Root
-            var navPage = new NavigationPage(
-                new MainPage
-                {
-                    BindingContext = new MainPageViewModel(),
-                    Title = AppResources.AppName
-                });
+            var navPage = new NavigationPage(Bootstrapper.IoCContainer.Resolve<MainPage>())
+            {
+                BarBackgroundColor = Color.FromHex("547799"),
+                BarTextColor = Color.White
+            };
 
             navPage.BarTextColor = Color.White;
 

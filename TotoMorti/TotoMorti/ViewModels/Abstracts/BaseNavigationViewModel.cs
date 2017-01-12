@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using MvvmHelpers;
+using TotoMorti.Classes.Abstracts;
 using Xamarin.Forms;
 
 namespace TotoMorti.ViewModels.Abstracts
@@ -8,7 +8,7 @@ namespace TotoMorti.ViewModels.Abstracts
     /// <summary>
     ///     Implements the INavigation interface on top of BaseViewModel.
     /// </summary>
-    public abstract class BaseNavigationViewModel : BaseViewModel, INavigation
+    public abstract class BaseNavigationViewModel : BindableBase, INavigation
     {
         private INavigation _Navigation => Application.Current?.MainPage?.Navigation;
 

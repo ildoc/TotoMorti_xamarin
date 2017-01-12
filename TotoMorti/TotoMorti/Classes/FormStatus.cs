@@ -1,6 +1,6 @@
 ﻿namespace TotoMorti.Classes
 {
-    internal enum FormStatus
+    public enum FormStatus
     {
         Add,
         Edit,

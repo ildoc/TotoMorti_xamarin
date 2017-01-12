@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TotoMorti.Interfaces;
 using TotoMorti.Models;
@@ -47,15 +48,15 @@ namespace TotoMorti.Managers
             Save(totomortiDb);
         }
 
-        private void Save(string dbName)
+        private async Task Save(string dbName)
         {
             switch (dbName)
             {
                 case celebrityDb:
-                    _jsonDb.WriteJson(JsonConvert.SerializeObject(_celebrities), dbName);
+                    await _jsonDb.WriteJsonAsync(JsonConvert.SerializeObject(_celebrities), dbName);
                     break;
                 case totomortiDb:
-                    _jsonDb.WriteJson(JsonConvert.SerializeObject(_totoLists), dbName);
+                    await _jsonDb.WriteJsonAsync(JsonConvert.SerializeObject(_totoLists), dbName);
                     break;
             }
         }
@@ -82,7 +83,7 @@ namespace TotoMorti.Managers
             return _celebrities;
         }
 
-        public void SaveCelebrity(Celebrity celebrity)
+        public async Task SaveCelebrity(Celebrity celebrity)
         {
             var c = _celebrities.FirstOrDefault(x => x.CelebrityGuid == celebrity.CelebrityGuid);
             if (c != null)
@@ -96,7 +97,7 @@ namespace TotoMorti.Managers
                 _celebrities.Add(celebrity);
             }
 
-            Save(celebrityDb);
+            await Save(celebrityDb);
         }
 
         public void DeleteCelebrity(Celebrity celebrity)

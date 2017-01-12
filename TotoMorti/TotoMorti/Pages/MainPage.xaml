@@ -4,17 +4,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
              x:Class="TotoMorti.Pages.MainPage"
-             Padding="10,20,10,10">
-    <StackLayout>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
-            <!--<Switch IsToggled="{Binding IsActive}" />-->
-            <Button Text="{x:Static resx:AppResources.TotoLists}" Command="{Binding TotoListListCommand}" />
-            <Button Text="{x:Static resx:AppResources.Groups}" Command="{Binding GroupsCommand}" />
-            <!--<Button Text="{x:Static resx:AppResources.Sessions}" Command="{Binding SessionCommand}" />-->
-            <Button Text="{x:Static resx:AppResources.CelebrityList}" Command="{Binding CelebrityListCommand}" />
-        </StackLayout>
-        <StackLayout VerticalOptions="End">
-            <Button Text="{x:Static resx:AppResources.ButtonAbout}" Clicked="ShowAbout" />
-        </StackLayout>
+             Padding="10,20,10,10"
+             Title="TotoMorti">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="?" Clicked="ShowAbout" />
+    </ContentPage.ToolbarItems>
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
+        <Button Text="{x:Static resx:AppResources.TotoLists}" Command="{Binding TotoListListCommand}" />
+        <Button Text="{x:Static resx:AppResources.Groups}" Command="{Binding GroupsCommand}" IsEnabled="False" />
+        <!--<Button Text="{x:Static resx:AppResources.Sessions}" Command="{Binding SessionCommand}" />-->
+        <Button Text="{x:Static resx:AppResources.CelebrityList}" Command="{Binding CelebrityListCommand}" />
     </StackLayout>
 </ContentPage>
