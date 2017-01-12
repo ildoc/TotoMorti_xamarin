@@ -1,4 +1,5 @@
-﻿using FormsToolkit;
+﻿using Autofac;
+using FormsToolkit;
 using TotoMorti.Constants;
 using TotoMorti.Pages;
 using TotoMorti.Resx;
@@ -17,6 +18,9 @@ namespace TotoMorti
         public App()
         {
             InitializeComponent();
+
+            RegisterDependencies();
+
             SubscribeToDisplayAlertMessages();
 
             // The navigation logic startup needs to diverge per platform in order to meet the UX design requirements
@@ -71,6 +75,11 @@ namespace TotoMorti
                         info?.OnCompleted?.Invoke(result);
                     }
                 });
+        }
+
+        private void RegisterDependencies()
+        {
+            var builder = new ContainerBuilder();
         }
     }
 }
