@@ -17,6 +17,7 @@ namespace TotoMorti.ViewModels
 
         private Command _addCelebrityCommand;
         private ObservableCollection<Celebrity> _celebrityList;
+        private Command<Celebrity> _deleteCommand;
         private Command<Celebrity> _editCelebrityCommand;
         private Command _refreshCelebrityListCommand;
 
@@ -42,12 +43,22 @@ namespace TotoMorti.ViewModels
             }
         }
 
+
+        public Command<Celebrity> DeleteCommand
+        {
+            get
+            {
+                return _deleteCommand ??
+                       (_deleteCommand = new Command<Celebrity>(async c => await DeleteCelebrity(c)));
+            }
+        }
+
         public Command RefreshCelebrityListCommand
         {
             get
             {
                 return _refreshCelebrityListCommand ??
-                       (_refreshCelebrityListCommand = new Command(async () => await LoadContext()));
+                       (_refreshCelebrityListCommand = new Command(LoadContext));
             }
         }
 
@@ -65,9 +76,9 @@ namespace TotoMorti.ViewModels
             LoadContext();
         }
 
-        private async Task LoadContext()
+        private void LoadContext()
         {
-            CelebrityList = new ObservableCollection<Celebrity>(_celebrityManager.GetAllCelebrities());
+            Task.Run(() => CelebrityList = new ObservableCollection<Celebrity>(_celebrityManager.GetAllCelebrities()));
         }
 
         private async Task NavigateAddCelebrity()
@@ -84,6 +95,12 @@ namespace TotoMorti.ViewModels
                 new NamedParameter("celebrity", celebrity)
             };
             await PushAsync(Bootstrapper.IoCContainer.Resolve<CelebrityFormPage>(p));
+        }
+
+        private async Task DeleteCelebrity(Celebrity c)
+        {
+            await _celebrityManager.DeleteCelebrity(c);
+            LoadContext();
         }
     }
 }

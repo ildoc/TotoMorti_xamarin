@@ -41,7 +41,6 @@ namespace TotoMorti.Classes.Abstracts
             OnPropertyChanged(propertyName);
 
             return true;
-
         }
 
         /// <summary>

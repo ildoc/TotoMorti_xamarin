@@ -1,5 +1,4 @@
-﻿using TotoMorti.Classes;
-using TotoMorti.Models;
+﻿using TotoMorti.Models;
 
 namespace TotoMorti.Managers
 {

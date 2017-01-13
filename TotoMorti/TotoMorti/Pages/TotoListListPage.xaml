@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
+             x:Class="TotoMorti.Pages.TotoListListPage"
+             x:Name="TotoListListView"
+             Title="{x:Static resx:AppResources.TotoListTitle}">
+    <StackLayout>
+        <StackLayout VerticalOptions="Start">
+            <Button Text="{x:Static resx:AppResources.ButtonAddList}" Command="{Binding AddTotoListCommand}" />
+        </StackLayout>
+        <StackLayout VerticalOptions="Fill">
+            <ListView x:Name="List" ItemsSource="{Binding TotoListList}" HasUnevenRows="True"
+                      SelectedItem="{Binding SelectedTotoList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem
+                                    Command="{Binding BindingContext.OnDeleteCommand, Source={x:Reference TotoListListView}}"
+                                    CommandParameter="{Binding .}"
+                                    Text="{x:Static resx:AppResources.ButtonDelete}"
+                                    IsDestructive="True" />
+                                <!--<MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
+                               Text="More" />
+                            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+                               Text="Delete" IsDestructive="True" />-->
+                            </ViewCell.ContextActions>
+
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <StackLayout HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding Title}" />
+                                    <Label Text="{Binding CreatedOn}" TextColor="Gray" />
+                                </StackLayout>
+                                <Button Text="{x:Static resx:AppResources.ButtonView}"
+                                        Command="{Binding BindingContext.OnViewCommand, Source={x:Reference TotoListListPage}}"
+                                        CommandParameter="{Binding .}" />
+                                <Button Text="{x:Static resx:AppResources.ButtonEdit}"
+                                        Command="{Binding BindingContext.OnEditCommand, Source={x:Reference TotoListListPage}}"
+                                        CommandParameter="{Binding .}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

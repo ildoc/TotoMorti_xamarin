@@ -1,9 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Autofac;
 using TotoMorti.Classes;
 using TotoMorti.Managers;
 using TotoMorti.Models;
-using TotoMorti.Pages;
 using TotoMorti.ViewModels.Abstracts;
 using Xamarin.Forms;
 
@@ -54,6 +52,5 @@ namespace TotoMorti.ViewModels
             await _celebrityManager.SaveCelebrity(CurrentCelebrity);
             await PopAsync();
         }
-
     }
 }

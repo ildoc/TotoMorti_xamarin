@@ -10,11 +10,6 @@ namespace TotoMorti.iOS.API
 {
     public class JsonDb_iOS : IJsonDb
     {
-        public void WriteJsonAsync(string s, string dbName)
-        {
-            File.WriteAllText(GetPath(dbName), s);
-        }
-
         public string ReadJson(string dbName)
         {
             if (!File.Exists(GetPath(dbName)))
@@ -22,11 +17,16 @@ namespace TotoMorti.iOS.API
             return File.ReadAllText(GetPath(dbName));
         }
 
+        public void WriteJsonAsync(string s, string dbName)
+        {
+            File.WriteAllText(GetPath(dbName), s);
+        }
+
         private string GetPath(string dbName)
         {
             var documentPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var libraryPath = Path.Combine(documentPath, "..", "Library");
-            return Path.Combine(libraryPath, dbName+".json");
+            return Path.Combine(libraryPath, dbName + ".json");
         }
     }
 }

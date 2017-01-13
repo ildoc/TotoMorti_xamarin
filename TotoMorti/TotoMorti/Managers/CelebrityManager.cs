@@ -24,9 +24,9 @@ namespace TotoMorti.Managers
             await _jsonDbManager.SaveCelebrity(c);
         }
 
-        public void DeleteCelebrity(Celebrity c)
+        public async Task DeleteCelebrity(Celebrity c)
         {
-            _jsonDbManager.DeleteCelebrity(c);
+            await _jsonDbManager.DeleteCelebrity(c);
         }
 
         public void UpdateCelebrity(Celebrity c)
