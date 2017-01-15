@@ -52,6 +52,25 @@
     <Compile Include="Constants\MessageKeys.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="EventCenter.cs" />
+    <Compile Include="Pages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AvailableCelebrityListPage.xaml.cs">
+      <DependentUpon>AvailableCelebrityListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CategoryFormPage.xaml.cs">
+      <DependentUpon>CategoryFormPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CategoryListPage.xaml.cs">
+      <DependentUpon>CategoryListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TotoListFormPage.xaml.cs">
+      <DependentUpon>TotoListFormPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AvailableCelebrityListViewModel.cs" />
+    <Compile Include="ViewModels\CategoryFormViewModel.cs" />
+    <Compile Include="ViewModels\CategoryListViewModel.cs" />
+    <Compile Include="ViewModels\TotoListFormViewModel.cs" />
     <Compile Include="ViewModels\TotoListViewModel.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Celebrity.cs" />
@@ -200,6 +219,36 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\TotoListListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\AboutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\TotoListFormPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\CategoryListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\CategoryFormPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\AvailableCelebrityListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

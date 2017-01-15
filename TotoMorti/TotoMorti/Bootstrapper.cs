@@ -19,13 +19,21 @@ namespace TotoMorti
 
             builder.RegisterType<SplashPage>().AsSelf();
             builder.RegisterType<MainPage>().AsSelf();
+            builder.RegisterType<AboutPage>().AsSelf();
             builder.RegisterType<CelebrityListPage>().AsSelf();
             builder.RegisterType<CelebrityFormPage>().AsSelf();
+            builder.RegisterType<TotoListListPage>().AsSelf();
+            builder.RegisterType<TotoListFormPage>().AsSelf();
+            builder.RegisterType<CategoryListPage>().AsSelf();
+            builder.RegisterType<CategoryFormPage>().AsSelf();
 
             builder.RegisterType<MainPageViewModel>().AsSelf();
             builder.RegisterType<CelebrityListViewModel>().AsSelf();
             builder.RegisterType<CelebrityFormViewModel>().AsSelf();
-
+            builder.RegisterType<TotoListViewModel>().AsSelf();
+            builder.RegisterType<TotoListFormViewModel>().AsSelf();
+            builder.RegisterType<CategoryListViewModel>().AsSelf();
+            builder.RegisterType<CategoryFormViewModel>().AsSelf();
 
             builder.RegisterType<JsonDbManager>().AsSelf();
             builder.RegisterType<CelebrityManager>().AsSelf();

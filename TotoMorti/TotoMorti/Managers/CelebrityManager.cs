@@ -38,5 +38,10 @@ namespace TotoMorti.Managers
         {
             return _jsonDbManager.ResolveCelebrityList(cat, listGuid);
         }
+
+        public List<Celebrity> GetAvailableCelebrities(List<Celebrity> selectedCelebrities)
+        {
+            return _jsonDbManager.GetAvailableCelebrities(selectedCelebrities);
+        }
     }
 }

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
+             x:Class="TotoMorti.Pages.TotoListFormPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static resx:AppResources.ButtonSave}" Icon="save.png" Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Text="{x:Static resx:AppResources.TotoListTitle}" />
+            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding CurrentTotoList.Title}" FontAttributes="Bold" />
+
+            <Label Grid.Row="1" Grid.Column="0" Text="{x:Static resx:AppResources.CreatedOn}" />
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding CurrentTotoList.CreationDate}" />
+
+            <Label Grid.Row="2" Grid.Column="0" Text="{x:Static resx:AppResources.ListEndDate}" />
+            <DatePicker Grid.Row="2" Grid.Column="1" VerticalOptions="CenterAndExpand"
+                        Date="{Binding CurrentTotoList.EndDate}">
+                <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+            </DatePicker>
+
+            <Label Grid.Row="3" Grid.Column="0" Text="{x:Static resx:AppResources.EditTimeLimit}" />
+            <DatePicker Grid.Row="3" Grid.Column="1" VerticalOptions="CenterAndExpand"
+                        Date="{Binding CurrentTotoList.EditTimeLimit}">
+                <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+            </DatePicker>
+
+            <Label Grid.Row="4" Grid.Column="0" Text="{x:Static resx:AppResources.MaxItemPerCategory}" />
+            <Entry Grid.Row="4" Grid.Column="1" Text="{Binding CurrentTotoList.MaxItemPerCategory}"
+                   Keyboard="Numeric" />
+        </Grid>
+        <Label
+            Text="Birthdate" />
+        <DatePicker
+            Date="{Binding CurrentTotoList.EndDate, Mode=TwoWay}">
+            <DatePicker.Triggers>
+                <Trigger TargetType="DatePicker"
+                         Property="IsFocused" Value="True">
+                    <Setter Property="Opacity" Value="1" />
+                </Trigger>
+            </DatePicker.Triggers>
+        </DatePicker>
+    </StackLayout>
+</ContentPage>

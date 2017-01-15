@@ -3,6 +3,7 @@
     public static class Changelog
     {
         public static string Changes = "00/01/2017\n" +
+                                       "- Riscrittura quasi totale dell'app\n" +
                                        "- Modifiche flow creazione liste\n" +
                                        "- Abilitata possibilità inserimento Vip\n" +
                                        "- Modifiche alla grafica\n" +

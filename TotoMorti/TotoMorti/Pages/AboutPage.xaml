@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TotoMorti.Pages.AboutPage"
+             Title="About">
+    <StackLayout>
+        <TableView BackgroundColor="White">
+            <TableRoot>
+                <TableSection Title="Faq">
+                    <TextCell Text="Cos'è" Detail="Un app brutta per un gioco per brutte persone" IsEnabled="False" />
+                    <TextCell Text="Perchè" Detail="Da un'idea goliardica" IsEnabled="False" />
+                    <TextCell Text="I miei amici non la trovano sullo store" Detail="lalalalal"
+                              IsEnabled="False" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </StackLayout>
+</ContentPage>

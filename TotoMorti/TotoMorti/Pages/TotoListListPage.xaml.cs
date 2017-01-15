@@ -1,4 +1,5 @@
-﻿using TotoMorti.ViewModels;
+﻿using TotoMorti.Models;
+using TotoMorti.ViewModels;
 using Xamarin.Forms;
 
 namespace TotoMorti.Pages
@@ -12,6 +13,12 @@ namespace TotoMorti.Pages
             InitializeComponent();
             _vm = vm;
             BindingContext = _vm;
+        }
+
+        private void List_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (_vm.ViewTotoListCommand.CanExecute((TotoList) e.Item))
+                _vm.ViewTotoListCommand.Execute((TotoList) e.Item);
         }
     }
 }

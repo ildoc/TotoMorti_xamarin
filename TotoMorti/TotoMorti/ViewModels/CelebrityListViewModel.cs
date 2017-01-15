@@ -54,13 +54,7 @@ namespace TotoMorti.ViewModels
         }
 
         public Command RefreshCelebrityListCommand
-        {
-            get
-            {
-                return _refreshCelebrityListCommand ??
-                       (_refreshCelebrityListCommand = new Command(LoadContext));
-            }
-        }
+            => _refreshCelebrityListCommand ?? (_refreshCelebrityListCommand = new Command(LoadContext));
 
         public Command<Celebrity> EditCelebrityCommand
         {

@@ -7,6 +7,7 @@
              Padding="10,20,10,10"
              Title="TotoMorti">
     <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="?" Command="{Binding ShowAboutCommand}" />-->
         <ToolbarItem Text="?" Clicked="ShowAbout" />
     </ContentPage.ToolbarItems>
     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">

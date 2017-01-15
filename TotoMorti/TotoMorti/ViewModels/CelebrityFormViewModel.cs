@@ -33,7 +33,7 @@ namespace TotoMorti.ViewModels
             }
         }
 
-        public void InitializeParameters(FormStatus fs, Celebrity c = null)
+        public void InitializeParameters(FormStatus fs, Celebrity c)
         {
             switch (fs)
             {

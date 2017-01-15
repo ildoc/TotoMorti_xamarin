@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using TotoMorti.Models;
 
 namespace TotoMorti.Managers
@@ -12,9 +13,9 @@ namespace TotoMorti.Managers
             _jsonDbManager = jsonDbManager;
         }
 
-        public void SaveTotoList(TotoList currentTotoList)
+        public async Task SaveTotoList(TotoList currentTotoList)
         {
-            _jsonDbManager.SaveTotoList(currentTotoList);
+            await _jsonDbManager.SaveTotoList(currentTotoList);
         }
 
         public IEnumerable<TotoList> GetAllTotoLists()
@@ -22,9 +23,9 @@ namespace TotoMorti.Managers
             return _jsonDbManager.GetAllTotoLists();
         }
 
-        public void DeleteTotoList(TotoList totoList)
+        public async Task DeleteTotoList(TotoList totoList)
         {
-            _jsonDbManager.DeleteTotoList(totoList);
+            await _jsonDbManager.DeleteTotoList(totoList);
         }
     }
 }

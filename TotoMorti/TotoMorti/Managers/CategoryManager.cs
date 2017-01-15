@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TotoMorti.Models;
 
 namespace TotoMorti.Managers
@@ -13,9 +14,19 @@ namespace TotoMorti.Managers
             _jsonDbManager = jsonDbManager;
         }
 
-        public void SaveCategoryList(List<Category> categories, Guid listGuid)
+        public async Task SaveCategoryList(List<Category> categories, Guid listGuid)
         {
-            _jsonDbManager.SaveCategoryList(categories, listGuid);
+            await _jsonDbManager.SaveCategoryList(categories, listGuid);
+        }
+
+        public async Task DeleteCategory(Category category, Guid listGuid)
+        {
+            await _jsonDbManager.DeleteCategory(category, listGuid);
+        }
+
+        public async Task SaveCategory(Category category, Guid listGuid)
+        {
+            await _jsonDbManager.SaveCategory(category, listGuid);
         }
     }
 }

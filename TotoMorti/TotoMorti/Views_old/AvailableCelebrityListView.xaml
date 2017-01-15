@@ -7,22 +7,22 @@
              mvvm:ViewModelLocator.AutowireViewModel="True"
              Padding="10,20,10,10">
 
-    <StackLayout VerticalOptions="Fill">
-        <ListView x:Name="List" ItemsSource="{Binding AvailableCelebrities}" HasUnevenRows="True"
-                  SelectedItem="{Binding SelectedCelebrity}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="5">
-                            <Image Source="{Binding ImageUrl}" />
-                            <StackLayout HorizontalOptions="StartAndExpand">
-                                <Label Text="{Binding FullName}" />
-                                <Label Text="{Binding Age}" TextColor="Gray" />
+        <StackLayout VerticalOptions="Fill">
+            <ListView x:Name="List" ItemsSource="{Binding AvailableCelebrities}" HasUnevenRows="True"
+                    SelectedItem="{Binding SelectedCelebrity}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Image Source="{Binding ImageUrl}" />
+                                <StackLayout HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding FullName}" />
+                                    <Label Text="{Binding Age}" TextColor="Gray" />
+                                </StackLayout>
                             </StackLayout>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
 </ContentPage>

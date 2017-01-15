@@ -143,5 +143,11 @@ namespace TotoMorti.Managers
             }
             return new List<string>();
         }
+
+        public async Task DeleteCategory(Category category, Guid listGuid)
+        {
+            var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
+            await Task.Run(() => t?.Categories.Remove(category));
+        }
     }
 }

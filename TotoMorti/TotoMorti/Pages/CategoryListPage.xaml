@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
+             x:Class="TotoMorti.Pages.CategoryListPage"
+             Title="{Binding CurrentTotoList.Title}"
+             x:Name="CategoryListView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static resx:AppResources.ButtonAddCategory}" Command="{Binding AddCommand}" />
+        <ToolbarItem Text="{x:Static resx:AppResources.ButtonSave}" Icon="save.png" Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
+        <Label Text="{Binding CurrentTotoList.Title}" FontAttributes="Bold" FontSize="20" />
+    </StackLayout>
+    <StackLayout VerticalOptions="FillAndExpand">
+        <ListView ItemsSource="{Binding CurrentTotoList.Categories}" CachingStrategy="RecycleElement" RowHeight="60"
+                  HasUnevenRows="false" AbsoluteLayout.LayoutFlags="All"
+                  AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                Command="{Binding BindingContext.EditCommand, Source={x:Reference CategoryListView}}"
+                                CommandParameter="{Binding .}"
+                                Icon="edit.png"
+                                Text="{x:Static resx:AppResources.ButtonEdit}" />
+                            <MenuItem
+                                Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CategoryListView}}"
+                                CommandParameter="{Binding .}"
+                                Icon="delete.png"
+                                Text="{x:Static resx:AppResources.ButtonDelete}"
+                                IsDestructive="True" />
+                            <!--<MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
+                               Text="More" />
+                            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+                               Text="Delete" IsDestructive="True" />-->
+                        </ViewCell.ContextActions>
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="Fill">
+                                <ListView ItemsSource="{Binding ResolvedCelebrityList}" Header="{Binding Title}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
