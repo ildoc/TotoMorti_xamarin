@@ -149,5 +149,13 @@ namespace TotoMorti.Managers
             var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
             await Task.Run(() => t?.Categories.Remove(category));
         }
+
+        public async Task RemoveCelebrityFromCategory(Celebrity celebrity, Category category, Guid listGuid)
+        {
+            var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
+            var c = t?.Categories.FirstOrDefault(x => x.CategoryGuid == category.CategoryGuid);
+            c?.CelebrityList.Remove(celebrity.CelebrityGuid.ToString());
+            await Save(totomortiDb);
+        }
     }
 }

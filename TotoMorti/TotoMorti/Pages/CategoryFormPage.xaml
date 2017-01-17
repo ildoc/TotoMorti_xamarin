@@ -20,7 +20,7 @@
                         <ViewCell>
                             <ViewCell.ContextActions>
                                 <MenuItem
-                                    Command="{Binding BindingContext.OnDeleteCommand, Source={x:Reference CategoryFormPage}}"
+                                    Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CategoryFormPage}}"
                                     CommandParameter="{Binding .}"
                                     Icon="delete.png"
                                     Text="{x:Static resx:AppResources.ButtonDelete}"

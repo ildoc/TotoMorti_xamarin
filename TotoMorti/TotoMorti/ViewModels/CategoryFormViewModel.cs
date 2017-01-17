@@ -20,6 +20,7 @@ namespace TotoMorti.ViewModels
         private Guid _listGuid;
         private Command _saveCommand;
         private List<Celebrity> _selectedCelebrityList;
+        private Command<Celebrity> _deleteCommand;
 
         public CategoryFormViewModel(CategoryManager categoryManager)
         {
@@ -55,6 +56,20 @@ namespace TotoMorti.ViewModels
                 return _addCommand ??
                        (_addCommand = new Command(async () => await AddCelebrity()));
             }
+        }
+
+        public Command<Celebrity> DeleteCommand
+        {
+            get
+            {
+                return _deleteCommand ??
+                       (_deleteCommand = new Command<Celebrity>(async (c) => await RemoveCelebrity(c)));
+            }
+        }
+
+        private async Task RemoveCelebrity(Celebrity c)
+        {
+            await _categoryManager.RemoveCelebrityFromCategory(c, CurrentCategory, _listGuid);
         }
 
         private async Task AddCelebrity()

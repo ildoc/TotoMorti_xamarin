@@ -33,5 +33,10 @@ namespace TotoMorti.Managers
         {
             return _jsonDbManager.GetCelebritiesByGuid(currentCategoryCelebrityList);
         }
+
+        public async Task RemoveCelebrityFromCategory(Celebrity celebrity, Category category, Guid listGuid)
+        {
+           await _jsonDbManager.RemoveCelebrityFromCategory(celebrity, category, listGuid);
+        }
     }
 }

@@ -8,7 +8,6 @@
              x:Name="CategoryListView">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{x:Static resx:AppResources.ButtonAddCategory}" Command="{Binding AddCommand}" />
-        <ToolbarItem Text="{x:Static resx:AppResources.ButtonSave}" Icon="save.png" Command="{Binding SaveCommand}" />
     </ContentPage.ToolbarItems>
     <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
         <Label Text="{Binding CurrentTotoList.Title}" FontAttributes="Bold" FontSize="20" />
