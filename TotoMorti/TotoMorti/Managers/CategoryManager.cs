@@ -28,5 +28,10 @@ namespace TotoMorti.Managers
         {
             await _jsonDbManager.SaveCategory(category, listGuid);
         }
+
+        public List<Celebrity> GetCelebritiesByGuid(List<string> currentCategoryCelebrityList)
+        {
+            return _jsonDbManager.GetCelebritiesByGuid(currentCategoryCelebrityList);
+        }
     }
 }

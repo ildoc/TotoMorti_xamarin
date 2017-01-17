@@ -6,11 +6,14 @@ namespace TotoMorti.Pages
 {
     public partial class CategoryListPage : ContentPage
     {
+        private readonly CategoryListViewModel _vm;
+
         public CategoryListPage(CategoryListViewModel vm, TotoList totolist = null)
         {
             InitializeComponent();
-            vm.InitializeParameters(totolist);
-            BindingContext = vm;
+            _vm = vm;
+            _vm.InitializeParameters(totolist);
+            BindingContext = _vm;
         }
     }
 }

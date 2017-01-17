@@ -1,12 +1,15 @@
-﻿namespace TotoMorti
+﻿using TotoMorti.Models;
+
+namespace TotoMorti
 {
     public static class EventCenter
     {
-        public static event VoidEvent OnCelebrityFormClosed;
+        public static event CelebrityEvent OnAddedCelebrity;
 
-        public static void CelebrityFormClosed()
+        public static void CelebrityAdded(Celebrity c)
         {
-            OnCelebrityFormClosed?.Invoke();
+            if (OnAddedCelebrity != null)
+                OnAddedCelebrity(c);
         }
     }
 }

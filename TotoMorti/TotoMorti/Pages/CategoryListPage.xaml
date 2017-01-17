@@ -22,11 +22,6 @@
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <MenuItem
-                                Command="{Binding BindingContext.EditCommand, Source={x:Reference CategoryListView}}"
-                                CommandParameter="{Binding .}"
-                                Icon="edit.png"
-                                Text="{x:Static resx:AppResources.ButtonEdit}" />
-                            <MenuItem
                                 Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CategoryListView}}"
                                 CommandParameter="{Binding .}"
                                 Icon="delete.png"
@@ -37,11 +32,12 @@
                             <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
                                Text="Delete" IsDestructive="True" />-->
                         </ViewCell.ContextActions>
-                        <StackLayout>
-                            <StackLayout HorizontalOptions="Fill">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
                                 <ListView ItemsSource="{Binding ResolvedCelebrityList}" Header="{Binding Title}" />
+                              <Button Text="{x:Static resx:AppResources.ButtonEdit}"
+                                        Command="{Binding BindingContext.EditCommand, Source={x:Reference CategoryListView}}"
+                                        CommandParameter="{Binding .}" />
                             </StackLayout>
-                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

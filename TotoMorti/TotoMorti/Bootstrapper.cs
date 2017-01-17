@@ -26,6 +26,7 @@ namespace TotoMorti
             builder.RegisterType<TotoListFormPage>().AsSelf();
             builder.RegisterType<CategoryListPage>().AsSelf();
             builder.RegisterType<CategoryFormPage>().AsSelf();
+            builder.RegisterType<AvailableCelebrityListPage>().AsSelf();
 
             builder.RegisterType<MainPageViewModel>().AsSelf();
             builder.RegisterType<CelebrityListViewModel>().AsSelf();
@@ -34,6 +35,7 @@ namespace TotoMorti
             builder.RegisterType<TotoListFormViewModel>().AsSelf();
             builder.RegisterType<CategoryListViewModel>().AsSelf();
             builder.RegisterType<CategoryFormViewModel>().AsSelf();
+            builder.RegisterType<AvailableCelebrityListViewModel>().AsSelf();
 
             builder.RegisterType<JsonDbManager>().AsSelf();
             builder.RegisterType<CelebrityManager>().AsSelf();

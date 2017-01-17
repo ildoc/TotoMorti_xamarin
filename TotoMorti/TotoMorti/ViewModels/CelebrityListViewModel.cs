@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
@@ -23,7 +24,7 @@ namespace TotoMorti.ViewModels
 
         public CelebrityListViewModel(CelebrityManager celebrityManager)
         {
-            EventCenter.OnCelebrityFormClosed += OnCelebrityFormClosed;
+            EventCenter.OnAddedCelebrity += OnAddedCelebrity;
             _celebrityManager = celebrityManager;
             LoadContext();
         }
@@ -54,7 +55,13 @@ namespace TotoMorti.ViewModels
         }
 
         public Command RefreshCelebrityListCommand
-            => _refreshCelebrityListCommand ?? (_refreshCelebrityListCommand = new Command(LoadContext));
+        {
+            get
+            {
+                return _refreshCelebrityListCommand ??
+                       (_refreshCelebrityListCommand ?? new Command(() => RefreshContext()));
+            }
+        }
 
         public Command<Celebrity> EditCelebrityCommand
         {
@@ -65,14 +72,31 @@ namespace TotoMorti.ViewModels
             }
         }
 
-        private void OnCelebrityFormClosed()
+        private void RefreshContext()
         {
+            IsBusy = true;
             LoadContext();
+            IsBusy = false;
+        }
+
+        private void OnAddedCelebrity(Celebrity cel)
+        {
+            var c = CelebrityList.FirstOrDefault(x => x.CelebrityGuid == cel.CelebrityGuid);
+
+            var i = CelebrityList.IndexOf(c);
+            if (i >= 0)
+            {
+                CelebrityList.Remove(c);
+                CelebrityList.Insert(i, cel);
+            }
+            else
+                CelebrityList.Add(cel);
+            OnPropertyChanged("CelebrityList");
         }
 
         private void LoadContext()
         {
-            Task.Run(() => CelebrityList = new ObservableCollection<Celebrity>(_celebrityManager.GetAllCelebrities()));
+            Task.Run(() => CelebrityList = new ObservableCollection<Celebrity>( _celebrityManager.GetAllCelebrities())).Wait();
         }
 
         private async Task NavigateAddCelebrity()
