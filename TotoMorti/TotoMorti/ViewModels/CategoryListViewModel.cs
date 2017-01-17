@@ -92,7 +92,7 @@ namespace TotoMorti.ViewModels
         private async Task DeleteCategory(Category c)
         {
             await _categoryManager.DeleteCategory(c, CurrentTotoList.ListGuid);
-            LoadContext();
+            CurrentTotoList.Categories.Remove(c);
         }
 
         private void LoadContext()

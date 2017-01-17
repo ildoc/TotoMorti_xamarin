@@ -3,7 +3,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resx="clr-namespace:TotoMorti.Resx;assembly=TotoMorti"
-             x:Class="TotoMorti.Pages.CategoryFormPage">
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="TotoMorti.Pages.CategoryFormPage"
+             x:Name="CategoryFormView">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{x:Static resx:AppResources.ButtonAddVip}" Command="{Binding AddCommand}" />
         <ToolbarItem Text="{x:Static resx:AppResources.ButtonSave}" Icon="save.png" Command="{Binding SaveCommand}" />
@@ -20,19 +23,41 @@
                         <ViewCell>
                             <ViewCell.ContextActions>
                                 <MenuItem
-                                    Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CategoryFormPage}}"
+                                    Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CategoryFormView}}"
                                     CommandParameter="{Binding .}"
                                     Icon="delete.png"
                                     Text="{x:Static resx:AppResources.ButtonDelete}"
                                     IsDestructive="True" />
                             </ViewCell.ContextActions>
-                            <StackLayout Orientation="Horizontal" Padding="5">
-                                <Image Source="{Binding ImageUrl}" />
-                                <StackLayout HorizontalOptions="StartAndExpand">
-                                    <Label Text="{Binding FullName}" />
-                                    <Label Text="{Binding Age}" TextColor="Gray" />
+                            <ContentView Padding="10,0">
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                    <ContentView Margin="3" WidthRequest="54">
+                                        <forms:CachedImage HorizontalOptions="Center"
+                                                           VerticalOptions="Center"
+                                                           WidthRequest="50" HeightRequest="50"
+                                                           DownsampleToViewSize="true"
+                                                           Source="{Binding ImageUrl}"
+                                                           LoadingPlaceholder="placeholderProfileImage.png">
+                                            <forms:CachedImage.Transformations>
+                                                <transformations:CircleTransformation />
+                                            </forms:CachedImage.Transformations>
+                                        </forms:CachedImage>
+                                    </ContentView>
+                                    <ContentView Padding="10,0,0,0">
+                                        <StackLayout Spacing="0">
+                                            <Label Text="{Binding FullName}" HeightRequest="20"
+                                                   VerticalTextAlignment="End"
+                                                   LineBreakMode="TailTruncation" />
+                                            <Label Text="{Binding Age}" HeightRequest="20"
+                                                   VerticalTextAlignment="End" FontSize="Micro"
+                                                   LineBreakMode="TailTruncation" />
+                                            <!--<Label Text="{Binding JobTitle}" HeightRequest="20"
+                                                               VerticalTextAlignment="Start" FontSize="Micro"
+                                                               LineBreakMode="TailTruncation" TextColor="Silver" />-->
+                                        </StackLayout>
+                                    </ContentView>
                                 </StackLayout>
-                            </StackLayout>
+                            </ContentView>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

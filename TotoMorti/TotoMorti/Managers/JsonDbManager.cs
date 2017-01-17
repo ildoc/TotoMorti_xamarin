@@ -91,6 +91,8 @@ namespace TotoMorti.Managers
                 c.Name = celebrity.Name;
                 c.Surname = celebrity.Surname;
                 c.ImageUrl = celebrity.ImageUrl;
+                c.BirthDate = celebrity.BirthDate;
+                c.DeathDate = celebrity.DeathDate;
             }
             else
             {
@@ -138,7 +140,7 @@ namespace TotoMorti.Managers
             var c = t?.Categories.FirstOrDefault(x => x.CategoryGuid == cat.CategoryGuid);
             if (c != null)
             {
-                var res = GetCelebritiesByGuid(cat.CelebrityList).Select(x => x.FullName).ToList();
+                var res = GetCelebritiesByGuid(cat.CelebrityList).Select(x => $"{x.FullName} ({x.Age})").ToList();
                 return res;
             }
             return new List<string>();
@@ -147,7 +149,8 @@ namespace TotoMorti.Managers
         public async Task DeleteCategory(Category category, Guid listGuid)
         {
             var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
-            await Task.Run(() => t?.Categories.Remove(category));
+            t?.Categories.Remove(category);
+            await Save(totomortiDb);
         }
 
         public async Task RemoveCelebrityFromCategory(Celebrity celebrity, Category category, Guid listGuid)

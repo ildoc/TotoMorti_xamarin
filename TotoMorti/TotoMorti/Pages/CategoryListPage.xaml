@@ -13,30 +13,37 @@
         <Label Text="{Binding CurrentTotoList.Title}" FontAttributes="Bold" FontSize="20" />
     </StackLayout>
     <StackLayout VerticalOptions="FillAndExpand">
-        <ListView ItemsSource="{Binding CurrentTotoList.Categories}" CachingStrategy="RecycleElement" RowHeight="60"
-                  HasUnevenRows="false" AbsoluteLayout.LayoutFlags="All"
+        <ListView ItemsSource="{Binding CurrentTotoList.Categories}" CachingStrategy="RecycleElement"
+                  HasUnevenRows="true" AbsoluteLayout.LayoutFlags="All"
                   AbsoluteLayout.LayoutBounds="0,0,1,1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ViewCell.ContextActions>
+                        <!--<ViewCell.ContextActions>
                             <MenuItem
                                 Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CategoryListView}}"
                                 CommandParameter="{Binding .}"
                                 Icon="delete.png"
                                 Text="{x:Static resx:AppResources.ButtonDelete}"
                                 IsDestructive="True" />
-                            <!--<MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
+                            --><!--<MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
                                Text="More" />
                             <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
-                               Text="Delete" IsDestructive="True" />-->
-                        </ViewCell.ContextActions>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
-                                <ListView ItemsSource="{Binding ResolvedCelebrityList}" Header="{Binding Title}" />
-                              <Button Text="{x:Static resx:AppResources.ButtonEdit}"
-                                        Command="{Binding BindingContext.EditCommand, Source={x:Reference CategoryListView}}"
-                                        CommandParameter="{Binding .}" />
-                            </StackLayout>
+                               Text="Delete" IsDestructive="True" />--><!--
+                        </ViewCell.ContextActions>-->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
+                            <ListView ItemsSource="{Binding ResolvedCelebrityList}" Header="{Binding Title}" />
+                          <StackLayout>
+                            <Button Text="{x:Static resx:AppResources.ButtonEdit}"
+                                    Command="{Binding BindingContext.EditCommand, Source={x:Reference CategoryListView}}"
+                                    Image="edit.png"
+                                    CommandParameter="{Binding .}" />
+                            <Button Text="{x:Static resx:AppResources.ButtonDelete}"
+                                    Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CategoryListView}}"
+                                    Image="delete.png"
+                                    CommandParameter="{Binding .}" />
+                          </StackLayout>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
