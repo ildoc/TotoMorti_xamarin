@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
 using TotoMorti.Classes;
@@ -17,10 +16,10 @@ namespace TotoMorti.ViewModels
         private readonly CategoryManager _categoryManager;
         private Command _addCommand;
         private Category _currentCategory;
+        private Command<Celebrity> _deleteCommand;
         private Guid _listGuid;
         private Command _saveCommand;
         private List<Celebrity> _selectedCelebrityList;
-        private Command<Celebrity> _deleteCommand;
 
         public CategoryFormViewModel(CategoryManager categoryManager)
         {
@@ -40,39 +39,21 @@ namespace TotoMorti.ViewModels
             set { SetProperty(ref _currentCategory, value); }
         }
 
-        public Command SaveCommand
+        public Command SaveCommand => _saveCommand ??
+                                      (_saveCommand = new Command(SaveForm));
+
+        public Command AddCommand => _addCommand ??
+                                     (_addCommand = new Command(AddCelebrity));
+
+        public Command<Celebrity> DeleteCommand => _deleteCommand ??
+                                                   (_deleteCommand = new Command<Celebrity>(RemoveCelebrity));
+
+        private void RemoveCelebrity(Celebrity c)
         {
-            get
-            {
-                return _saveCommand ??
-                       (_saveCommand = new Command(async () => await SaveForm()));
-            }
+            _categoryManager.RemoveCelebrityFromCategory(c, CurrentCategory, _listGuid);
         }
 
-        public Command AddCommand
-        {
-            get
-            {
-                return _addCommand ??
-                       (_addCommand = new Command(async () => await AddCelebrity()));
-            }
-        }
-
-        public Command<Celebrity> DeleteCommand
-        {
-            get
-            {
-                return _deleteCommand ??
-                       (_deleteCommand = new Command<Celebrity>(async (c) => await RemoveCelebrity(c)));
-            }
-        }
-
-        private async Task RemoveCelebrity(Celebrity c)
-        {
-            await _categoryManager.RemoveCelebrityFromCategory(c, CurrentCategory, _listGuid);
-        }
-
-        private async Task AddCelebrity()
+        private async void AddCelebrity()
         {
             var p = new Parameter[]
             {
@@ -101,9 +82,9 @@ namespace TotoMorti.ViewModels
             LoadSelectedCelebrities();
         }
 
-        private async Task SaveForm()
+        private void SaveForm()
         {
-            await _categoryManager.SaveCategory(CurrentCategory, _listGuid);
+            _categoryManager.SaveCategory(CurrentCategory, _listGuid);
         }
 
         private void LoadSelectedCelebrities()

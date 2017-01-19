@@ -24,19 +24,19 @@ namespace TotoMorti.UWP.API
             return task.Result;
         }
 
+        public async Task WriteJsonAsync(string text, string dbName)
+        {
+            var localFolder = ApplicationData.Current.LocalFolder;
+            var sampleFile = await localFolder.CreateFileAsync(dbName + ".json", CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(sampleFile, text);
+        }
+
         public async Task<string> LoadTextAsync(string filename)
         {
             var storageFolder = ApplicationData.Current.LocalFolder;
             var sampleFile = await storageFolder.GetFileAsync(filename);
             var text = await FileIO.ReadTextAsync(sampleFile);
             return text;
-        }
-
-        public async Task WriteJsonAsync(string text, string dbName)
-        {
-            var localFolder = ApplicationData.Current.LocalFolder;
-            var sampleFile = await localFolder.CreateFileAsync(dbName + ".json", CreationCollisionOption.ReplaceExisting);
-            await FileIO.WriteTextAsync(sampleFile, text);
         }
 
         private bool FileExists(string filename)

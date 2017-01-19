@@ -13,35 +13,35 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                      <ContentView Padding="10,0">
-                        <StackLayout Orientation="Horizontal" Spacing="0">
-                          <ContentView Margin="3" WidthRequest="54">
-                            <forms:CachedImage HorizontalOptions="Center"
-                                               VerticalOptions="Center"
-                                               WidthRequest="50" HeightRequest="50"
-                                               DownsampleToViewSize="true"
-                                               Source="{Binding ImageUrl}"
-                                               LoadingPlaceholder="placeholderProfileImage.png">
-                              <forms:CachedImage.Transformations>
-                                <transformations:CircleTransformation />
-                              </forms:CachedImage.Transformations>
-                            </forms:CachedImage>
-                          </ContentView>
-                          <ContentView Padding="10,0,0,0">
-                            <StackLayout Spacing="0">
-                              <Label Text="{Binding FullName}" HeightRequest="20"
-                                     VerticalTextAlignment="End"
-                                     LineBreakMode="TailTruncation" />
-                              <Label Text="{Binding Age}" HeightRequest="20"
-                                     VerticalTextAlignment="End" FontSize="Micro"
-                                     LineBreakMode="TailTruncation" />
-                              <!--<Label Text="{Binding JobTitle}" HeightRequest="20"
+                        <ContentView Padding="10,0">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <ContentView Margin="3" WidthRequest="54">
+                                    <forms:CachedImage HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       WidthRequest="50" HeightRequest="50"
+                                                       DownsampleToViewSize="true"
+                                                       Source="{Binding ImageUrl}"
+                                                       LoadingPlaceholder="placeholderProfileImage.png">
+                                        <forms:CachedImage.Transformations>
+                                            <transformations:CircleTransformation />
+                                        </forms:CachedImage.Transformations>
+                                    </forms:CachedImage>
+                                </ContentView>
+                                <ContentView Padding="10,0,0,0">
+                                    <StackLayout Spacing="0">
+                                        <Label Text="{Binding FullName}" HeightRequest="20"
+                                               VerticalTextAlignment="End"
+                                               LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding Age}" HeightRequest="20"
+                                               VerticalTextAlignment="End" FontSize="Micro"
+                                               LineBreakMode="TailTruncation" />
+                                        <!--<Label Text="{Binding JobTitle}" HeightRequest="20"
                                                                VerticalTextAlignment="Start" FontSize="Micro"
                                                                LineBreakMode="TailTruncation" TextColor="Silver" />-->
+                                    </StackLayout>
+                                </ContentView>
                             </StackLayout>
-                          </ContentView>
-                        </StackLayout>
-                      </ContentView>
+                        </ContentView>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

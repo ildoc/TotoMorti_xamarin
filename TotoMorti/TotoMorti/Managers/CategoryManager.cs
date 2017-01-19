@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using TotoMorti.Models;
 
 namespace TotoMorti.Managers
@@ -14,19 +13,19 @@ namespace TotoMorti.Managers
             _jsonDbManager = jsonDbManager;
         }
 
-        public async Task SaveCategoryList(List<Category> categories, Guid listGuid)
+        public void SaveCategoryList(List<Category> categories, Guid listGuid)
         {
-            await _jsonDbManager.SaveCategoryList(categories, listGuid);
+            _jsonDbManager.SaveCategoryList(categories, listGuid);
         }
 
-        public async Task DeleteCategory(Category category, Guid listGuid)
+        public void DeleteCategory(Category category, Guid listGuid)
         {
-            await _jsonDbManager.DeleteCategory(category, listGuid);
+            _jsonDbManager.DeleteCategory(category, listGuid);
         }
 
-        public async Task SaveCategory(Category category, Guid listGuid)
+        public void SaveCategory(Category category, Guid listGuid)
         {
-            await _jsonDbManager.SaveCategory(category, listGuid);
+            _jsonDbManager.SaveCategory(category, listGuid);
         }
 
         public List<Celebrity> GetCelebritiesByGuid(List<string> currentCategoryCelebrityList)
@@ -34,9 +33,9 @@ namespace TotoMorti.Managers
             return _jsonDbManager.GetCelebritiesByGuid(currentCategoryCelebrityList);
         }
 
-        public async Task RemoveCelebrityFromCategory(Celebrity celebrity, Category category, Guid listGuid)
+        public void RemoveCelebrityFromCategory(Celebrity celebrity, Category category, Guid listGuid)
         {
-           await _jsonDbManager.RemoveCelebrityFromCategory(celebrity, category, listGuid);
+            _jsonDbManager.RemoveCelebrityFromCategory(celebrity, category, listGuid);
         }
     }
 }

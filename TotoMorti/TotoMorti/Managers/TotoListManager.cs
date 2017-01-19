@@ -13,9 +13,9 @@ namespace TotoMorti.Managers
             _jsonDbManager = jsonDbManager;
         }
 
-        public async Task SaveTotoList(TotoList currentTotoList)
+        public void SaveTotoList(TotoList currentTotoList)
         {
-            await _jsonDbManager.SaveTotoList(currentTotoList);
+            _jsonDbManager.SaveTotoList(currentTotoList);
         }
 
         public IEnumerable<TotoList> GetAllTotoLists()

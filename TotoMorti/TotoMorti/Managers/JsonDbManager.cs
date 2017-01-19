@@ -30,7 +30,7 @@ namespace TotoMorti.Managers
             return _totoLists;
         }
 
-        public async Task SaveTotoList(TotoList totoList)
+        public void SaveTotoList(TotoList totoList)
         {
             var t = _totoLists.FirstOrDefault(x => x.ListGuid == totoList.ListGuid);
             if (t != null)
@@ -45,10 +45,10 @@ namespace TotoMorti.Managers
                 _totoLists.Add(totoList);
             }
 
-            await Save(totomortiDb);
+            Save(totomortiDb);
         }
 
-        private async Task Save(string dbName)
+        private async void Save(string dbName)
         {
             switch (dbName)
             {
@@ -64,10 +64,10 @@ namespace TotoMorti.Managers
         public async Task DeleteTotoList(TotoList totoList)
         {
             await Task.Run(() => _totoLists.Remove(totoList));
-            await Save(totomortiDb);
+            Save(totomortiDb);
         }
 
-        public async Task SaveCategoryList(List<Category> categories, Guid listGuid)
+        public void SaveCategoryList(List<Category> categories, Guid listGuid)
         {
             var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
             if (t != null)
@@ -75,7 +75,7 @@ namespace TotoMorti.Managers
                 t.Categories.Clear();
                 t.Categories = categories;
             }
-            await Save(totomortiDb);
+            Save(totomortiDb);
         }
 
         public IEnumerable<Celebrity> GetAllCelebrities()
@@ -83,7 +83,7 @@ namespace TotoMorti.Managers
             return _celebrities;
         }
 
-        public async Task SaveCelebrity(Celebrity celebrity)
+        public void SaveCelebrity(Celebrity celebrity)
         {
             var c = _celebrities.FirstOrDefault(x => x.CelebrityGuid == celebrity.CelebrityGuid);
             if (c != null)
@@ -99,13 +99,13 @@ namespace TotoMorti.Managers
                 _celebrities.Add(celebrity);
             }
 
-            await Save(celebrityDb);
+            Save(celebrityDb);
         }
 
-        public async Task DeleteCelebrity(Celebrity celebrity)
+        public void DeleteCelebrity(Celebrity celebrity)
         {
-            await Task.Run(() => _celebrities.Remove(celebrity));
-            await Save(celebrityDb);
+            _celebrities.Remove(celebrity);
+            Save(celebrityDb);
         }
 
         public List<Celebrity> GetAvailableCelebrities(List<Celebrity> selectedCelebrities)
@@ -113,7 +113,7 @@ namespace TotoMorti.Managers
             return _celebrities.Except(selectedCelebrities).ToList();
         }
 
-        public async Task SaveCategory(Category category, Guid listGuid)
+        public void SaveCategory(Category category, Guid listGuid)
         {
             var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
             var c = t?.Categories.FirstOrDefault(x => x.CategoryGuid == category.CategoryGuid);
@@ -126,7 +126,7 @@ namespace TotoMorti.Managers
             {
                 t?.Categories.Add(category);
             }
-            await Save(totomortiDb);
+            Save(totomortiDb);
         }
 
         public List<Celebrity> GetCelebritiesByGuid(List<string> categoryCelebrityList)
@@ -146,19 +146,19 @@ namespace TotoMorti.Managers
             return new List<string>();
         }
 
-        public async Task DeleteCategory(Category category, Guid listGuid)
+        public void DeleteCategory(Category category, Guid listGuid)
         {
             var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
             t?.Categories.Remove(category);
-            await Save(totomortiDb);
+            Save(totomortiDb);
         }
 
-        public async Task RemoveCelebrityFromCategory(Celebrity celebrity, Category category, Guid listGuid)
+        public void RemoveCelebrityFromCategory(Celebrity celebrity, Category category, Guid listGuid)
         {
             var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
             var c = t?.Categories.FirstOrDefault(x => x.CategoryGuid == category.CategoryGuid);
             c?.CelebrityList.Remove(celebrity.CelebrityGuid.ToString());
-            await Save(totomortiDb);
+            Save(totomortiDb);
         }
     }
 }

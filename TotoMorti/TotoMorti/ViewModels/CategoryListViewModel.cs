@@ -31,14 +31,8 @@ namespace TotoMorti.ViewModels
             set { SetProperty(ref _currentTotoList, value); }
         }
 
-        public Command<Category> DeleteCommand
-        {
-            get
-            {
-                return _deleteCommand ??
-                       (_deleteCommand = new Command<Category>(async c => await DeleteCategory(c)));
-            }
-        }
+        public Command<Category> DeleteCommand => _deleteCommand ??
+                                                  (_deleteCommand = new Command<Category>(DeleteCategory));
 
         public Command AddCommand
         {
@@ -89,9 +83,9 @@ namespace TotoMorti.ViewModels
                     CurrentTotoList.ListGuid);
         }
 
-        private async Task DeleteCategory(Category c)
+        private void DeleteCategory(Category c)
         {
-            await _categoryManager.DeleteCategory(c, CurrentTotoList.ListGuid);
+            _categoryManager.DeleteCategory(c, CurrentTotoList.ListGuid);
             CurrentTotoList.Categories.Remove(c);
         }
 

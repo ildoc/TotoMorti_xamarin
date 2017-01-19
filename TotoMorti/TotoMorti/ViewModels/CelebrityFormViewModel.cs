@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using TotoMorti.Classes;
+﻿using TotoMorti.Classes;
 using TotoMorti.Managers;
 using TotoMorti.Models;
 using TotoMorti.ViewModels.Abstracts;
@@ -29,7 +28,7 @@ namespace TotoMorti.ViewModels
             get
             {
                 return _saveCommand ??
-                       (_saveCommand = new Command(async () => await SaveForm()));
+                       (_saveCommand = new Command(SaveForm));
             }
         }
 
@@ -47,9 +46,9 @@ namespace TotoMorti.ViewModels
             }
         }
 
-        private async Task SaveForm()
+        private async void SaveForm()
         {
-            await _celebrityManager.SaveCelebrity(CurrentCelebrity);
+            _celebrityManager.SaveCelebrity(CurrentCelebrity);
             await PopAsync();
             EventCenter.CelebrityAdded(CurrentCelebrity);
         }

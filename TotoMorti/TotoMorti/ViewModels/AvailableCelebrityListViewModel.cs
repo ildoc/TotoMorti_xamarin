@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
 using TotoMorti.Classes;
@@ -32,14 +31,8 @@ namespace TotoMorti.ViewModels
             set { SetProperty(ref _availableCelebrities, value); }
         }
 
-        public Command<Celebrity> AddCelebrityCommand
-        {
-            get
-            {
-                return _addCelebrityCommand ??
-                       (_addCelebrityCommand = new Command<Celebrity>(async c => await AddCelebrity(c)));
-            }
-        }
+        public Command<Celebrity> AddCelebrityCommand => _addCelebrityCommand ??
+                                                         (_addCelebrityCommand = new Command<Celebrity>(AddCelebrity));
 
 
         public void InitializeParameters(List<Celebrity> selectedCelebrities, Category category, Guid listGuid)
@@ -50,10 +43,10 @@ namespace TotoMorti.ViewModels
                 _celebrityManager.GetAvailableCelebrities(selectedCelebrities);
         }
 
-        private async Task AddCelebrity(Celebrity c)
+        private async void AddCelebrity(Celebrity c)
         {
             _category.CelebrityList.Add(c.CelebrityGuid.ToString());
-            await _categoryManager.SaveCategory(_category, _listGuid);
+            _categoryManager.SaveCategory(_category, _listGuid);
             var p = new Parameter[]
             {
                 new NamedParameter("action", FormStatus.Edit),

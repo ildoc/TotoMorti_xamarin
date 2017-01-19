@@ -45,23 +45,11 @@ namespace TotoMorti.ViewModels
         }
 
 
-        public Command<Celebrity> DeleteCommand
-        {
-            get
-            {
-                return _deleteCommand ??
-                       (_deleteCommand = new Command<Celebrity>(async c => await DeleteCelebrity(c)));
-            }
-        }
+        public Command<Celebrity> DeleteCommand => _deleteCommand ??
+                                                   (_deleteCommand = new Command<Celebrity>(DeleteCelebrity));
 
-        public Command RefreshCelebrityListCommand
-        {
-            get
-            {
-                return _refreshCelebrityListCommand ??
-                       (_refreshCelebrityListCommand ?? new Command(() => RefreshContext()));
-            }
-        }
+        public Command RefreshCelebrityListCommand => _refreshCelebrityListCommand ??
+                                                      (_refreshCelebrityListCommand ?? new Command(RefreshContext));
 
         public Command<Celebrity> EditCelebrityCommand
         {
@@ -90,13 +78,16 @@ namespace TotoMorti.ViewModels
                 CelebrityList.Insert(i, cel);
             }
             else
+            {
                 CelebrityList.Add(cel);
+            }
             OnPropertyChanged("CelebrityList");
         }
 
         private void LoadContext()
         {
-            Task.Run(() => CelebrityList = new ObservableCollection<Celebrity>( _celebrityManager.GetAllCelebrities())).Wait();
+            Task.Run(() => CelebrityList = new ObservableCollection<Celebrity>(_celebrityManager.GetAllCelebrities()))
+                .Wait();
         }
 
         private async Task NavigateAddCelebrity()
@@ -115,9 +106,9 @@ namespace TotoMorti.ViewModels
             await PushAsync(Bootstrapper.IoCContainer.Resolve<CelebrityFormPage>(p));
         }
 
-        private async Task DeleteCelebrity(Celebrity c)
+        private void DeleteCelebrity(Celebrity c)
         {
-            await _celebrityManager.DeleteCelebrity(c);
+            _celebrityManager.DeleteCelebrity(c);
             LoadContext();
         }
     }

@@ -33,16 +33,16 @@
                         </ViewCell.ContextActions>-->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
                             <ListView ItemsSource="{Binding ResolvedCelebrityList}" Header="{Binding Title}" />
-                          <StackLayout>
-                            <Button Text="{x:Static resx:AppResources.ButtonEdit}"
-                                    Command="{Binding BindingContext.EditCommand, Source={x:Reference CategoryListView}}"
-                                    Image="edit.png"
-                                    CommandParameter="{Binding .}" />
-                            <Button Text="{x:Static resx:AppResources.ButtonDelete}"
-                                    Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CategoryListView}}"
-                                    Image="delete.png"
-                                    CommandParameter="{Binding .}" />
-                          </StackLayout>
+                            <StackLayout>
+                                <Button Text="{x:Static resx:AppResources.ButtonEdit}"
+                                        Command="{Binding BindingContext.EditCommand, Source={x:Reference CategoryListView}}"
+                                        Image="edit.png"
+                                        CommandParameter="{Binding .}" />
+                                <Button Text="{x:Static resx:AppResources.ButtonDelete}"
+                                        Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CategoryListView}}"
+                                        Image="delete.png"
+                                        CommandParameter="{Binding .}" />
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

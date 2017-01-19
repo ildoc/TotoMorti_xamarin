@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using TotoMorti.Classes;
 using TotoMorti.Managers;
 using TotoMorti.Models;
@@ -21,14 +20,8 @@ namespace TotoMorti.ViewModels
             _totoListManager = totoListManager;
         }
 
-        public Command SaveCommand
-        {
-            get
-            {
-                return _saveCommand ??
-                       (_saveCommand = new Command(async () => await SaveForm()));
-            }
-        }
+        public Command SaveCommand => _saveCommand ??
+                                      (_saveCommand = new Command(SaveForm));
 
         public TotoList CurrentTotoList
         {
@@ -36,9 +29,9 @@ namespace TotoMorti.ViewModels
             set { SetProperty(ref _currentTotoList, value); }
         }
 
-        private async Task SaveForm()
+        private async void SaveForm()
         {
-            await _totoListManager.SaveTotoList(CurrentTotoList);
+            _totoListManager.SaveTotoList(CurrentTotoList);
             var p = new NamedParameter("totolist", CurrentTotoList);
             await PushAsync(Bootstrapper.IoCContainer.Resolve<CategoryListPage>(p));
         }
