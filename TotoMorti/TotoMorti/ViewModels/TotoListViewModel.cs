@@ -30,7 +30,11 @@ namespace TotoMorti.ViewModels
         public ObservableCollection<TotoList> TotoListList
         {
             get { return _totoListList; }
-            set { SetProperty(ref _totoListList, value); }
+            set
+            {
+                _totoListList = value;
+                RaisePropertyChanged(() => TotoListList);
+            }
         }
 
         public Command AddTotoListCommand

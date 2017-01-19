@@ -110,7 +110,7 @@ namespace TotoMorti.Managers
 
         public List<Celebrity> GetAvailableCelebrities(List<Celebrity> selectedCelebrities)
         {
-            return _celebrities.Except(selectedCelebrities).ToList();
+            return _celebrities.Where(c => selectedCelebrities.All(s => s.CelebrityGuid != c.CelebrityGuid)).ToList();
         }
 
         public void SaveCategory(Category category, Guid listGuid)
@@ -149,7 +149,9 @@ namespace TotoMorti.Managers
         public void DeleteCategory(Category category, Guid listGuid)
         {
             var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
-            t?.Categories.Remove(category);
+            var c = t?.Categories.FirstOrDefault(x => x.CategoryGuid == category.CategoryGuid);
+            if (c != null)
+                t.Categories.Remove(c);
             Save(totomortiDb);
         }
 

@@ -28,7 +28,11 @@ namespace TotoMorti.ViewModels
         public List<Celebrity> AvailableCelebrities
         {
             get { return _availableCelebrities; }
-            set { SetProperty(ref _availableCelebrities, value); }
+            set
+            {
+                _availableCelebrities = value;
+                RaisePropertyChanged(() => AvailableCelebrities);
+            }
         }
 
         public Command<Celebrity> AddCelebrityCommand => _addCelebrityCommand ??

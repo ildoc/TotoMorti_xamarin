@@ -30,13 +30,21 @@ namespace TotoMorti.ViewModels
         public List<Celebrity> SelectedCelebrityList
         {
             get { return _selectedCelebrityList; }
-            set { SetProperty(ref _selectedCelebrityList, value); }
+            set
+            {
+                _selectedCelebrityList= value;
+                RaisePropertyChanged(()=>SelectedCelebrityList);
+            }
         }
 
         public Category CurrentCategory
         {
             get { return _currentCategory; }
-            set { SetProperty(ref _currentCategory, value); }
+            set
+            {
+                _currentCategory=value;
+                RaisePropertyChanged(()=>CurrentCategory);
+            }
         }
 
         public Command SaveCommand => _saveCommand ??

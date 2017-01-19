@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
 using TotoMorti.Classes;
@@ -28,7 +29,11 @@ namespace TotoMorti.ViewModels
         public TotoList CurrentTotoList
         {
             get { return _currentTotoList; }
-            set { SetProperty(ref _currentTotoList, value); }
+            set
+            {
+                _currentTotoList = value;
+                RaisePropertyChanged(() => CurrentTotoList);
+            }
         }
 
         public Command<Category> DeleteCommand => _deleteCommand ??
@@ -85,8 +90,11 @@ namespace TotoMorti.ViewModels
 
         private void DeleteCategory(Category c)
         {
+            var cat = CurrentTotoList.Categories.FirstOrDefault(x => x.CategoryGuid == c.CategoryGuid);
+            if (cat != null)
+                CurrentTotoList.Categories.Remove(cat);
+
             _categoryManager.DeleteCategory(c, CurrentTotoList.ListGuid);
-            CurrentTotoList.Categories.Remove(c);
         }
 
         private void LoadContext()

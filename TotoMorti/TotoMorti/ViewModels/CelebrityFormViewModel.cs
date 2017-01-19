@@ -20,15 +20,21 @@ namespace TotoMorti.ViewModels
         public Celebrity CurrentCelebrity
         {
             get { return _currentCelebrity; }
-            set { SetProperty(ref _currentCelebrity, value); }
+            set
+            {
+                _currentCelebrity = value;
+                RaisePropertyChanged(() => CurrentCelebrity);
+            }
         }
 
         public Command SaveCommand
+
         {
             get
+
             {
                 return _saveCommand ??
-                       (_saveCommand = new Command(SaveForm));
+                       (_saveCommand = new Command(() => SaveForm()));
             }
         }
 

@@ -26,7 +26,11 @@ namespace TotoMorti.ViewModels
         public TotoList CurrentTotoList
         {
             get { return _currentTotoList; }
-            set { SetProperty(ref _currentTotoList, value); }
+            set
+            {
+                _currentTotoList= value;
+                RaisePropertyChanged(()=>CurrentTotoList);
+            }
         }
 
         private async void SaveForm()

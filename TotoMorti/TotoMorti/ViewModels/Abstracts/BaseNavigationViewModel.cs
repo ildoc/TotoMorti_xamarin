@@ -8,9 +8,21 @@ namespace TotoMorti.ViewModels.Abstracts
     /// <summary>
     ///     Implements the INavigation interface on top of BaseViewModel.
     /// </summary>
-    public abstract class BaseNavigationViewModel : BindableBase, INavigation
+    public abstract class BaseNavigationViewModel : ExtendedBindableObject, INavigation
     {
+        private bool _isBusy;
         private INavigation _Navigation => Application.Current?.MainPage?.Navigation;
+
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+
+            set
+            {
+                _isBusy = value;
+                RaisePropertyChanged(() => IsBusy);
+            }
+        }
 
         #region INavigation implementation
 

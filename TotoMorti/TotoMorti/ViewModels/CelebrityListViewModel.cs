@@ -32,7 +32,11 @@ namespace TotoMorti.ViewModels
         public ObservableCollection<Celebrity> CelebrityList
         {
             get { return _celebrityList; }
-            set { SetProperty(ref _celebrityList, value); }
+            set
+            {
+                _celebrityList = value;
+                RaisePropertyChanged(() => CelebrityList);
+            }
         }
 
         public Command AddCelebrityCommand
@@ -81,7 +85,7 @@ namespace TotoMorti.ViewModels
             {
                 CelebrityList.Add(cel);
             }
-            OnPropertyChanged("CelebrityList");
+            RaisePropertyChanged(() => CelebrityList);
         }
 
         private void LoadContext()

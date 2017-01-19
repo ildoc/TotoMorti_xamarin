@@ -46,8 +46,7 @@
     </None>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Changelog.cs" />
-    <Compile Include="Classes\Abstracts\BindableBase.cs" />
-    <Compile Include="Classes\Abstracts\PropertySupport.cs" />
+    <Compile Include="Classes\Abstracts\ExtendedBindableObject.cs" />
     <Compile Include="Classes\WrappedSelection.cs" />
     <Compile Include="Constants\MessageKeys.cs" />
     <Compile Include="Delegates.cs" />
