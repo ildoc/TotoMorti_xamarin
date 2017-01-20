@@ -24,7 +24,7 @@ namespace TotoMorti.ViewModels
 
         public CelebrityListViewModel(CelebrityManager celebrityManager)
         {
-            EventCenter.OnAddedCelebrity += OnAddedCelebrity;
+            EventCenter.OnCelebrityFormSaved += OnCelebrityFormSaved;
             _celebrityManager = celebrityManager;
             LoadContext();
         }
@@ -71,7 +71,7 @@ namespace TotoMorti.ViewModels
             IsBusy = false;
         }
 
-        private void OnAddedCelebrity(Celebrity cel)
+        private void OnCelebrityFormSaved(Celebrity cel)
         {
             var c = CelebrityList.FirstOrDefault(x => x.CelebrityGuid == cel.CelebrityGuid);
 

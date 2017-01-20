@@ -37,6 +37,7 @@ namespace TotoMorti.ViewModels
         {
             _totoListManager.SaveTotoList(CurrentTotoList);
             var p = new NamedParameter("totolist", CurrentTotoList);
+            EventCenter.TotoListFormSaved(CurrentTotoList);
             await PushAsync(Bootstrapper.IoCContainer.Resolve<CategoryListPage>(p));
         }
 

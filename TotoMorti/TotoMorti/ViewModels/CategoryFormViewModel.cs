@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Autofac;
 using Autofac.Core;
 using TotoMorti.Classes;
@@ -25,6 +26,24 @@ namespace TotoMorti.ViewModels
         {
             _categoryManager = categoryManager;
             SelectedCelebrityList = new List<Celebrity>();
+            EventCenter.OnCelebrityPicked += OnCelebrityPicked;
+        }
+
+        private void OnCelebrityPicked(Celebrity cel)
+        {
+            var c = SelectedCelebrityList.FirstOrDefault(x => x.CelebrityGuid == cel.CelebrityGuid);
+
+            var i = SelectedCelebrityList.IndexOf(c);
+            if (i >= 0)
+            {
+                SelectedCelebrityList.Remove(c);
+                SelectedCelebrityList.Insert(i, cel);
+            }
+            else
+            {
+                SelectedCelebrityList.Add(cel);
+            }
+            RaisePropertyChanged(() => SelectedCelebrityList);
         }
 
         public List<Celebrity> SelectedCelebrityList
@@ -93,6 +112,7 @@ namespace TotoMorti.ViewModels
         private void SaveForm()
         {
             _categoryManager.SaveCategory(CurrentCategory, _listGuid);
+            EventCenter.CategoryFormSaved(CurrentCategory);
         }
 
         private void LoadSelectedCelebrities()

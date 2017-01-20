@@ -57,6 +57,8 @@ namespace TotoMorti.ViewModels
                 new NamedParameter("listGuid", _listGuid),
                 new NamedParameter("category", _category)
             };
+
+            EventCenter.CelebrityPicked(c);
             await PopAsync();
         }
     }

@@ -24,6 +24,24 @@ namespace TotoMorti.ViewModels
         {
             _categoryManager = categoryManager;
             _celebrityManager = celebrityManager;
+            EventCenter.OnCategoryFormSaved += OnCategoryFormSaved;
+        }
+
+        private void OnCategoryFormSaved(Category cat)
+        {
+            var c = CurrentTotoList.Categories.FirstOrDefault(x => x.CategoryGuid == cat.CategoryGuid);
+
+            var i = CurrentTotoList.Categories.IndexOf(c);
+            if (i >= 0)
+            {
+                CurrentTotoList.Categories.Remove(c);
+                CurrentTotoList.Categories.Insert(i, cat);
+            }
+            else
+            {
+                CurrentTotoList.Categories.Add(cat);
+            }
+            RaisePropertyChanged(() => CurrentTotoList.Categories);
         }
 
         public TotoList CurrentTotoList
