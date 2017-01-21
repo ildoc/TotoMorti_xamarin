@@ -51,6 +51,7 @@
     <Compile Include="Constants\MessageKeys.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="EventCenter.cs" />
+    <Compile Include="Models\Abstract\BaseModel.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>

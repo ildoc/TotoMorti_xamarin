@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
@@ -24,7 +26,27 @@ namespace TotoMorti.ViewModels
         public TotoListViewModel(TotoListManager totoListManager)
         {
             _totoListManager = totoListManager;
+            EventCenter.OnTotoListFormSaved += OnTotoListFormSaved;
             LoadContext();
+        }
+
+        private void OnTotoListFormSaved(TotoList totoList)
+        {
+            var t = TotoListList.FirstOrDefault(x => x.ListGuid == totoList.ListGuid);
+            if (t != null)
+            {
+                var i = TotoListList.IndexOf(t);
+                if (i >= 0)
+                {
+                    TotoListList.Remove(t);
+                    TotoListList.Insert(i, totoList);
+                }
+                else
+                {
+                    TotoListList.Add(totoList);
+                }
+                RaisePropertyChanged(() => TotoListList);
+            }
         }
 
         public ObservableCollection<TotoList> TotoListList

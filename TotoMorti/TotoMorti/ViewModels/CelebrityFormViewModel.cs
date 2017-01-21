@@ -55,8 +55,8 @@ namespace TotoMorti.ViewModels
         private async void SaveForm()
         {
             _celebrityManager.SaveCelebrity(CurrentCelebrity);
+            EventCenter.CelebrityFormSaved(CurrentCelebrity);
             await PopAsync();
-            EventCenter.CelebrityAdded(CurrentCelebrity);
         }
     }
 }
