@@ -12,15 +12,20 @@ namespace TotoMorti.Managers
     {
         private const string celebrityDb = "celebrity";
         private const string totomortiDb = "totomorti";
-        private readonly List<Celebrity> _celebrities;
+        private  List<Celebrity> _celebrities;
         private readonly IJsonDb _jsonDb;
-        private readonly List<TotoList> _totoLists;
+        private  List<TotoList> _totoLists;
 
         public JsonDbManager(IJsonDb jsonDb)
         {
             _jsonDb = jsonDb;
+           LoadData();
+        }
+
+        private void LoadData()
+        {
             _totoLists = JsonConvert.DeserializeObject<List<TotoList>>(_jsonDb.ReadJson(totomortiDb)) ??
-                         new List<TotoList>();
+                        new List<TotoList>();
             _celebrities = JsonConvert.DeserializeObject<List<Celebrity>>(_jsonDb.ReadJson(celebrityDb)) ??
                            new List<Celebrity>();
         }
@@ -59,6 +64,7 @@ namespace TotoMorti.Managers
                     await _jsonDb.WriteJsonAsync(JsonConvert.SerializeObject(_totoLists), dbName);
                     break;
             }
+            LoadData();
         }
 
         public async Task DeleteTotoList(TotoList totoList)
@@ -161,6 +167,17 @@ namespace TotoMorti.Managers
             var c = t?.Categories.FirstOrDefault(x => x.CategoryGuid == category.CategoryGuid);
             c?.CelebrityList.Remove(celebrity.CelebrityGuid.ToString());
             Save(totomortiDb);
+        }
+
+        public List<Category> GetAllCategories(Guid listGuid)
+        {
+            var t = _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
+            return t?.Categories;
+        }
+
+        public TotoList GetTotoList(Guid listGuid)
+        {
+            return _totoLists.FirstOrDefault(x => x.ListGuid == listGuid);
         }
     }
 }

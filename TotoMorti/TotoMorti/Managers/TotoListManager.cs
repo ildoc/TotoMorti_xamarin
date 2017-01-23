@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TotoMorti.Models;
 
@@ -26,6 +27,16 @@ namespace TotoMorti.Managers
         public async Task DeleteTotoList(TotoList totoList)
         {
             await _jsonDbManager.DeleteTotoList(totoList);
+        }
+
+        public List<Category> GettAllCategories(Guid listGuid)
+        {
+            return _jsonDbManager.GetAllCategories(listGuid);
+        }
+
+        public TotoList GetTotoList(Guid listGuid)
+        {
+            return _jsonDbManager.GetTotoList(listGuid);
         }
     }
 }

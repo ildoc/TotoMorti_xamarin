@@ -73,25 +73,26 @@ namespace TotoMorti.ViewModels
 
         private void OnCelebrityFormSaved(Celebrity cel)
         {
-            var c = CelebrityList.FirstOrDefault(x => x.CelebrityGuid == cel.CelebrityGuid);
+            //var c = CelebrityList.FirstOrDefault(x => x.CelebrityGuid == cel.CelebrityGuid);
 
-            var i = CelebrityList.IndexOf(c);
-            if (i >= 0)
-            {
-                CelebrityList.Remove(c);
-                CelebrityList.Insert(i, cel);
-            }
-            else
-            {
-                CelebrityList.Add(cel);
-            }
-            RaisePropertyChanged(() => CelebrityList);
+            //var i = CelebrityList.IndexOf(c);
+            //if (i >= 0)
+            //{
+            //    CelebrityList.Remove(c);
+            //    CelebrityList.Insert(i, cel);
+            //}
+            //else
+            //{
+            //    CelebrityList.Add(cel);
+            //}
+            //RaisePropertyChanged(() => CelebrityList);
+            LoadContext();
         }
 
         private void LoadContext()
         {
-            Task.Run(() => CelebrityList = new ObservableCollection<Celebrity>(_celebrityManager.GetAllCelebrities()))
-                .Wait();
+            CelebrityList = null;
+           CelebrityList = new ObservableCollection<Celebrity>(_celebrityManager.GetAllCelebrities().OrderBy(x=>x.FullName));
         }
 
         private async Task NavigateAddCelebrity()

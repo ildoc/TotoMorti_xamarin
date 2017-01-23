@@ -31,19 +31,20 @@ namespace TotoMorti.ViewModels
 
         private void OnCelebrityPicked(Celebrity cel)
         {
-            var c = SelectedCelebrityList.FirstOrDefault(x => x.CelebrityGuid == cel.CelebrityGuid);
+            LoadSelectedCelebrities();
+            //var c = SelectedCelebrityList.FirstOrDefault(x => x.CelebrityGuid == cel.CelebrityGuid);
 
-            var i = SelectedCelebrityList.IndexOf(c);
-            if (i >= 0)
-            {
-                SelectedCelebrityList.Remove(c);
-                SelectedCelebrityList.Insert(i, cel);
-            }
-            else
-            {
-                SelectedCelebrityList.Add(cel);
-            }
-            RaisePropertyChanged(() => SelectedCelebrityList);
+            //var i = SelectedCelebrityList.IndexOf(c);
+            //if (i >= 0)
+            //{
+            //    SelectedCelebrityList.Remove(c);
+            //    SelectedCelebrityList.Insert(i, cel);
+            //}
+            //else
+            //{
+            //    SelectedCelebrityList.Add(cel);
+            //}
+            //RaisePropertyChanged(() => SelectedCelebrityList);
         }
 
         public List<Celebrity> SelectedCelebrityList

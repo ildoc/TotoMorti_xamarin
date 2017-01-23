@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
@@ -19,29 +20,33 @@ namespace TotoMorti.ViewModels
         private TotoList _currentTotoList;
         private Command<Category> _deleteCommand;
         private Command<Category> _editCommand;
+        private readonly TotoListManager _totoListManager;
+        private Guid _listGuid;
 
-        public CategoryListViewModel(CategoryManager categoryManager, CelebrityManager celebrityManager)
+        public CategoryListViewModel(CategoryManager categoryManager, CelebrityManager celebrityManager, TotoListManager totoListManager)
         {
             _categoryManager = categoryManager;
             _celebrityManager = celebrityManager;
+            _totoListManager = totoListManager;
             EventCenter.OnCategoryFormSaved += OnCategoryFormSaved;
         }
 
         private void OnCategoryFormSaved(Category cat)
         {
-            var c = CurrentTotoList.Categories.FirstOrDefault(x => x.CategoryGuid == cat.CategoryGuid);
+            LoadContext();
+            //var c = CurrentTotoList.Categories.FirstOrDefault(x => x.CategoryGuid == cat.CategoryGuid);
 
-            var i = CurrentTotoList.Categories.IndexOf(c);
-            if (i >= 0)
-            {
-                CurrentTotoList.Categories.Remove(c);
-                CurrentTotoList.Categories.Insert(i, cat);
-            }
-            else
-            {
-                CurrentTotoList.Categories.Add(cat);
-            }
-            RaisePropertyChanged(() => CurrentTotoList.Categories);
+            //var i = CurrentTotoList.Categories.IndexOf(c);
+            //if (i >= 0)
+            //{
+            //    CurrentTotoList.Categories.Remove(c);
+            //    CurrentTotoList.Categories.Insert(i, cat);
+            //}
+            //else
+            //{
+            //    CurrentTotoList.Categories.Add(cat);
+            //}
+            //RaisePropertyChanged(() => CurrentTotoList.Categories);
         }
 
         public TotoList CurrentTotoList
@@ -100,10 +105,8 @@ namespace TotoMorti.ViewModels
 
         public void InitializeParameters(TotoList totolist)
         {
-            CurrentTotoList = totolist;
-            foreach (var category in CurrentTotoList.Categories)
-                category.ResolvedCelebrityList = _celebrityManager.ResolveCelebrityList(category,
-                    CurrentTotoList.ListGuid);
+            _listGuid = totolist.ListGuid;            
+            LoadContext();
         }
 
         private void DeleteCategory(Category c)
@@ -113,11 +116,16 @@ namespace TotoMorti.ViewModels
                 CurrentTotoList.Categories.Remove(cat);
 
             _categoryManager.DeleteCategory(c, CurrentTotoList.ListGuid);
+            LoadContext();
         }
 
         private void LoadContext()
         {
-            //CurrentTotoList  = 
+            CurrentTotoList = _totoListManager.GetTotoList(_listGuid);
+            foreach (var category in CurrentTotoList.Categories)
+                category.ResolvedCelebrityList = _celebrityManager.ResolveCelebrityList(category,
+                    CurrentTotoList.ListGuid);
+            
         }
     }
 }

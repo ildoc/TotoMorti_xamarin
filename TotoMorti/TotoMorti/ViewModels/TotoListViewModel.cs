@@ -32,21 +32,22 @@ namespace TotoMorti.ViewModels
 
         private void OnTotoListFormSaved(TotoList totoList)
         {
-            var t = TotoListList.FirstOrDefault(x => x.ListGuid == totoList.ListGuid);
-            if (t != null)
-            {
-                var i = TotoListList.IndexOf(t);
-                if (i >= 0)
-                {
-                    TotoListList.Remove(t);
-                    TotoListList.Insert(i, totoList);
-                }
-                else
-                {
-                    TotoListList.Add(totoList);
-                }
-                RaisePropertyChanged(() => TotoListList);
-            }
+            LoadContext();
+            //var t = TotoListList.FirstOrDefault(x => x.ListGuid == totoList.ListGuid);
+            //if (t != null)
+            //{
+            //    var i = TotoListList.IndexOf(t);
+            //    if (i >= 0)
+            //    {
+            //        TotoListList.Remove(t);
+            //        TotoListList.Insert(i, totoList);
+            //    }
+            //    else
+            //    {
+            //        TotoListList.Add(totoList);
+            //    }
+            //    RaisePropertyChanged(() => TotoListList);
+            //}
         }
 
         public ObservableCollection<TotoList> TotoListList

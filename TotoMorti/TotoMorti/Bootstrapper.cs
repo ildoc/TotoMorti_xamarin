@@ -17,30 +17,30 @@ namespace TotoMorti
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<SplashPage>().AsSelf();
-            builder.RegisterType<MainPage>().AsSelf();
-            builder.RegisterType<AboutPage>().AsSelf();
-            builder.RegisterType<CelebrityListPage>().AsSelf();
-            builder.RegisterType<CelebrityFormPage>().AsSelf();
-            builder.RegisterType<TotoListListPage>().AsSelf();
-            builder.RegisterType<TotoListFormPage>().AsSelf();
-            builder.RegisterType<CategoryListPage>().AsSelf();
-            builder.RegisterType<CategoryFormPage>().AsSelf();
-            builder.RegisterType<AvailableCelebrityListPage>().AsSelf();
+            builder.RegisterType<SplashPage>();
+            builder.RegisterType<MainPage>();
+            builder.RegisterType<AboutPage>();
+            builder.RegisterType<CelebrityListPage>().SingleInstance();
+            builder.RegisterType<CelebrityFormPage>();
+            builder.RegisterType<TotoListListPage>().SingleInstance();
+            builder.RegisterType<TotoListFormPage>();
+            builder.RegisterType<CategoryListPage>();
+            builder.RegisterType<CategoryFormPage>();
+            builder.RegisterType<AvailableCelebrityListPage>();
 
-            builder.RegisterType<MainPageViewModel>().AsSelf();
-            builder.RegisterType<CelebrityListViewModel>().AsSelf();
-            builder.RegisterType<CelebrityFormViewModel>().AsSelf();
-            builder.RegisterType<TotoListViewModel>().AsSelf();
-            builder.RegisterType<TotoListFormViewModel>().AsSelf();
-            builder.RegisterType<CategoryListViewModel>().AsSelf();
-            builder.RegisterType<CategoryFormViewModel>().AsSelf();
-            builder.RegisterType<AvailableCelebrityListViewModel>().AsSelf();
+            builder.RegisterType<MainPageViewModel>().SingleInstance();
+            builder.RegisterType<CelebrityListViewModel>().SingleInstance();
+            builder.RegisterType<CelebrityFormViewModel>().SingleInstance();
+            builder.RegisterType<TotoListViewModel>().SingleInstance();
+            builder.RegisterType<TotoListFormViewModel>().SingleInstance();
+            builder.RegisterType<CategoryListViewModel>().SingleInstance();
+            builder.RegisterType<CategoryFormViewModel>().SingleInstance();
+            builder.RegisterType<AvailableCelebrityListViewModel>().SingleInstance();
 
-            builder.RegisterType<JsonDbManager>().AsSelf();
-            builder.RegisterType<CelebrityManager>().AsSelf();
-            builder.RegisterType<CategoryManager>().AsSelf();
-            builder.RegisterType<TotoListManager>().AsSelf();
+            builder.RegisterType<JsonDbManager>().SingleInstance();
+            builder.RegisterType<CelebrityManager>().SingleInstance();
+            builder.RegisterType<CategoryManager>().SingleInstance();
+            builder.RegisterType<TotoListManager>().SingleInstance();
 
             builder.RegisterInstance(DependencyService.Get<IJsonDb>());
 
