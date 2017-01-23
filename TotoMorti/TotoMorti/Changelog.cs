@@ -4,7 +4,8 @@
     {
         public static string Changes = "23/01/2017\n" +
                                        "- Riscrittura quasi totale dell'app\n" +
-                                       "- Rimossi pacchetti inutili\n" +      
+                                       "- Aggiunta pagina About\n" +
+                                       "- Rimossi pacchetti inutili\n" +
                                        "- Modifiche flow creazione liste\n" +
                                        "- Abilitata possibilità inserimento Vip\n" +
                                        "- Modifiche alla grafica\n" +

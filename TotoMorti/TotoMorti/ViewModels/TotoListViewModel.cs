@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
@@ -28,26 +26,6 @@ namespace TotoMorti.ViewModels
             _totoListManager = totoListManager;
             EventCenter.OnTotoListFormSaved += OnTotoListFormSaved;
             LoadContext();
-        }
-
-        private void OnTotoListFormSaved(TotoList totoList)
-        {
-            LoadContext();
-            //var t = TotoListList.FirstOrDefault(x => x.ListGuid == totoList.ListGuid);
-            //if (t != null)
-            //{
-            //    var i = TotoListList.IndexOf(t);
-            //    if (i >= 0)
-            //    {
-            //        TotoListList.Remove(t);
-            //        TotoListList.Insert(i, totoList);
-            //    }
-            //    else
-            //    {
-            //        TotoListList.Add(totoList);
-            //    }
-            //    RaisePropertyChanged(() => TotoListList);
-            //}
         }
 
         public ObservableCollection<TotoList> TotoListList
@@ -95,6 +73,26 @@ namespace TotoMorti.ViewModels
                 return _viewTotoListCommand ??
                        (_viewTotoListCommand = new Command<TotoList>(async t => await NavigateViewTotoList(t)));
             }
+        }
+
+        private void OnTotoListFormSaved(TotoList totoList)
+        {
+            LoadContext();
+            //var t = TotoListList.FirstOrDefault(x => x.ListGuid == totoList.ListGuid);
+            //if (t != null)
+            //{
+            //    var i = TotoListList.IndexOf(t);
+            //    if (i >= 0)
+            //    {
+            //        TotoListList.Remove(t);
+            //        TotoListList.Insert(i, totoList);
+            //    }
+            //    else
+            //    {
+            //        TotoListList.Add(totoList);
+            //    }
+            //    RaisePropertyChanged(() => TotoListList);
+            //}
         }
 
 

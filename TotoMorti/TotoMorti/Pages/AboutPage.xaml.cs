@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace TotoMorti.Pages
 {
@@ -7,6 +8,11 @@ namespace TotoMorti.Pages
         public AboutPage()
         {
             InitializeComponent();
+        }
+
+        private async void ShowAbout(object sender, EventArgs e)
+        {
+            await DisplayAlert("About", Changelog.Changes, "OK");
         }
     }
 }

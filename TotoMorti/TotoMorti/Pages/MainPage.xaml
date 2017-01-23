@@ -8,7 +8,7 @@
              Title="TotoMorti">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Text="?" Command="{Binding ShowAboutCommand}" />-->
-        <ToolbarItem Text="?" Clicked="ShowAbout" />
+        <ToolbarItem Text="?" Command="{Binding ShowAboutCommand}" />
     </ContentPage.ToolbarItems>
     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
         <Button Text="{x:Static resx:AppResources.TotoLists}" Command="{Binding TotoListListCommand}" />

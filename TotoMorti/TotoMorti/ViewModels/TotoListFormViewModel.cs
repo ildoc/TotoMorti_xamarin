@@ -28,8 +28,8 @@ namespace TotoMorti.ViewModels
             get { return _currentTotoList; }
             set
             {
-                _currentTotoList= value;
-                RaisePropertyChanged(()=>CurrentTotoList);
+                _currentTotoList = value;
+                RaisePropertyChanged(() => CurrentTotoList);
             }
         }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Autofac;
 using Autofac.Core;
 using TotoMorti.Classes;
@@ -29,6 +28,35 @@ namespace TotoMorti.ViewModels
             EventCenter.OnCelebrityPicked += OnCelebrityPicked;
         }
 
+        public List<Celebrity> SelectedCelebrityList
+        {
+            get { return _selectedCelebrityList; }
+            set
+            {
+                _selectedCelebrityList = value;
+                RaisePropertyChanged(() => SelectedCelebrityList);
+            }
+        }
+
+        public Category CurrentCategory
+        {
+            get { return _currentCategory; }
+            set
+            {
+                _currentCategory = value;
+                RaisePropertyChanged(() => CurrentCategory);
+            }
+        }
+
+        public Command SaveCommand => _saveCommand ??
+                                      (_saveCommand = new Command(SaveForm));
+
+        public Command AddCommand => _addCommand ??
+                                     (_addCommand = new Command(AddCelebrity));
+
+        public Command<Celebrity> DeleteCommand => _deleteCommand ??
+                                                   (_deleteCommand = new Command<Celebrity>(RemoveCelebrity));
+
         private void OnCelebrityPicked(Celebrity cel)
         {
             LoadSelectedCelebrities();
@@ -46,35 +74,6 @@ namespace TotoMorti.ViewModels
             //}
             //RaisePropertyChanged(() => SelectedCelebrityList);
         }
-
-        public List<Celebrity> SelectedCelebrityList
-        {
-            get { return _selectedCelebrityList; }
-            set
-            {
-                _selectedCelebrityList= value;
-                RaisePropertyChanged(()=>SelectedCelebrityList);
-            }
-        }
-
-        public Category CurrentCategory
-        {
-            get { return _currentCategory; }
-            set
-            {
-                _currentCategory=value;
-                RaisePropertyChanged(()=>CurrentCategory);
-            }
-        }
-
-        public Command SaveCommand => _saveCommand ??
-                                      (_saveCommand = new Command(SaveForm));
-
-        public Command AddCommand => _addCommand ??
-                                     (_addCommand = new Command(AddCelebrity));
-
-        public Command<Celebrity> DeleteCommand => _deleteCommand ??
-                                                   (_deleteCommand = new Command<Celebrity>(RemoveCelebrity));
 
         private void RemoveCelebrity(Celebrity c)
         {

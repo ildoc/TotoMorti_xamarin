@@ -3,17 +3,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TotoMorti.Pages.AboutPage"
+             Padding="10,20,10,10"
              Title="About">
-    <StackLayout>
-        <TableView BackgroundColor="White">
-            <TableRoot>
-                <TableSection Title="Faq">
-                    <TextCell Text="Cos'è" Detail="Un app brutta per un gioco per brutte persone" IsEnabled="False" />
-                    <TextCell Text="Perchè" Detail="Da un'idea goliardica" IsEnabled="False" />
-                    <TextCell Text="I miei amici non la trovano sullo store" Detail="lalalalal"
-                              IsEnabled="False" />
-                </TableSection>
-            </TableRoot>
-        </TableView>
+    <StackLayout HorizontalOptions="Fill">
+        <StackLayout VerticalOptions="StartAndExpand">
+            <Label Text="Cos'è" FontAttributes="Bold" FontSize="15" />
+            <Label
+                Text="Ho utilizzato come scusa un gioco di cattivo gusto fatto tra brutte persone per imparare a utilizzare Xamarin.Forms per realizzare un'app in C#"
+                LineBreakMode="WordWrap" />
+
+            <Label Text="Come funziona" FontAttributes="Bold" FontSize="15" />
+            <Label
+                Text="Il gioco consiste nel formulare una lista di celebrità, suddivisa per categorie concordate con gli altri partecipanti, e tentare di indovinare il maggior numero di decessi entro la fine del periodo deciso. La prima volta che si gioca sarà necessario aggiungere manualmente tutte le celebrità da scegliere poi nelle liste.
+               Creata una nuova lista sarà poi possibile aggiungerne le categorie con i relativi prescelti."
+                LineBreakMode="WordWrap" />
+
+            <Label Text="Perchè" FontAttributes="Bold" FontSize="15" />
+            <Label Text="Perchè no?" LineBreakMode="WordWrap" />
+
+            <Label Text="Futuri sviluppi" FontAttributes="Bold" FontSize="15" />
+            <Label
+                Text="Se l'app piace e c'è interesse, mi piacerebbe aggiungere un backend, per creare gruppi con altri utenti e centralizzare tutte le celebrità. E magari averci anche un sito da cui gestire le proprie liste. Se non frega un cazzo a nessuno no problem, me ne farò una ragione e l'app morirà così com'è."
+                LineBreakMode="WordWrap" />
+
+            <Label Text="Problemi, suggerimenti, insulti" FontAttributes="Bold" FontSize="15" />
+            <Label Text="Scrivete a @il_doc su Twitter" LineBreakMode="WordWrap" />
+        </StackLayout>
+
+        <StackLayout VerticalOptions="End">
+            <Button Text="Changelog" Clicked="ShowAbout" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

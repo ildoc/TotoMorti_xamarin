@@ -12,20 +12,20 @@ namespace TotoMorti.Managers
     {
         private const string celebrityDb = "celebrity";
         private const string totomortiDb = "totomorti";
-        private  List<Celebrity> _celebrities;
         private readonly IJsonDb _jsonDb;
-        private  List<TotoList> _totoLists;
+        private List<Celebrity> _celebrities;
+        private List<TotoList> _totoLists;
 
         public JsonDbManager(IJsonDb jsonDb)
         {
             _jsonDb = jsonDb;
-           LoadData();
+            LoadData();
         }
 
         private void LoadData()
         {
             _totoLists = JsonConvert.DeserializeObject<List<TotoList>>(_jsonDb.ReadJson(totomortiDb)) ??
-                        new List<TotoList>();
+                         new List<TotoList>();
             _celebrities = JsonConvert.DeserializeObject<List<Celebrity>>(_jsonDb.ReadJson(celebrityDb)) ??
                            new List<Celebrity>();
         }

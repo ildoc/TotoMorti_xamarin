@@ -92,7 +92,8 @@ namespace TotoMorti.ViewModels
         private void LoadContext()
         {
             CelebrityList = null;
-           CelebrityList = new ObservableCollection<Celebrity>(_celebrityManager.GetAllCelebrities().OrderBy(x=>x.FullName));
+            CelebrityList =
+                new ObservableCollection<Celebrity>(_celebrityManager.GetAllCelebrities().OrderBy(x => x.FullName));
         }
 
         private async Task NavigateAddCelebrity()

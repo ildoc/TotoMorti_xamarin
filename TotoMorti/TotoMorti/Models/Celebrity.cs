@@ -1,18 +1,15 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using TotoMorti.Annotations;
 using TotoMorti.Models.Abstract;
 
 namespace TotoMorti.Models
 {
-    public class Celebrity: BaseModel
+    public class Celebrity : BaseModel
     {
+        private DateTime _birthdate;
+        private DateTime _deathdate;
+        private string _imageurl;
         private string _name;
         private string _surname;
-        private string _imageurl;
-        private DateTime _deathdate;
-        private DateTime _birthdate;
 
         public Celebrity()
         {
@@ -28,7 +25,7 @@ namespace TotoMorti.Models
             {
                 _name = value;
                 OnPropertyChanged();
-            } 
+            }
         }
 
         public string Surname

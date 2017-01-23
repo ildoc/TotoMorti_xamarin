@@ -16,7 +16,7 @@ namespace TotoMorti
 
         public static void TotoListFormSaved(TotoList t)
         {
-           OnTotoListFormSaved?.Invoke(t);
+            OnTotoListFormSaved?.Invoke(t);
         }
 
         public static void CategoryFormSaved(Category c)
