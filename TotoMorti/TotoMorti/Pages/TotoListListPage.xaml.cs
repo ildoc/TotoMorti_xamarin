@@ -6,9 +6,9 @@ namespace TotoMorti.Pages
 {
     public partial class TotoListListPage : ContentPage
     {
-        private readonly TotoListViewModel _vm;
+        private readonly TotoListListViewModel _vm;
 
-        public TotoListListPage(TotoListViewModel vm)
+        public TotoListListPage(TotoListListViewModel vm)
         {
             InitializeComponent();
             _vm = vm;

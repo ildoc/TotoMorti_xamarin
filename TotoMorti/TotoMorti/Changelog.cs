@@ -2,7 +2,11 @@
 {
     public static class Changelog
     {
-        public static string Changes = "23/01/2017\n" +
+        public static string Changes = "24/01/2017\n" +
+                                       "- Prima release pubblica\n" +
+                                       "- Aggiunto tasto donazioni (ahahah)\n" +
+                                       "\n" +
+                                       "23/01/2017\n" +
                                        "- Riscrittura quasi totale dell'app\n" +
                                        "- Aggiunta pagina About\n" +
                                        "- Rimossi pacchetti inutili\n" +

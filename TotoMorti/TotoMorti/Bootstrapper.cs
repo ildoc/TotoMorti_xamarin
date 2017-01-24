@@ -31,7 +31,7 @@ namespace TotoMorti
             builder.RegisterType<MainPageViewModel>().SingleInstance();
             builder.RegisterType<CelebrityListViewModel>().SingleInstance();
             builder.RegisterType<CelebrityFormViewModel>().SingleInstance();
-            builder.RegisterType<TotoListViewModel>().SingleInstance();
+            builder.RegisterType<TotoListListViewModel>().SingleInstance();
             builder.RegisterType<TotoListFormViewModel>().SingleInstance();
             builder.RegisterType<CategoryListViewModel>().SingleInstance();
             builder.RegisterType<CategoryFormViewModel>().SingleInstance();

@@ -71,7 +71,7 @@
     <Compile Include="ViewModels\CategoryFormViewModel.cs" />
     <Compile Include="ViewModels\CategoryListViewModel.cs" />
     <Compile Include="ViewModels\TotoListFormViewModel.cs" />
-    <Compile Include="ViewModels\TotoListViewModel.cs" />
+    <Compile Include="ViewModels\TotoListListViewModel.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Celebrity.cs" />
     <Compile Include="Models\Group.cs" />

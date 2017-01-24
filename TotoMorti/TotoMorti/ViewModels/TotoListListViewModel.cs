@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace TotoMorti.ViewModels
 {
-    public class TotoListViewModel : BaseNavigationViewModel
+    public class TotoListListViewModel : BaseNavigationViewModel
     {
         private readonly TotoListManager _totoListManager;
 
@@ -21,7 +21,7 @@ namespace TotoMorti.ViewModels
         private ObservableCollection<TotoList> _totoListList;
         private Command<TotoList> _viewTotoListCommand;
 
-        public TotoListViewModel(TotoListManager totoListManager)
+        public TotoListListViewModel(TotoListManager totoListManager)
         {
             _totoListManager = totoListManager;
             EventCenter.OnTotoListFormSaved += OnTotoListFormSaved;

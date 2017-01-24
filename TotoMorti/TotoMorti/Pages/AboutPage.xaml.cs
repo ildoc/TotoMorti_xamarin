@@ -14,5 +14,10 @@ namespace TotoMorti.Pages
         {
             await DisplayAlert("About", Changelog.Changes, "OK");
         }
+
+        private void ShowDonations(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri(@"https://www.paypal.me/ildoc/5"));
+        }
     }
 }

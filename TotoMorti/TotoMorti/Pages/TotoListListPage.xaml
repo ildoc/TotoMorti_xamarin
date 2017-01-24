@@ -23,22 +23,17 @@
                                 Icon="delete.png"
                                 Text="{x:Static resx:AppResources.ButtonDelete}"
                                 IsDestructive="True" />
-                            <MenuItem
-                                Command="{Binding BindingContext.EditCommand, Source={x:Reference TotoListListView}}"
-                                CommandParameter="{Binding .}"
-                                Icon="edit.png"
-                                Text="{x:Static resx:AppResources.ButtonEdit}" />
-                            <!--<MenuItem Clicked="OnMore" CommandParameter="{Binding .}"
-                               Text="More" />
-                            <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
-                               Text="Delete" IsDestructive="True" />-->
                         </ViewCell.ContextActions>
 
-                        <StackLayout Orientation="Horizontal" Padding="5">
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="Fill" Padding="5">
                             <StackLayout HorizontalOptions="StartAndExpand">
                                 <Label Text="{Binding Title}" />
                                 <Label Text="{Binding CreatedOn}" TextColor="Gray" />
                             </StackLayout>
+                          <Button Text="{x:Static resx:AppResources.ButtonEdit}"
+                                   Command="{Binding BindingContext.EditCommand, Source={x:Reference TotoListListView}}"
+                                  Image="edit.png"
+                                  CommandParameter="{Binding .}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
