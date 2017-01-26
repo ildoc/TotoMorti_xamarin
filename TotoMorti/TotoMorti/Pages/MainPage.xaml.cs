@@ -1,5 +1,4 @@
-﻿using System;
-using TotoMorti.ViewModels;
+﻿using TotoMorti.ViewModels;
 using Xamarin.Forms;
 
 namespace TotoMorti.Pages

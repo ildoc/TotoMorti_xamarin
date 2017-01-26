@@ -25,15 +25,15 @@
                                 IsDestructive="True" />
                         </ViewCell.ContextActions>
 
-                        <StackLayout Orientation="Horizontal"  HorizontalOptions="Fill" Padding="5">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="5">
                             <StackLayout HorizontalOptions="StartAndExpand">
                                 <Label Text="{Binding Title}" />
                                 <Label Text="{Binding CreatedOn}" TextColor="Gray" />
                             </StackLayout>
-                          <Button Text="{x:Static resx:AppResources.ButtonEdit}"
-                                   Command="{Binding BindingContext.EditCommand, Source={x:Reference TotoListListView}}"
-                                  Image="edit.png"
-                                  CommandParameter="{Binding .}" />
+                            <Button Text="{x:Static resx:AppResources.ButtonEdit}"
+                                    Command="{Binding BindingContext.EditCommand, Source={x:Reference TotoListListView}}"
+                                    Image="edit.png"
+                                    CommandParameter="{Binding .}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
